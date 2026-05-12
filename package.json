@@ -1,0 +1,48 @@
+{
+  "name": "@mintapi/gateway",
+  "version": "0.1.0",
+  "description": "Buyer-side MintAPI SDK for x402-aware paid API requests.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "types": "./src/client/index.d.ts",
+  "homepage": "https://docs.mintapi.dev",
+  "bugs": {
+    "url": "https://mintapi.dev"
+  },
+  "keywords": [
+    "mintapi",
+    "x402",
+    "api",
+    "payments",
+    "agent",
+    "sdk"
+  ],
+  "files": [
+    "README.md",
+    "PUBLISHING.md",
+    "CHANGELOG.md",
+    "src/client/**/*.mjs",
+    "src/client/**/*.d.ts"
+  ],
+  "exports": {
+    "./client": {
+      "types": "./src/client/index.d.ts",
+      "import": "./src/client/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "pack:dry-run": "npm pack --dry-run",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "x402": "^0.6.6"
+  }
+}
