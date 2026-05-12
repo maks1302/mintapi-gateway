@@ -270,15 +270,303 @@ export interface YoutubeHomeParams {
   fields?: string;
 }
 
+export interface TwitterProfileImage {
+  url?: string;
+  width?: number;
+  height?: number;
+  [key: string]: unknown;
+}
+
+export interface TwitterUserProfile {
+  id?: string;
+  rest_id?: string;
+  screen_name?: string;
+  name?: string;
+  desc?: string;
+  avatar?: string;
+  profile?: string;
+  header_image?: string;
+  created_at?: string;
+  location?: string;
+  url?: string;
+  friends?: number;
+  followers_count?: number;
+  sub_count?: number;
+  statuses_count?: number;
+  media_count?: number;
+  favourites_count?: number;
+  listed_count?: number;
+  blue_verified?: boolean;
+  verified?: boolean;
+  is_blue_verified?: boolean;
+  profile_image?: string;
+  [key: string]: unknown;
+}
+
+export interface TwitterMentionEntity {
+  id_str?: string;
+  name?: string;
+  screen_name?: string;
+  indices?: number[];
+  [key: string]: unknown;
+}
+
+export interface TwitterHashtagEntity {
+  text?: string;
+  indices?: number[];
+  [key: string]: unknown;
+}
+
+export interface TwitterUrlEntity {
+  url?: string;
+  expanded_url?: string;
+  display_url?: string;
+  indices?: number[];
+  [key: string]: unknown;
+}
+
+export interface TwitterMediaVariant {
+  bitrate?: number;
+  content_type?: string;
+  url?: string;
+  [key: string]: unknown;
+}
+
+export interface TwitterMediaEntity {
+  id_str?: string;
+  media_key?: string;
+  media_url_https?: string;
+  type?: string;
+  url?: string;
+  display_url?: string;
+  expanded_url?: string;
+  ext_media_availability?: Record<string, unknown>;
+  original_info?: Record<string, unknown>;
+  sizes?: Record<string, unknown>;
+  video_info?: {
+    aspect_ratio?: number[];
+    duration_millis?: number;
+    variants?: TwitterMediaVariant[];
+    [key: string]: unknown;
+  };
+  [key: string]: unknown;
+}
+
+export interface TwitterEntities {
+  hashtags?: TwitterHashtagEntity[];
+  media?: TwitterMediaEntity[];
+  symbols?: Array<Record<string, unknown>>;
+  urls?: TwitterUrlEntity[];
+  user_mentions?: TwitterMentionEntity[];
+  [key: string]: unknown;
+}
+
+export interface TwitterTweet {
+  tweet_id?: string;
+  id?: string;
+  conversation_id?: string;
+  created_at?: string;
+  text?: string;
+  lang?: string;
+  source?: string;
+  display_text_range?: number[];
+  bookmarks?: number;
+  favorites?: number;
+  likes?: number;
+  quotes?: number;
+  replies?: number;
+  retweets?: number;
+  views?: number | string;
+  media?: TwitterMediaEntity[];
+  entities?: TwitterEntities;
+  author?: TwitterUserProfile;
+  user_info?: TwitterUserProfile;
+  quoted?: TwitterTweet;
+  quoted_tweet?: TwitterTweet;
+  retweeted?: TwitterTweet;
+  retweeted_tweet?: TwitterTweet;
+  [key: string]: unknown;
+}
+
+export interface TwitterTimelineResponse {
+  pinned?: TwitterTweet | null;
+  timeline?: TwitterTweet[];
+  next_cursor?: string;
+  prev_cursor?: string;
+  status?: string;
+  user?: TwitterUserProfile;
+  [key: string]: unknown;
+}
+
+export interface TwitterUsersPageResponse {
+  following?: TwitterUserProfile[];
+  followers?: TwitterUserProfile[];
+  users?: TwitterUserProfile[];
+  next_cursor?: string;
+  prev_cursor?: string;
+  status?: string;
+  [key: string]: unknown;
+}
+
+export interface TwitterTrendsResponse {
+  trends?: Array<{
+    name?: string;
+    query?: string;
+    url?: string;
+    tweet_volume?: number | null;
+    [key: string]: unknown;
+  }>;
+  [key: string]: unknown;
+}
+
+export interface TwitterSearchResponse {
+  timeline?: TwitterTweet[];
+  next_cursor?: string;
+  prev_cursor?: string;
+  status?: string;
+  [key: string]: unknown;
+}
+
+export interface YoutubeThumbnail {
+  url?: string;
+  width?: number;
+  height?: number;
+}
+
+export interface YoutubeBadge {
+  type?: string;
+  label?: string;
+  [key: string]: unknown;
+}
+
+export interface YoutubeAuthorSummary {
+  channelId?: string;
+  channelTitle?: string;
+  channelHandle?: string;
+  channelAvatar?: YoutubeThumbnail[];
+  channelThumbnail?: YoutubeThumbnail[];
+  isVerified?: boolean;
+  isVerifiedChannel?: boolean;
+  [key: string]: unknown;
+}
+
+export interface YoutubeVideoResult extends YoutubeAuthorSummary {
+  type?: string;
+  videoId?: string;
+  title?: string;
+  description?: string;
+  thumbnail?: YoutubeThumbnail[];
+  richThumbnail?: YoutubeThumbnail[];
+  viewCount?: number | string;
+  viewCountText?: string;
+  publishedTimeText?: string;
+  publishDate?: string;
+  publishedAt?: string;
+  lengthText?: string;
+  live?: boolean;
+  isLive?: boolean;
+  badges?: YoutubeBadge[];
+  [key: string]: unknown;
+}
+
+export interface YoutubeShortsResult extends YoutubeAuthorSummary {
+  type?: string;
+  videoId?: string;
+  title?: string;
+  thumbnail?: YoutubeThumbnail[];
+  viewCountText?: string;
+  params?: string;
+  [key: string]: unknown;
+}
+
+export interface YoutubeFeedSection {
+  type?: string;
+  title?: string;
+  subtitle?: string;
+  data?: YoutubeFeedItem[];
+  [key: string]: unknown;
+}
+
+export type YoutubeFeedItem = YoutubeVideoResult | YoutubeShortsResult | YoutubeFeedSection;
+
+export interface YoutubeSearchResponse {
+  data?: YoutubeVideoResult[];
+  continuation?: string;
+  estimatedResults?: number | string;
+  [key: string]: unknown;
+}
+
+export interface YoutubeFeedResponse {
+  data?: YoutubeFeedItem[];
+  continuation?: string;
+  msg?: string;
+  [key: string]: unknown;
+}
+
+export interface YoutubeComment {
+  commentId?: string;
+  text?: string;
+  contentText?: string;
+  authorText?: string;
+  authorChannelId?: string;
+  authorThumbnail?: YoutubeThumbnail[];
+  likeCount?: number | string;
+  likeCountText?: string;
+  publishedTimeText?: string;
+  repliesCount?: number | string;
+  [key: string]: unknown;
+}
+
+export interface YoutubeCommentsResponse {
+  data?: YoutubeComment[];
+  continuation?: string;
+  [key: string]: unknown;
+}
+
+export interface YoutubeResolveResponse {
+  webPageType?: string;
+  isVanityUrl?: boolean;
+  browseId?: string;
+  params?: string;
+  [key: string]: unknown;
+}
+
+export interface YoutubeDownloadFormat {
+  url?: string;
+  mimeType?: string;
+  bitrate?: number;
+  qualityLabel?: string;
+  audioQuality?: string;
+  contentLength?: string;
+  approxDurationMs?: string;
+  [key: string]: unknown;
+}
+
+export interface YoutubeDownloadResponse {
+  id?: string;
+  videoId?: string;
+  title?: string;
+  formats?: YoutubeDownloadFormat[];
+  adaptiveFormats?: YoutubeDownloadFormat[];
+  subtitles?: Array<Record<string, unknown>>;
+  [key: string]: unknown;
+}
+
+export interface YoutubeSuggestQueriesResponse {
+  query?: string;
+  suggestions?: string[];
+  [key: string]: unknown;
+}
+
 export interface MintApiTwitterClient {
-  userInfo<T = unknown>(params?: TwitterUserInfoParams): Promise<T>;
-  userTimeline<T = unknown>(params?: TwitterUserInfoParams & CursorParams): Promise<T>;
-  userMedia<T = unknown>(params?: TwitterUserInfoParams & CursorParams): Promise<T>;
-  following<T = unknown>(params?: TwitterUserInfoParams & CursorParams): Promise<T>;
-  followers<T = unknown>(params?: TwitterFollowersParams): Promise<T>;
-  tweetInfo<T = unknown>(params?: TwitterIdParams): Promise<T>;
-  tweetThread<T = unknown>(params?: TwitterIdParams & CursorParams): Promise<T>;
-  latestReplies<T = unknown>(params?: TwitterIdParams & CursorParams): Promise<T>;
+  userInfo<T = TwitterUserProfile>(params?: TwitterUserInfoParams): Promise<T>;
+  userTimeline<T = TwitterTimelineResponse>(params?: TwitterUserInfoParams & CursorParams): Promise<T>;
+  userMedia<T = TwitterTimelineResponse>(params?: TwitterUserInfoParams & CursorParams): Promise<T>;
+  following<T = TwitterUsersPageResponse>(params?: TwitterUserInfoParams & CursorParams): Promise<T>;
+  followers<T = TwitterUsersPageResponse>(params?: TwitterFollowersParams): Promise<T>;
+  tweetInfo<T = TwitterTweet>(params?: TwitterIdParams): Promise<T>;
+  tweetThread<T = TwitterTimelineResponse>(params?: TwitterIdParams & CursorParams): Promise<T>;
+  latestReplies<T = TwitterTimelineResponse>(params?: TwitterIdParams & CursorParams): Promise<T>;
   checkFollow<T = unknown>(params?: TwitterCheckFollowParams): Promise<T>;
   listTimeline<T = unknown>(params?: TwitterListTimelineParams): Promise<T>;
   communityInfo<T = unknown>(params?: TwitterCommunityParams): Promise<T>;
@@ -297,23 +585,23 @@ export interface MintApiTwitterClient {
   spacesInfo<T = unknown>(params?: TwitterIdParams): Promise<T>;
   affiliates<T = unknown>(params?: { screenname?: string; cursor?: string }): Promise<T>;
   retweets<T = unknown>(params?: TwitterIdParams & CursorParams): Promise<T>;
-  trends<T = unknown>(params?: { country?: string }): Promise<T>;
-  search<T = unknown>(params?: TwitterSearchParams): Promise<T>;
-  userReplies<T = unknown>(params?: { screenname?: string; cursor?: string }): Promise<T>;
+  trends<T = TwitterTrendsResponse>(params?: { country?: string }): Promise<T>;
+  search<T = TwitterSearchResponse>(params?: TwitterSearchParams): Promise<T>;
+  userReplies<T = TwitterTimelineResponse>(params?: { screenname?: string; cursor?: string }): Promise<T>;
   checkRetweet<T = unknown>(params?: TwitterCheckRetweetParams): Promise<T>;
 }
 
 export interface MintApiYoutubeClient {
-  trending<T = unknown>(params?: YoutubeTrendingParams): Promise<T>;
-  search<T = unknown>(params?: YoutubeSearchParams): Promise<T>;
-  playlist<T = unknown>(params?: YoutubePlaylistParams): Promise<T>;
-  hashtag<T = unknown>(params?: YoutubeHashtagParams): Promise<T>;
-  comments<T = unknown>(params?: YoutubeCommentsParams): Promise<T>;
-  resolve<T = unknown>(params?: YoutubeResolveParams): Promise<T>;
-  download<T = unknown>(params?: YoutubeDownloadParams): Promise<T>;
-  hype<T = unknown>(params?: YoutubeHypeParams): Promise<T>;
-  suggestQueries<T = unknown>(params?: YoutubeSuggestQueriesParams): Promise<T>;
-  home<T = unknown>(params?: YoutubeHomeParams): Promise<T>;
+  trending<T = YoutubeFeedResponse>(params?: YoutubeTrendingParams): Promise<T>;
+  search<T = YoutubeSearchResponse>(params?: YoutubeSearchParams): Promise<T>;
+  playlist<T = YoutubeFeedResponse>(params?: YoutubePlaylistParams): Promise<T>;
+  hashtag<T = YoutubeFeedResponse>(params?: YoutubeHashtagParams): Promise<T>;
+  comments<T = YoutubeCommentsResponse>(params?: YoutubeCommentsParams): Promise<T>;
+  resolve<T = YoutubeResolveResponse>(params?: YoutubeResolveParams): Promise<T>;
+  download<T = YoutubeDownloadResponse>(params?: YoutubeDownloadParams): Promise<T>;
+  hype<T = YoutubeFeedResponse>(params?: YoutubeHypeParams): Promise<T>;
+  suggestQueries<T = YoutubeSuggestQueriesResponse>(params?: YoutubeSuggestQueriesParams): Promise<T>;
+  home<T = YoutubeFeedResponse>(params?: YoutubeHomeParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {
