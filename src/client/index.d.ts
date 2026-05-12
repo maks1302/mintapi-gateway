@@ -205,6 +205,12 @@ export interface YoutubeVideoInfoParams {
   fields?: string;
 }
 
+export interface YoutubeSubtitlesParams {
+  id?: string;
+  format?: string;
+  lang?: string;
+}
+
 export interface YoutubeSearchParams {
   query?: string;
   token?: string;
@@ -544,6 +550,20 @@ export interface YoutubeVideoInfoResponse {
   [key: string]: unknown;
 }
 
+export interface YoutubeSubtitleTrack {
+  languageName?: string;
+  languageCode?: string;
+  url?: string;
+  isTranslatable?: boolean;
+  [key: string]: unknown;
+}
+
+export interface YoutubeSubtitlesResponse {
+  subtitles?: YoutubeSubtitleTrack[];
+  translationLanguages?: Array<Record<string, unknown>>;
+  [key: string]: unknown;
+}
+
 export interface YoutubeComment {
   commentId?: string;
   text?: string;
@@ -635,6 +655,7 @@ export interface MintApiTwitterClient {
 export interface MintApiYoutubeClient {
   trending<T = YoutubeFeedResponse>(params?: YoutubeTrendingParams): Promise<T>;
   videoInfo<T = YoutubeVideoInfoResponse>(params?: YoutubeVideoInfoParams): Promise<T>;
+  subtitles<T = YoutubeSubtitlesResponse>(params?: YoutubeSubtitlesParams): Promise<T>;
   search<T = YoutubeSearchResponse>(params?: YoutubeSearchParams): Promise<T>;
   playlist<T = YoutubeFeedResponse>(params?: YoutubePlaylistParams): Promise<T>;
   hashtag<T = YoutubeFeedResponse>(params?: YoutubeHashtagParams): Promise<T>;
