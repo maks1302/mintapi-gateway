@@ -6,8 +6,12 @@
   "type": "module",
   "types": "./src/client/index.d.ts",
   "homepage": "https://docs.mintapi.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maks1302/mintapi-gateway.git"
+  },
   "bugs": {
-    "url": "https://mintapi.dev"
+    "url": "https://github.com/maks1302/mintapi-gateway/issues"
   },
   "keywords": [
     "mintapi",

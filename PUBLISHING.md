@@ -64,7 +64,7 @@ Before the workflow can publish:
 For GitHub Actions trusted publishing, npm needs:
 
 - GitHub owner/org: the repository owner
-- repository: this SDK repository
+- repository: `mintapi-gateway`
 - workflow file: `publish.yml`
 
 The workflow lives at:
