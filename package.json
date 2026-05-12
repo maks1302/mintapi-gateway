@@ -8,7 +8,7 @@
   "homepage": "https://docs.mintapi.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/maks1302/mintapi-gateway.git"
+    "url": "git+https://github.com/maks1302/mintapi-gateway.git"
   },
   "bugs": {
     "url": "https://github.com/maks1302/mintapi-gateway/issues"
@@ -36,8 +36,7 @@
     "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   },
   "scripts": {
     "pack:dry-run": "npm pack --dry-run",
