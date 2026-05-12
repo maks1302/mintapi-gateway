@@ -1,8 +1,8 @@
 {
   "name": "@mintapi/gateway",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "Buyer-side MintAPI SDK for x402-aware paid API requests.",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "type": "module",
   "types": "./src/client/index.d.ts",
   "homepage": "https://docs.mintapi.dev",
