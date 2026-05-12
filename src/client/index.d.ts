@@ -197,6 +197,14 @@ export interface YoutubeTrendingParams {
   fields?: string;
 }
 
+export interface YoutubeVideoInfoParams {
+  id?: string;
+  extend?: string | number;
+  geo?: string;
+  lang?: string;
+  fields?: string;
+}
+
 export interface YoutubeSearchParams {
   query?: string;
   token?: string;
@@ -503,6 +511,39 @@ export interface YoutubeFeedResponse {
   [key: string]: unknown;
 }
 
+export interface YoutubeChapter {
+  title?: string;
+  time?: string;
+  startTimeSeconds?: number;
+  [key: string]: unknown;
+}
+
+export interface YoutubeVideoInfoResponse {
+  id?: string;
+  videoId?: string;
+  title?: string;
+  lengthSeconds?: string;
+  keywords?: string[];
+  channelTitle?: string;
+  channelId?: string;
+  channelHandle?: string;
+  description?: string;
+  thumbnail?: YoutubeThumbnail[];
+  allowRatings?: boolean;
+  viewCount?: number | string;
+  likeCount?: number | string;
+  commentCount?: number | string;
+  subscriberCountText?: string;
+  isPrivate?: boolean;
+  isLiveContent?: boolean;
+  isLive?: boolean;
+  isFamilySafe?: boolean;
+  availableCountries?: string[];
+  relatedVideos?: YoutubeVideoResult[];
+  chapters?: YoutubeChapter[];
+  [key: string]: unknown;
+}
+
 export interface YoutubeComment {
   commentId?: string;
   text?: string;
@@ -593,6 +634,7 @@ export interface MintApiTwitterClient {
 
 export interface MintApiYoutubeClient {
   trending<T = YoutubeFeedResponse>(params?: YoutubeTrendingParams): Promise<T>;
+  videoInfo<T = YoutubeVideoInfoResponse>(params?: YoutubeVideoInfoParams): Promise<T>;
   search<T = YoutubeSearchResponse>(params?: YoutubeSearchParams): Promise<T>;
   playlist<T = YoutubeFeedResponse>(params?: YoutubePlaylistParams): Promise<T>;
   hashtag<T = YoutubeFeedResponse>(params?: YoutubeHashtagParams): Promise<T>;

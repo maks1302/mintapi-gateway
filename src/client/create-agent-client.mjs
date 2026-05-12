@@ -237,6 +237,11 @@ export function createAgentClient({
           query: { geo, type, lang, fields },
         });
       },
+      videoInfo({ id, extend, geo, lang, fields } = {}) {
+        return request("/api/youtube/video-info", {
+          query: { id, extend, geo, lang, fields },
+        });
+      },
       search({ query, token, geo, lang, type, duration, features, upload_date, sort_by, local, fields } = {}) {
         return request("/api/youtube/search", {
           query: { query, token, geo, lang, type, duration, features, upload_date, sort_by, local, fields },
