@@ -1499,6 +1499,23 @@ export interface MintApiYoutubeClient {
   postComments<T = YoutubeCommentsResponse>(params?: YoutubePostCommentsParams): Promise<T>;
 }
 
+export interface InstagramUsernameFromIdParams {
+  id?: string;
+  fields?: string;
+}
+
+export interface InstagramUsernameFromIdResponse {
+  status?: boolean;
+  username?: string;
+  user_id?: string;
+  attempts?: string;
+  [key: string]: unknown;
+}
+
+export interface MintApiInstagramClient {
+  usernameFromId<T = InstagramUsernameFromIdResponse>(params?: InstagramUsernameFromIdParams): Promise<T>;
+}
+
 export interface MintApiAgentClient {
   request<T = unknown>(path: string, options?: Omit<MintApiRequestOptions, "parseAs"> & { parseAs?: "json" }): Promise<T>;
   request(path: string, options: Omit<MintApiRequestOptions, "parseAs"> & { parseAs: "text" }): Promise<string>;
@@ -1506,6 +1523,7 @@ export interface MintApiAgentClient {
   twitter: MintApiTwitterClient;
   youtube: MintApiYoutubeClient;
   tiktok: MintApiTiktokClient;
+  instagram: MintApiInstagramClient;
 }
 
 export function paidFetch(
