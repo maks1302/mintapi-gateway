@@ -379,6 +379,11 @@ export function createAgentClient({
           query: { token, geo, lang, fields },
         });
       },
+      postInfo({ id, channelId, geo, lang, fields } = {}) {
+        return request("/api/youtube/post-info", {
+          query: { id, channelId, geo, lang, fields },
+        });
+      },
     },
   };
 }

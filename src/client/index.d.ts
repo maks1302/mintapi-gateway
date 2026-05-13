@@ -429,6 +429,42 @@ export interface YoutubeHomeParams {
   fields?: string;
 }
 
+export interface YoutubePostInfoParams {
+  id?: string;
+  channelId?: string;
+  geo?: string;
+  lang?: string;
+  fields?: string;
+}
+
+export interface YoutubePostInfoAttachmentImage {
+  url?: string;
+  width?: number;
+  height?: number;
+  [key: string]: unknown;
+}
+
+export interface YoutubePostInfoAttachment {
+  type?: string;
+  image?: YoutubePostInfoAttachmentImage[];
+  [key: string]: unknown;
+}
+
+export interface YoutubePostInfoResponse {
+  type?: string;
+  postId?: string;
+  authorText?: string;
+  authorChannelId?: string;
+  authorThumbnail?: YoutubeThumbnail[];
+  contentText?: string;
+  publishedTimeText?: string;
+  voteCountText?: string;
+  voteStatus?: string;
+  replyCount?: string | number | null;
+  attachment?: YoutubePostInfoAttachment;
+  [key: string]: unknown;
+}
+
 export interface TwitterProfileImage {
   url?: string;
   width?: number;
@@ -982,6 +1018,7 @@ export interface MintApiYoutubeClient {
   hype<T = YoutubeFeedResponse>(params?: YoutubeHypeParams): Promise<T>;
   suggestQueries<T = YoutubeSuggestQueriesResponse>(params?: YoutubeSuggestQueriesParams): Promise<T>;
   home<T = YoutubeFeedResponse>(params?: YoutubeHomeParams): Promise<T>;
+  postInfo<T = YoutubePostInfoResponse>(params?: YoutubePostInfoParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {
