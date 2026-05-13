@@ -1113,6 +1113,24 @@ export interface TiktokUserFollowingResponse {
   };
 }
 
+export interface TiktokUserFollowersParams {
+  user_id: string;
+  count?: string;
+  time?: string;
+}
+
+export interface TiktokUserFollowersResponse {
+  code: number;
+  msg: string;
+  processed_time: number;
+  data: {
+    followers: Array<Record<string, unknown>>;
+    total: number;
+    time: number;
+    hasMore: boolean;
+  };
+}
+
 export interface TiktokUserVideosResponse {
   code?: number;
   msg?: string;
@@ -1133,6 +1151,7 @@ export interface MintApiTiktokClient {
   userVideos<T = TiktokUserVideosResponse>(params?: TiktokUserVideosParams): Promise<T>;
   userFavorites<T = TiktokUserVideosResponse>(params?: TiktokUserVideosParams): Promise<T>;
   userFollowing<T = TiktokUserFollowingResponse>(params?: TiktokUserFollowingParams): Promise<T>;
+  userFollowers<T = TiktokUserFollowersResponse>(params?: TiktokUserFollowersParams): Promise<T>;
 }
 
 export interface MintApiTwitterClient {
