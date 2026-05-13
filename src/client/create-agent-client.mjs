@@ -563,6 +563,11 @@ export function createAgentClient({
           query: { id, count, max_id: maxId, fields },
         });
       },
+      repostsByUserId({ id, maxId, fields } = {}) {
+        return request("/api/instagram/reposts-by-user-id", {
+          query: { id, max_id: maxId, fields },
+        });
+      },
     },
   };
 }
