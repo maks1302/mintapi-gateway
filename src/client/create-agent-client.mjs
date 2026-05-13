@@ -608,6 +608,11 @@ export function createAgentClient({
           query: { query, end_cursor: endCursor, fields },
         });
       },
+      locationInfoByLocationId({ id, fields } = {}) {
+        return request("/api/instagram/location-info-by-location-id", {
+          query: { id, fields },
+        });
+      },
       searchHashtags({ query, fields } = {}) {
         return request("/api/instagram/search-hashtags", {
           query: { query, select: "hashtags", fields },

@@ -1682,6 +1682,9 @@ export interface MintApiInstagramClient {
   downloadLinkByUrl<T = InstagramDownloadLinkByUrlResponse>(params?: InstagramDownloadLinkByUrlParams): Promise<T>;
   musicInfoByMusicId<T = InstagramMusicInfoByMusicIdResponse>(params?: InstagramMusicInfoByMusicIdParams): Promise<T>;
   mediaByHashtag<T = InstagramMediaByHashtagResponse>(params?: InstagramMediaByHashtagParams): Promise<T>;
+  locationInfoByLocationId<T = InstagramLocationInfoByLocationIdResponse>(
+    params?: InstagramLocationInfoByLocationIdParams,
+  ): Promise<T>;
   searchHashtags<T = InstagramSearchHashtagsResponse>(params?: InstagramSearchHashtagsParams): Promise<T>;
   searchLocations<T = InstagramSearchLocationsResponse>(params?: InstagramSearchLocationsParams): Promise<T>;
 }
@@ -1778,6 +1781,39 @@ export interface InstagramSearchUsersResponse {
 export interface InstagramSearchHashtagsParams {
   query?: string;
   fields?: string;
+}
+
+export interface InstagramLocationInfoByLocationIdParams {
+  id?: string;
+  fields?: string;
+}
+
+export interface InstagramLocationInfoByLocationIdResponse {
+  location_info?: {
+    name?: string;
+    phone?: string;
+    category?: string;
+    media_count?: number;
+    price_range?: number;
+    lat?: number;
+    lng?: number;
+    slug?: string;
+    location_id?: string;
+    location_address?: string;
+    location_city?: string;
+    location_zip?: string;
+    ig_business?: {
+      profile?: unknown;
+      [key: string]: unknown;
+    };
+    hours?: {
+      status?: string;
+      [key: string]: unknown;
+    };
+    [key: string]: unknown;
+  };
+  attempts?: string;
+  [key: string]: unknown;
 }
 
 export interface InstagramSearchHashtagsResponse {
