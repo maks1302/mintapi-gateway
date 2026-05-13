@@ -598,6 +598,11 @@ export function createAgentClient({
           query: { url, fields },
         });
       },
+      musicInfoByMusicId({ id, maxId, fields } = {}) {
+        return request("/api/instagram/music-info-by-music-id", {
+          query: { id, max_id: maxId, fields },
+        });
+      },
     },
   };
 }
