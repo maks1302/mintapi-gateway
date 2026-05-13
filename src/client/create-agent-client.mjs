@@ -513,6 +513,11 @@ export function createAgentClient({
           query: { username, fields },
         });
       },
+      mediaShortcodeFromId({ id, fields } = {}) {
+        return request("/api/instagram/media-shortcode-from-id", {
+          query: { id, fields },
+        });
+      },
     },
   };
 }
