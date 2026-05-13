@@ -608,6 +608,11 @@ export function createAgentClient({
           query: { query, end_cursor: endCursor, fields },
         });
       },
+      searchHashtags({ query, fields } = {}) {
+        return request("/api/instagram/search-hashtags", {
+          query: { query, select: "hashtags", fields },
+        });
+      },
     },
   };
 }
