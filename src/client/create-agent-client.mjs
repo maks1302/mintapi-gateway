@@ -436,6 +436,11 @@ export function createAgentClient({
           query: { url },
         });
       },
+      musicVideos({ music_id, count, cursor } = {}) {
+        return request("/api/tiktok/music-videos", {
+          query: { music_id, count, cursor },
+        });
+      },
     },
   };
 }

@@ -1167,6 +1167,23 @@ export interface TiktokMusicInfoResponse {
   };
 }
 
+export interface TiktokMusicVideosParams {
+  music_id: string;
+  count: string;
+  cursor: string;
+}
+
+export interface TiktokMusicVideosResponse {
+  code: number;
+  msg: string;
+  processed_time: number;
+  data: {
+    videos: Array<Record<string, unknown>>;
+    cursor: string | number;
+    hasMore: boolean | number;
+  };
+}
+
 export interface TiktokUserVideosResponse {
   code?: number;
   msg?: string;
@@ -1190,6 +1207,7 @@ export interface MintApiTiktokClient {
   userFollowers<T = TiktokUserFollowersResponse>(params?: TiktokUserFollowersParams): Promise<T>;
   userInfo<T = TiktokUserInfoResponse>(params?: TiktokUserInfoParams): Promise<T>;
   musicInfo<T = TiktokMusicInfoResponse>(params?: TiktokMusicInfoParams): Promise<T>;
+  musicVideos<T = TiktokMusicVideosResponse>(params?: TiktokMusicVideosParams): Promise<T>;
 }
 
 export interface MintApiTwitterClient {
