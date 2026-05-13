@@ -1019,9 +1019,68 @@ export interface TiktokVideoInfoResponse {
   [key: string]: unknown;
 }
 
+export interface TiktokSearchUserParams {
+  keywords?: string;
+  count?: string;
+  cursor?: string;
+}
+
+export interface TiktokUserProfile {
+  id?: string;
+  uniqueId?: string;
+  nickname?: string;
+  avatarThumb?: string;
+  avatarMedium?: string;
+  avatarLarger?: string;
+  signature?: string;
+  verified?: boolean;
+  secUid?: string;
+  secret?: boolean;
+  ftc?: boolean;
+  relation?: number;
+  openFavorite?: boolean | null;
+  commentSetting?: number;
+  duetSetting?: number;
+  stitchSetting?: number;
+  privateAccount?: boolean;
+  isADVirtual?: boolean;
+  isUnderAge18?: boolean;
+  [key: string]: unknown;
+}
+
+export interface TiktokUserStats {
+  followingCount?: number;
+  followerCount?: number;
+  heartCount?: number;
+  videoCount?: number;
+  diggCount?: number;
+  heart?: number;
+  [key: string]: unknown;
+}
+
+export interface TiktokSearchUserItem {
+  user?: TiktokUserProfile;
+  stats?: TiktokUserStats;
+  [key: string]: unknown;
+}
+
+export interface TiktokSearchUserResponse {
+  code?: number;
+  msg?: string;
+  processed_time?: number;
+  data?: {
+    user_list?: TiktokSearchUserItem[];
+    cursor?: number | string;
+    hasMore?: boolean;
+    [key: string]: unknown;
+  };
+  [key: string]: unknown;
+}
+
 export interface MintApiTiktokClient {
   videoInfo<T = TiktokVideoInfoResponse>(params?: TiktokVideoInfoParams): Promise<T>;
   newVideoInfo<T = TiktokVideoInfoResponse>(params?: TiktokVideoInfoParams): Promise<T>;
+  searchUser<T = TiktokSearchUserResponse>(params?: TiktokSearchUserParams): Promise<T>;
 }
 
 export interface MintApiTwitterClient {

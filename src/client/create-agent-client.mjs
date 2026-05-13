@@ -401,6 +401,11 @@ export function createAgentClient({
           query: { url, hd },
         });
       },
+      searchUser({ keywords, count, cursor } = {}) {
+        return request("/api/tiktok/search-user", {
+          query: { keywords, count, cursor },
+        });
+      },
     },
   };
 }
