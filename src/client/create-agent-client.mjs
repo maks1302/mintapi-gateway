@@ -431,6 +431,11 @@ export function createAgentClient({
           query: { unique_id, user_id },
         });
       },
+      musicInfo({ url } = {}) {
+        return request("/api/tiktok/music-info", {
+          query: { url },
+        });
+      },
     },
   };
 }
