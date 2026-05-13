@@ -1258,6 +1258,32 @@ export interface TiktokCommentRepliesResponse {
   [key: string]: unknown;
 }
 
+export interface TiktokChallengeInfoParams {
+  challenge_id?: string;
+  challenge_name?: string;
+}
+
+export interface TiktokChallengeInfoResponse {
+  code?: number;
+  msg?: string;
+  processed_time?: number;
+  data?: {
+    id?: string;
+    cha_name?: string;
+    desc?: string;
+    user_count?: number;
+    view_count?: number;
+    is_pgcshow?: boolean;
+    is_commerce?: boolean;
+    is_challenge?: boolean;
+    is_strong_music?: boolean;
+    type?: number;
+    cover?: string;
+    [key: string]: unknown;
+  };
+  [key: string]: unknown;
+}
+
 export interface TiktokRegionListResponse {
   code: number;
   msg: string;
@@ -1293,6 +1319,7 @@ export interface MintApiTiktokClient {
   videoFeed<T = TiktokVideoFeedResponse>(params?: TiktokVideoFeedParams): Promise<T>;
   commentList<T = TiktokCommentListResponse>(params?: TiktokCommentListParams): Promise<T>;
   commentReplies<T = TiktokCommentRepliesResponse>(params?: TiktokCommentRepliesParams): Promise<T>;
+  challengeInfo<T = TiktokChallengeInfoResponse>(params?: TiktokChallengeInfoParams): Promise<T>;
   regionList<T = TiktokRegionListResponse>(): Promise<T>;
 }
 
