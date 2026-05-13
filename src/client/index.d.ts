@@ -1085,6 +1085,35 @@ export interface TiktokUserVideosParams {
 }
 
 export interface TiktokUserVideosResponse {
+  code: number;
+  msg: string;
+  processed_time: number;
+  data: {
+    videos: Array<Record<string, unknown>>;
+    cursor: string;
+    hasMore: boolean;
+  };
+}
+
+export interface TiktokUserFollowingParams {
+  user_id: string;
+  count: string;
+  time: string;
+}
+
+export interface TiktokUserFollowingResponse {
+  code: number;
+  msg: string;
+  processed_time: number;
+  data: {
+    followings: Array<Record<string, unknown>>;
+    total: number;
+    time: number;
+    hasMore: boolean;
+  };
+}
+
+export interface TiktokUserVideosResponse {
   code?: number;
   msg?: string;
   processed_time?: number;
@@ -1103,6 +1132,7 @@ export interface MintApiTiktokClient {
   searchUser<T = TiktokSearchUserResponse>(params?: TiktokSearchUserParams): Promise<T>;
   userVideos<T = TiktokUserVideosResponse>(params?: TiktokUserVideosParams): Promise<T>;
   userFavorites<T = TiktokUserVideosResponse>(params?: TiktokUserVideosParams): Promise<T>;
+  userFollowing<T = TiktokUserFollowingResponse>(params?: TiktokUserFollowingParams): Promise<T>;
 }
 
 export interface MintApiTwitterClient {

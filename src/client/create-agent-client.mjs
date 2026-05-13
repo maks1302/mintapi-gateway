@@ -416,6 +416,11 @@ export function createAgentClient({
           query: { unique_id, user_id, count, cursor },
         });
       },
+      userFollowing({ user_id, count, time } = {}) {
+        return request("/api/tiktok/user-following", {
+          query: { user_id, count, time },
+        });
+      },
     },
   };
 }
