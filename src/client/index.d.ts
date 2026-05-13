@@ -1674,6 +1674,7 @@ export interface MintApiInstagramClient {
   mediaListByUserIdV2<T = InstagramMediaListByUserIdV2Response>(params?: InstagramMediaListByUserIdV2Params): Promise<T>;
   reelsByUserId<T = InstagramReelsByUserIdResponse>(params?: InstagramReelsByUserIdParams): Promise<T>;
   repostsByUserId<T = InstagramRepostsByUserIdResponse>(params?: InstagramRepostsByUserIdParams): Promise<T>;
+  taggedMediaByUserId<T = InstagramTaggedMediaByUserIdResponse>(params?: InstagramTaggedMediaByUserIdParams): Promise<T>;
 }
 
 export interface InstagramReelsByUserIdParams {
@@ -1706,6 +1707,31 @@ export interface InstagramRepostsByUserIdResponse {
     more_available?: boolean;
   };
   status?: string;
+  [key: string]: unknown;
+}
+
+export interface InstagramTaggedMediaByUserIdParams {
+  id?: string;
+  count?: string;
+  endCursor?: string;
+  fields?: string;
+}
+
+export interface InstagramTaggedMediaByUserIdResponse {
+  data?: {
+    user?: {
+      edge_user_to_photos_of_you?: {
+        count?: number;
+        page_info?: {
+          has_next_page?: boolean;
+          end_cursor?: string;
+        };
+        edges?: Array<Record<string, unknown>>;
+      };
+    };
+  };
+  status?: string;
+  attempts?: string;
   [key: string]: unknown;
 }
 

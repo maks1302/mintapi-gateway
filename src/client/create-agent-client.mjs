@@ -568,6 +568,11 @@ export function createAgentClient({
           query: { id, max_id: maxId, fields },
         });
       },
+      taggedMediaByUserId({ id, count, endCursor, fields } = {}) {
+        return request("/api/instagram/tagged-media-by-user-id", {
+          query: { id, count, end_cursor: endCursor, fields },
+        });
+      },
     },
   };
 }
