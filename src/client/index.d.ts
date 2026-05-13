@@ -1682,6 +1682,7 @@ export interface MintApiInstagramClient {
   downloadLinkByUrl<T = InstagramDownloadLinkByUrlResponse>(params?: InstagramDownloadLinkByUrlParams): Promise<T>;
   musicInfoByMusicId<T = InstagramMusicInfoByMusicIdResponse>(params?: InstagramMusicInfoByMusicIdParams): Promise<T>;
   mediaByHashtag<T = InstagramMediaByHashtagResponse>(params?: InstagramMediaByHashtagParams): Promise<T>;
+  exploreSectionsList<T = InstagramExploreSectionsListResponse>(params?: InstagramExploreSectionsListParams): Promise<T>;
   citiesByCountryCode<T = InstagramCitiesByCountryCodeResponse>(params?: InstagramCitiesByCountryCodeParams): Promise<T>;
   locationsByCityId<T = InstagramLocationsByCityIdResponse>(params?: InstagramLocationsByCityIdParams): Promise<T>;
   mediaByLocationId<T = InstagramMediaByLocationIdResponse>(params?: InstagramMediaByLocationIdParams): Promise<T>;
@@ -1949,6 +1950,27 @@ export interface InstagramMediaByHashtagParams {
   query?: string;
   endCursor?: string;
   fields?: string;
+}
+
+export interface InstagramExploreSectionsListParams {
+  fields?: string;
+}
+
+export interface InstagramExploreSectionsListResponse {
+  sections?: Array<{
+    section_id?: string | number;
+    name?: string;
+    subsections?: Array<{
+      section_id?: string | number;
+      name?: string;
+      medias?: Array<Record<string, unknown>>;
+      [key: string]: unknown;
+    }>;
+    [key: string]: unknown;
+  }>;
+  status?: string;
+  attempts?: string;
+  [key: string]: unknown;
 }
 
 export interface InstagramCitiesByCountryCodeParams {
