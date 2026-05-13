@@ -211,6 +211,13 @@ export interface YoutubeSubtitlesParams {
   lang?: string;
 }
 
+export interface YoutubeSubtitleParams {
+  url?: string;
+  format?: string;
+  targetLang?: string;
+  parseAs?: "json" | "text" | "response";
+}
+
 export interface YoutubeSearchParams {
   query?: string;
   token?: string;
@@ -564,6 +571,34 @@ export interface YoutubeSubtitlesResponse {
   [key: string]: unknown;
 }
 
+export interface YoutubeSubtitleJsonEventSegment {
+  utf8?: string;
+  tOffsetMs?: number;
+  acAsrConf?: number;
+  [key: string]: unknown;
+}
+
+export interface YoutubeSubtitleJsonEvent {
+  tStartMs?: number;
+  dDurationMs?: number;
+  id?: number;
+  wpWinPosId?: number;
+  wsWinStyleId?: number;
+  wWinId?: number;
+  aAppend?: number;
+  segs?: YoutubeSubtitleJsonEventSegment[];
+  [key: string]: unknown;
+}
+
+export interface YoutubeSubtitleJsonResponse {
+  wireMagic?: string;
+  pens?: Array<Record<string, unknown>>;
+  wsWinStyles?: Array<Record<string, unknown>>;
+  wpWinPositions?: Array<Record<string, unknown>>;
+  events?: YoutubeSubtitleJsonEvent[];
+  [key: string]: unknown;
+}
+
 export interface YoutubeComment {
   commentId?: string;
   text?: string;
@@ -656,6 +691,10 @@ export interface MintApiYoutubeClient {
   trending<T = YoutubeFeedResponse>(params?: YoutubeTrendingParams): Promise<T>;
   videoInfo<T = YoutubeVideoInfoResponse>(params?: YoutubeVideoInfoParams): Promise<T>;
   subtitles<T = YoutubeSubtitlesResponse>(params?: YoutubeSubtitlesParams): Promise<T>;
+  subtitle<T = YoutubeSubtitleJsonResponse>(params: YoutubeSubtitleParams & { parseAs: "json" }): Promise<T>;
+  subtitle(params: YoutubeSubtitleParams & { parseAs: "text" }): Promise<string>;
+  subtitle(params: YoutubeSubtitleParams & { parseAs: "response" }): Promise<Response>;
+  subtitle<T = string | YoutubeSubtitleJsonResponse>(params?: YoutubeSubtitleParams): Promise<T>;
   search<T = YoutubeSearchResponse>(params?: YoutubeSearchParams): Promise<T>;
   playlist<T = YoutubeFeedResponse>(params?: YoutubePlaylistParams): Promise<T>;
   hashtag<T = YoutubeFeedResponse>(params?: YoutubeHashtagParams): Promise<T>;

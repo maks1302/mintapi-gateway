@@ -247,6 +247,13 @@ export function createAgentClient({
           query: { id, format, lang },
         });
       },
+      subtitle({ url, format, targetLang, parseAs } = {}) {
+        const resolvedParseAs = parseAs ?? (format === "json3" ? "json" : "text");
+        return request("/api/youtube/subtitle", {
+          query: { url, format, targetLang },
+          parseAs: resolvedParseAs,
+        });
+      },
       search({ query, token, geo, lang, type, duration, features, upload_date, sort_by, local, fields } = {}) {
         return request("/api/youtube/search", {
           query: { query, token, geo, lang, type, duration, features, upload_date, sort_by, local, fields },
