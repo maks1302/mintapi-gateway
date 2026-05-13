@@ -466,6 +466,11 @@ export function createAgentClient({
           query: { challenge_id, challenge_name },
         });
       },
+      challengeSearch({ keywords, count, cursor } = {}) {
+        return request("/api/tiktok/challenge-search", {
+          query: { keywords, count, cursor },
+        });
+      },
       regionList() {
         return request("/api/tiktok/region-list", {
           query: {},

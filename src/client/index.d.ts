@@ -1284,6 +1284,25 @@ export interface TiktokChallengeInfoResponse {
   [key: string]: unknown;
 }
 
+export interface TiktokChallengeSearchParams {
+  keywords?: string;
+  count?: string;
+  cursor?: string;
+}
+
+export interface TiktokChallengeSearchResponse {
+  code?: number;
+  msg?: string;
+  processed_time?: number;
+  data?: {
+    challenge_list?: Array<Record<string, unknown>>;
+    cursor?: number | string;
+    hasMore?: boolean;
+    [key: string]: unknown;
+  };
+  [key: string]: unknown;
+}
+
 export interface TiktokRegionListResponse {
   code: number;
   msg: string;
@@ -1320,6 +1339,7 @@ export interface MintApiTiktokClient {
   commentList<T = TiktokCommentListResponse>(params?: TiktokCommentListParams): Promise<T>;
   commentReplies<T = TiktokCommentRepliesResponse>(params?: TiktokCommentRepliesParams): Promise<T>;
   challengeInfo<T = TiktokChallengeInfoResponse>(params?: TiktokChallengeInfoParams): Promise<T>;
+  challengeSearch<T = TiktokChallengeSearchResponse>(params?: TiktokChallengeSearchParams): Promise<T>;
   regionList<T = TiktokRegionListResponse>(): Promise<T>;
 }
 
