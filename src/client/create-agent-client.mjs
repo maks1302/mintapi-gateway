@@ -289,6 +289,11 @@ export function createAgentClient({
           query: { params, id, token, geo, lang, fields },
         });
       },
+      channelHome({ id, forUsername, token, params, geo, lang, fields } = {}) {
+        return request("/api/youtube/channel-home", {
+          query: { id, forUsername, token, params, geo, lang, fields },
+        });
+      },
       search({ query, token, geo, lang, type, duration, features, upload_date, sort_by, local, fields } = {}) {
         return request("/api/youtube/search", {
           query: { query, token, geo, lang, type, duration, features, upload_date, sort_by, local, fields },
