@@ -390,5 +390,12 @@ export function createAgentClient({
         });
       },
     },
+    tiktok: {
+      videoInfo({ url, hd } = {}) {
+        return request("/api/tiktok/video-info", {
+          query: { url, hd },
+        });
+      },
+    },
   };
 }

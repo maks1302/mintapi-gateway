@@ -960,6 +960,69 @@ export interface YoutubeChannelStoreResponse {
   [key: string]: unknown;
 }
 
+export interface TiktokVideoInfoParams {
+  url?: string;
+  hd?: string;
+}
+
+export interface TiktokMusicInfo {
+  id?: string;
+  title?: string;
+  play?: string;
+  cover?: string;
+  author?: string;
+  original?: boolean;
+  duration?: number;
+  album?: string;
+  [key: string]: unknown;
+}
+
+export interface TiktokAuthor {
+  id?: string;
+  unique_id?: string;
+  nickname?: string;
+  avatar?: string;
+  [key: string]: unknown;
+}
+
+export interface TiktokVideoData {
+  aweme_id?: string;
+  id?: string;
+  region?: string;
+  title?: string;
+  cover?: string;
+  origin_cover?: string;
+  duration?: number;
+  play?: string;
+  wmplay?: string;
+  hdplay?: string;
+  size?: number;
+  wm_size?: number;
+  hd_size?: number;
+  music?: string;
+  music_info?: TiktokMusicInfo;
+  play_count?: number;
+  digg_count?: number;
+  comment_count?: number;
+  share_count?: number;
+  download_count?: number;
+  create_time?: number;
+  author?: TiktokAuthor;
+  [key: string]: unknown;
+}
+
+export interface TiktokVideoInfoResponse {
+  code?: number;
+  msg?: string;
+  processed_time?: number;
+  data?: TiktokVideoData;
+  [key: string]: unknown;
+}
+
+export interface MintApiTiktokClient {
+  videoInfo<T = TiktokVideoInfoResponse>(params?: TiktokVideoInfoParams): Promise<T>;
+}
+
 export interface MintApiTwitterClient {
   userInfo<T = TwitterUserProfile>(params?: TwitterUserInfoParams): Promise<T>;
   userTimeline<T = TwitterTimelineResponse>(params?: TwitterUserInfoParams & CursorParams): Promise<T>;
@@ -1038,6 +1101,7 @@ export interface MintApiAgentClient {
   request(path: string, options: Omit<MintApiRequestOptions, "parseAs"> & { parseAs: "response" }): Promise<Response>;
   twitter: MintApiTwitterClient;
   youtube: MintApiYoutubeClient;
+  tiktok: MintApiTiktokClient;
 }
 
 export function paidFetch(
