@@ -1204,6 +1204,13 @@ export interface TiktokSearchVideosResponse {
   };
 }
 
+export interface TiktokRegionListResponse {
+  code: number;
+  msg: string;
+  processed_time: number;
+  data: Record<string, string>;
+}
+
 export interface TiktokUserVideosResponse {
   code?: number;
   msg?: string;
@@ -1229,6 +1236,7 @@ export interface MintApiTiktokClient {
   musicInfo<T = TiktokMusicInfoResponse>(params?: TiktokMusicInfoParams): Promise<T>;
   musicVideos<T = TiktokMusicVideosResponse>(params?: TiktokMusicVideosParams): Promise<T>;
   searchVideos<T = TiktokSearchVideosResponse>(params?: TiktokSearchVideosParams): Promise<T>;
+  regionList<T = TiktokRegionListResponse>(): Promise<T>;
 }
 
 export interface MintApiTwitterClient {
