@@ -603,6 +603,11 @@ export function createAgentClient({
           query: { id, max_id: maxId, fields },
         });
       },
+      mediaByHashtag({ query, endCursor, fields } = {}) {
+        return request("/api/instagram/media-by-hashtag", {
+          query: { query, end_cursor: endCursor, fields },
+        });
+      },
     },
   };
 }

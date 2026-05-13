@@ -1681,6 +1681,7 @@ export interface MintApiInstagramClient {
   mediaInfoById<T = InstagramMediaInfoByIdResponse>(params?: InstagramMediaInfoByIdParams): Promise<T>;
   downloadLinkByUrl<T = InstagramDownloadLinkByUrlResponse>(params?: InstagramDownloadLinkByUrlParams): Promise<T>;
   musicInfoByMusicId<T = InstagramMusicInfoByMusicIdResponse>(params?: InstagramMusicInfoByMusicIdParams): Promise<T>;
+  mediaByHashtag<T = InstagramMediaByHashtagResponse>(params?: InstagramMediaByHashtagParams): Promise<T>;
 }
 
 export interface InstagramReelsByUserIdParams {
@@ -1860,6 +1861,35 @@ export interface InstagramMusicInfoByMusicIdResponse {
     more_available?: boolean;
   };
   attempts?: string;
+  [key: string]: unknown;
+}
+
+export interface InstagramMediaByHashtagParams {
+  query?: string;
+  endCursor?: string;
+  fields?: string;
+}
+
+export interface InstagramMediaByHashtagResponse {
+  data?: {
+    hashtag?: {
+      id?: string;
+      name?: string;
+      allow_following?: boolean;
+      is_following?: boolean;
+      is_top_media_only?: boolean;
+      profile_pic_url?: string;
+      edge_hashtag_to_media?: {
+        count?: number;
+        page_info?: {
+          has_next_page?: boolean;
+          end_cursor?: string;
+        };
+        edges?: Array<Record<string, unknown>>;
+      };
+    };
+  };
+  status?: string;
   [key: string]: unknown;
 }
 
