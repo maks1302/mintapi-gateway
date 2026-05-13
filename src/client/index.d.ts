@@ -1102,6 +1102,7 @@ export interface MintApiTiktokClient {
   newVideoInfo<T = TiktokVideoInfoResponse>(params?: TiktokVideoInfoParams): Promise<T>;
   searchUser<T = TiktokSearchUserResponse>(params?: TiktokSearchUserParams): Promise<T>;
   userVideos<T = TiktokUserVideosResponse>(params?: TiktokUserVideosParams): Promise<T>;
+  userFavorites<T = TiktokUserVideosResponse>(params?: TiktokUserVideosParams): Promise<T>;
 }
 
 export interface MintApiTwitterClient {

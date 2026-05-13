@@ -411,6 +411,11 @@ export function createAgentClient({
           query: { unique_id, user_id, count, cursor },
         });
       },
+      userFavorites({ unique_id, user_id, count, cursor } = {}) {
+        return request("/api/tiktok/user-favorites", {
+          query: { unique_id, user_id, count, cursor },
+        });
+      },
     },
   };
 }
