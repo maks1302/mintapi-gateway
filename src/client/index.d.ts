@@ -1682,6 +1682,9 @@ export interface MintApiInstagramClient {
   downloadLinkByUrl<T = InstagramDownloadLinkByUrlResponse>(params?: InstagramDownloadLinkByUrlParams): Promise<T>;
   musicInfoByMusicId<T = InstagramMusicInfoByMusicIdResponse>(params?: InstagramMusicInfoByMusicIdParams): Promise<T>;
   mediaByHashtag<T = InstagramMediaByHashtagResponse>(params?: InstagramMediaByHashtagParams): Promise<T>;
+  mediaByExploreSectionId<T = InstagramMediaByExploreSectionIdResponse>(
+    params?: InstagramMediaByExploreSectionIdParams,
+  ): Promise<T>;
   exploreSectionsList<T = InstagramExploreSectionsListResponse>(params?: InstagramExploreSectionsListParams): Promise<T>;
   citiesByCountryCode<T = InstagramCitiesByCountryCodeResponse>(params?: InstagramCitiesByCountryCodeParams): Promise<T>;
   locationsByCityId<T = InstagramLocationsByCityIdResponse>(params?: InstagramLocationsByCityIdParams): Promise<T>;
@@ -1950,6 +1953,28 @@ export interface InstagramMediaByHashtagParams {
   query?: string;
   endCursor?: string;
   fields?: string;
+}
+
+export interface InstagramMediaByExploreSectionIdParams {
+  id?: string;
+  count?: string | number;
+  maxId?: string | number;
+  fields?: string;
+}
+
+export interface InstagramMediaByExploreSectionIdResponse {
+  section_name?: string;
+  max_id?: string;
+  more_available?: boolean;
+  items?: Array<Record<string, unknown> | null>;
+  subsections?: Array<{
+    section_id?: string | number;
+    name?: string;
+    [key: string]: unknown;
+  }>;
+  status?: string;
+  attempts?: string;
+  [key: string]: unknown;
 }
 
 export interface InstagramExploreSectionsListParams {

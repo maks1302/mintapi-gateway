@@ -608,6 +608,11 @@ export function createAgentClient({
           query: { query, end_cursor: endCursor, fields },
         });
       },
+      mediaByExploreSectionId({ id, count, maxId, fields } = {}) {
+        return request("/api/instagram/media-by-explore-section-id", {
+          query: { id, count, max_id: maxId, fields },
+        });
+      },
       exploreSectionsList({ fields } = {}) {
         return request("/api/instagram/explore-sections-list", {
           query: { fields },
