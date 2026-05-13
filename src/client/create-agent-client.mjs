@@ -446,6 +446,11 @@ export function createAgentClient({
           query: { keywords, count, cursor, region, publish_time, sort_type },
         });
       },
+      videoFeed({ region, count } = {}) {
+        return request("/api/tiktok/video-feed", {
+          query: { region, count },
+        });
+      },
       regionList() {
         return request("/api/tiktok/region-list", {
           query: {},
