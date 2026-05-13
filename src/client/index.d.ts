@@ -1670,6 +1670,21 @@ export interface MintApiInstagramClient {
   userInfoByUserId<T = InstagramUserInfoByUserIdResponse>(params?: InstagramUserInfoByUserIdParams): Promise<T>;
   userInfoByUserIdV2<T = InstagramUserInfoByUserIdV2Response>(params?: InstagramUserInfoByUserIdV2Params): Promise<T>;
   webProfileInfoByUsername<T = InstagramWebProfileInfoByUsernameResponse>(params?: InstagramWebProfileInfoByUsernameParams): Promise<T>;
+  mediaListByUserId<T = InstagramMediaListByUserIdResponse>(params?: InstagramMediaListByUserIdParams): Promise<T>;
+}
+
+export interface InstagramMediaListByUserIdParams {
+  id?: string;
+  count?: string;
+  allowRestrictedMedia?: string;
+  maxId?: string;
+  fields?: string;
+}
+
+export interface InstagramMediaListByUserIdResponse {
+  more_available?: boolean;
+  items?: Array<Record<string, unknown>>;
+  [key: string]: unknown;
 }
 
 export interface MintApiAgentClient {

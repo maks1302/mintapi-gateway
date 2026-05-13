@@ -548,6 +548,11 @@ export function createAgentClient({
           query: { username, fields },
         });
       },
+      mediaListByUserId({ id, count, allowRestrictedMedia, maxId, fields } = {}) {
+        return request("/api/instagram/media-list-by-user-id", {
+          query: { id, count, allow_restricted_media: allowRestrictedMedia, max_id: maxId, fields },
+        });
+      },
     },
   };
 }
