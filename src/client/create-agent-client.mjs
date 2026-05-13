@@ -593,6 +593,11 @@ export function createAgentClient({
           query: { id, fields },
         });
       },
+      downloadLinkByUrl({ url, fields } = {}) {
+        return request("/api/instagram/download-link-by-url", {
+          query: { url, fields },
+        });
+      },
     },
   };
 }

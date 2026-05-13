@@ -1679,6 +1679,7 @@ export interface MintApiInstagramClient {
   searchUsers<T = InstagramSearchUsersResponse>(params?: InstagramSearchUsersParams): Promise<T>;
   mediaInfoByUrl<T = InstagramMediaInfoByUrlResponse>(params?: InstagramMediaInfoByUrlParams): Promise<T>;
   mediaInfoById<T = InstagramMediaInfoByIdResponse>(params?: InstagramMediaInfoByIdParams): Promise<T>;
+  downloadLinkByUrl<T = InstagramDownloadLinkByUrlResponse>(params?: InstagramDownloadLinkByUrlParams): Promise<T>;
 }
 
 export interface InstagramReelsByUserIdParams {
@@ -1811,6 +1812,30 @@ export interface InstagramMediaInfoByIdParams {
 }
 
 export type InstagramMediaInfoByIdResponse = InstagramMediaInfoByUrlResponse;
+
+export interface InstagramDownloadLinkByUrlParams {
+  url?: string;
+  fields?: string;
+}
+
+export interface InstagramDownloadLinkByUrlResponse {
+  data?: {
+    full_name?: string;
+    username?: string;
+    medias?: Array<{
+      type?: string;
+      link?: string;
+      img?: string;
+    }>;
+    comment_count?: number | null;
+    like_count?: number;
+    taken_at_timestamp?: number;
+    caption?: string;
+  };
+  status?: boolean;
+  attempts?: string;
+  [key: string]: unknown;
+}
 
 export interface InstagramMediaListByUserIdV2Params {
   id?: string;
