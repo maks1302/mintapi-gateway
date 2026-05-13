@@ -578,6 +578,11 @@ export function createAgentClient({
           query: { id, fields },
         });
       },
+      searchUsers({ query, fields } = {}) {
+        return request("/api/instagram/search-users", {
+          query: { query, select: "users", fields },
+        });
+      },
     },
   };
 }
