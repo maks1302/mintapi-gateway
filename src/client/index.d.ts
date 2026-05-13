@@ -1537,10 +1537,23 @@ export interface InstagramMediaShortcodeFromIdResponse {
   [key: string]: unknown;
 }
 
+export interface InstagramMediaIdFromUrlParams {
+  url?: string;
+  fields?: string;
+}
+
+export interface InstagramMediaIdFromUrlResponse {
+  status?: boolean;
+  shortcode?: string;
+  media_id?: string;
+  [key: string]: unknown;
+}
+
 export interface MintApiInstagramClient {
   usernameFromId<T = InstagramUsernameFromIdResponse>(params?: InstagramUsernameFromIdParams): Promise<T>;
   userIdFromUsername<T = InstagramUserIdFromUsernameResponse>(params?: InstagramUserIdFromUsernameParams): Promise<T>;
   mediaShortcodeFromId<T = InstagramMediaShortcodeFromIdResponse>(params?: InstagramMediaShortcodeFromIdParams): Promise<T>;
+  mediaIdFromUrl<T = InstagramMediaIdFromUrlResponse>(params?: InstagramMediaIdFromUrlParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {

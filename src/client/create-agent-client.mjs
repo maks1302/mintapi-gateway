@@ -518,6 +518,11 @@ export function createAgentClient({
           query: { id, fields },
         });
       },
+      mediaIdFromUrl({ url, fields } = {}) {
+        return request("/api/instagram/media-id-from-url", {
+          query: { url, fields },
+        });
+      },
     },
   };
 }
