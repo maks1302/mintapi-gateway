@@ -1217,6 +1217,26 @@ export interface TiktokVideoFeedResponse {
   [key: string]: unknown;
 }
 
+export interface TiktokCommentListParams {
+  url?: string;
+  count?: string;
+  cursor?: string;
+}
+
+export interface TiktokCommentListResponse {
+  code?: number;
+  msg?: string;
+  processed_time?: number;
+  data?: {
+    comments?: Array<Record<string, unknown>>;
+    total?: number;
+    cursor?: number | string;
+    hasMore?: boolean;
+    [key: string]: unknown;
+  };
+  [key: string]: unknown;
+}
+
 export interface TiktokRegionListResponse {
   code: number;
   msg: string;
@@ -1250,6 +1270,7 @@ export interface MintApiTiktokClient {
   musicVideos<T = TiktokMusicVideosResponse>(params?: TiktokMusicVideosParams): Promise<T>;
   searchVideos<T = TiktokSearchVideosResponse>(params?: TiktokSearchVideosParams): Promise<T>;
   videoFeed<T = TiktokVideoFeedResponse>(params?: TiktokVideoFeedParams): Promise<T>;
+  commentList<T = TiktokCommentListResponse>(params?: TiktokCommentListParams): Promise<T>;
   regionList<T = TiktokRegionListResponse>(): Promise<T>;
 }
 
