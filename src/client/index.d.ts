@@ -1676,6 +1676,7 @@ export interface MintApiInstagramClient {
   repostsByUserId<T = InstagramRepostsByUserIdResponse>(params?: InstagramRepostsByUserIdParams): Promise<T>;
   taggedMediaByUserId<T = InstagramTaggedMediaByUserIdResponse>(params?: InstagramTaggedMediaByUserIdParams): Promise<T>;
   relatedProfilesByUserId<T = InstagramRelatedProfilesByUserIdResponse>(params?: InstagramRelatedProfilesByUserIdParams): Promise<T>;
+  globalSearchByKeyword<T = InstagramGlobalSearchByKeywordResponse>(params?: InstagramGlobalSearchByKeywordParams): Promise<T>;
   searchUsers<T = InstagramSearchUsersResponse>(params?: InstagramSearchUsersParams): Promise<T>;
   mediaInfoByUrl<T = InstagramMediaInfoByUrlResponse>(params?: InstagramMediaInfoByUrlParams): Promise<T>;
   mediaInfoById<T = InstagramMediaInfoByIdResponse>(params?: InstagramMediaInfoByIdParams): Promise<T>;
@@ -1768,6 +1769,45 @@ export interface InstagramRelatedProfilesByUserIdResponse {
       };
     };
   };
+  [key: string]: unknown;
+}
+
+export interface InstagramGlobalSearchByKeywordParams {
+  query?: string;
+  fields?: string;
+}
+
+export interface InstagramGlobalSearchByKeywordResponse {
+  status?: string;
+  hashtags?: Array<{
+    position?: number;
+    hashtag?: {
+      name?: string;
+      media_count?: number;
+      id?: string | number;
+      [key: string]: unknown;
+    };
+    [key: string]: unknown;
+  }>;
+  places?: Array<{
+    position?: number;
+    place?: Record<string, unknown>;
+    [key: string]: unknown;
+  }>;
+  users?: Array<{
+    position?: number;
+    user?: {
+      username?: string;
+      full_name?: string;
+      is_verified?: boolean;
+      pk?: string | number;
+      profile_pic_url?: string;
+      id?: string;
+      [key: string]: unknown;
+    };
+    [key: string]: unknown;
+  }>;
+  attempts?: string;
   [key: string]: unknown;
 }
 

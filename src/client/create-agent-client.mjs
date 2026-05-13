@@ -578,6 +578,11 @@ export function createAgentClient({
           query: { id, fields },
         });
       },
+      globalSearchByKeyword({ query, fields } = {}) {
+        return request("/api/instagram/global-search-by-keyword", {
+          query: { query, fields },
+        });
+      },
       searchUsers({ query, fields } = {}) {
         return request("/api/instagram/search-users", {
           query: { query, select: "users", fields },
