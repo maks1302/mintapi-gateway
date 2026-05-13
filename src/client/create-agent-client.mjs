@@ -476,6 +476,11 @@ export function createAgentClient({
           query: { challenge_id, count, cursor, region },
         });
       },
+      userPlaylists({ unique_id, user_id, count, cursor } = {}) {
+        return request("/api/tiktok/user-playlists", {
+          query: { unique_id, user_id, count, cursor },
+        });
+      },
       regionList() {
         return request("/api/tiktok/region-list", {
           query: {},
