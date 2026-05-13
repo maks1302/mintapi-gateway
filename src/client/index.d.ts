@@ -437,6 +437,16 @@ export interface YoutubePostInfoParams {
   fields?: string;
 }
 
+export interface YoutubePostCommentsParams {
+  id?: string;
+  channelId?: string;
+  sort_by?: string;
+  token?: string;
+  geo?: string;
+  lang?: string;
+  fields?: string;
+}
+
 export interface YoutubePostInfoAttachmentImage {
   url?: string;
   width?: number;
@@ -1019,6 +1029,7 @@ export interface MintApiYoutubeClient {
   suggestQueries<T = YoutubeSuggestQueriesResponse>(params?: YoutubeSuggestQueriesParams): Promise<T>;
   home<T = YoutubeFeedResponse>(params?: YoutubeHomeParams): Promise<T>;
   postInfo<T = YoutubePostInfoResponse>(params?: YoutubePostInfoParams): Promise<T>;
+  postComments<T = YoutubeCommentsResponse>(params?: YoutubePostCommentsParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {

@@ -384,6 +384,11 @@ export function createAgentClient({
           query: { id, channelId, geo, lang, fields },
         });
       },
+      postComments({ id, channelId, sort_by, token, geo, lang, fields } = {}) {
+        return request("/api/youtube/post-comments", {
+          query: { id, channelId, sort_by, token, geo, lang, fields },
+        });
+      },
     },
   };
 }
