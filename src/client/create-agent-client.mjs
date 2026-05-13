@@ -481,6 +481,11 @@ export function createAgentClient({
           query: { url },
         });
       },
+      playlistPosts({ mix_id, count, cursor } = {}) {
+        return request("/api/tiktok/playlist-posts", {
+          query: { mix_id, count, cursor },
+        });
+      },
       userPlaylists({ unique_id, user_id, count, cursor } = {}) {
         return request("/api/tiktok/user-playlists", {
           query: { unique_id, user_id, count, cursor },
