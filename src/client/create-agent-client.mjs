@@ -456,6 +456,11 @@ export function createAgentClient({
           query: { url, count, cursor },
         });
       },
+      commentReplies({ comment_id, video_id, count, cursor } = {}) {
+        return request("/api/tiktok/comment-replies", {
+          query: { comment_id, video_id, count, cursor },
+        });
+      },
       regionList() {
         return request("/api/tiktok/region-list", {
           query: {},
