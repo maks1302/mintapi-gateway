@@ -1077,10 +1077,31 @@ export interface TiktokSearchUserResponse {
   [key: string]: unknown;
 }
 
+export interface TiktokUserVideosParams {
+  unique_id?: string;
+  user_id?: string;
+  count?: string;
+  cursor?: string;
+}
+
+export interface TiktokUserVideosResponse {
+  code?: number;
+  msg?: string;
+  processed_time?: number;
+  data?: {
+    videos?: Array<Record<string, unknown>>;
+    cursor?: string;
+    hasMore?: boolean;
+    [key: string]: unknown;
+  };
+  [key: string]: unknown;
+}
+
 export interface MintApiTiktokClient {
   videoInfo<T = TiktokVideoInfoResponse>(params?: TiktokVideoInfoParams): Promise<T>;
   newVideoInfo<T = TiktokVideoInfoResponse>(params?: TiktokVideoInfoParams): Promise<T>;
   searchUser<T = TiktokSearchUserResponse>(params?: TiktokSearchUserParams): Promise<T>;
+  userVideos<T = TiktokUserVideosResponse>(params?: TiktokUserVideosParams): Promise<T>;
 }
 
 export interface MintApiTwitterClient {

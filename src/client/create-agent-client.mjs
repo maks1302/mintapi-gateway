@@ -406,6 +406,11 @@ export function createAgentClient({
           query: { keywords, count, cursor },
         });
       },
+      userVideos({ unique_id, user_id, count, cursor } = {}) {
+        return request("/api/tiktok/user-videos", {
+          query: { unique_id, user_id, count, cursor },
+        });
+      },
     },
   };
 }
