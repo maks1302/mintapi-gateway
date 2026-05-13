@@ -441,6 +441,11 @@ export function createAgentClient({
           query: { music_id, count, cursor },
         });
       },
+      searchVideos({ keywords, count, cursor, region, publish_time, sort_type } = {}) {
+        return request("/api/tiktok/search-videos", {
+          query: { keywords, count, cursor, region, publish_time, sort_type },
+        });
+      },
     },
   };
 }
