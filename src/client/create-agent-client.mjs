@@ -274,6 +274,11 @@ export function createAgentClient({
           query: { id, timeStamp },
         });
       },
+      shortsInfo({ id, params, extend, geo, lang, fields } = {}) {
+        return request("/api/youtube/shorts-info", {
+          query: { id, params, extend, geo, lang, fields },
+        });
+      },
       search({ query, token, geo, lang, type, duration, features, upload_date, sort_by, local, fields } = {}) {
         return request("/api/youtube/search", {
           query: { query, token, geo, lang, type, duration, features, upload_date, sort_by, local, fields },

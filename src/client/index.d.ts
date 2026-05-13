@@ -241,6 +241,15 @@ export interface YoutubeScreenshotParams {
   timeStamp?: string;
 }
 
+export interface YoutubeShortsInfoParams {
+  id?: string;
+  params?: string;
+  extend?: string | number;
+  geo?: string;
+  lang?: string;
+  fields?: string;
+}
+
 export interface YoutubeSearchParams {
   query?: string;
   token?: string;
@@ -708,6 +717,23 @@ export interface YoutubeScreenshotResponse {
   [key: string]: unknown;
 }
 
+export interface YoutubeShortsInfoResponse {
+  videoId?: string;
+  title?: string;
+  publishedTimeText?: string;
+  publishDate?: string;
+  publishedAt?: string;
+  commentCount?: string | number;
+  channelTitle?: string;
+  channelId?: string;
+  channelHandle?: string;
+  channelThumbnail?: YoutubeThumbnail[];
+  description?: string;
+  thumbnail?: YoutubeThumbnail[];
+  soundAttribution?: Record<string, unknown>;
+  [key: string]: unknown;
+}
+
 export interface MintApiTwitterClient {
   userInfo<T = TwitterUserProfile>(params?: TwitterUserInfoParams): Promise<T>;
   userTimeline<T = TwitterTimelineResponse>(params?: TwitterUserInfoParams & CursorParams): Promise<T>;
@@ -753,6 +779,7 @@ export interface MintApiYoutubeClient {
   updatedMetadata<T = YoutubeUpdatedMetadataResponse>(params?: YoutubeUpdatedMetadataParams): Promise<T>;
   transcript<T = YoutubeTranscriptResponse>(params?: YoutubeTranscriptParams): Promise<T>;
   screenshot<T = YoutubeScreenshotResponse>(params?: YoutubeScreenshotParams): Promise<T>;
+  shortsInfo<T = YoutubeShortsInfoResponse>(params?: YoutubeShortsInfoParams): Promise<T>;
   search<T = YoutubeSearchResponse>(params?: YoutubeSearchParams): Promise<T>;
   playlist<T = YoutubeFeedResponse>(params?: YoutubePlaylistParams): Promise<T>;
   hashtag<T = YoutubeFeedResponse>(params?: YoutubeHashtagParams): Promise<T>;
