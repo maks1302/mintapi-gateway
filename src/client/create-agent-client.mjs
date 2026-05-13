@@ -486,6 +486,11 @@ export function createAgentClient({
           query: { mix_id, count, cursor },
         });
       },
+      photoSearch({ keywords, region } = {}) {
+        return request("/api/tiktok/photo-search", {
+          query: { keywords, region },
+        });
+      },
       userPlaylists({ unique_id, user_id, count, cursor } = {}) {
         return request("/api/tiktok/user-playlists", {
           query: { unique_id, user_id, count, cursor },

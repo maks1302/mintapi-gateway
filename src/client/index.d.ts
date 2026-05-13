@@ -1361,6 +1361,22 @@ export interface TiktokPlaylistPostsResponse {
   [key: string]: unknown;
 }
 
+export interface TiktokPhotoSearchParams {
+  keywords?: string;
+  region?: string;
+}
+
+export interface TiktokPhotoSearchResponse {
+  code?: number;
+  msg?: string;
+  processed_time?: number;
+  data?: {
+    videos?: Array<Record<string, unknown>>;
+    [key: string]: unknown;
+  };
+  [key: string]: unknown;
+}
+
 export interface TiktokUserPlaylistsResponse {
   code?: number;
   msg?: string;
@@ -1406,6 +1422,7 @@ export interface MintApiTiktokClient {
   challengePosts<T = TiktokChallengePostsResponse>(params?: TiktokChallengePostsParams): Promise<T>;
   playlistInfo<T = TiktokPlaylistInfoResponse>(params?: TiktokPlaylistInfoParams): Promise<T>;
   playlistPosts<T = TiktokPlaylistPostsResponse>(params?: TiktokPlaylistPostsParams): Promise<T>;
+  photoSearch<T = TiktokPhotoSearchResponse>(params?: TiktokPhotoSearchParams): Promise<T>;
   userPlaylists<T = TiktokUserPlaylistsResponse>(params?: TiktokUserVideosParams): Promise<T>;
   regionList<T = TiktokRegionListResponse>(): Promise<T>;
 }
