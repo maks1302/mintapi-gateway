@@ -314,6 +314,11 @@ export function createAgentClient({
           query: { id, sort_by, token, geo, lang, forUsername, fields },
         });
       },
+      channelFeaturedChannels({ id, forUsername, token, geo, lang, fields } = {}) {
+        return request("/api/youtube/channel-featured-channels", {
+          query: { id, forUsername, token, geo, lang, fields },
+        });
+      },
       search({ query, token, geo, lang, type, duration, features, upload_date, sort_by, local, fields } = {}) {
         return request("/api/youtube/search", {
           query: { query, token, geo, lang, type, duration, features, upload_date, sort_by, local, fields },
