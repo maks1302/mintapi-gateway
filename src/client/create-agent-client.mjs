@@ -304,6 +304,11 @@ export function createAgentClient({
           query: { id, forUsername, sort_by, token, geo, lang, local, fields },
         });
       },
+      channelLivestreams({ id, forUsername, sort_by, token, geo, lang, local, fields } = {}) {
+        return request("/api/youtube/channel-livestreams", {
+          query: { id, forUsername, sort_by, token, geo, lang, local, fields },
+        });
+      },
       search({ query, token, geo, lang, type, duration, features, upload_date, sort_by, local, fields } = {}) {
         return request("/api/youtube/search", {
           query: { query, token, geo, lang, type, duration, features, upload_date, sort_by, local, fields },
