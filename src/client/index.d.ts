@@ -1569,12 +1569,40 @@ export interface InstagramUserInfoByUsernameResponse {
   [key: string]: unknown;
 }
 
+export interface InstagramUserInfoByUsernameV2Params {
+  username?: string;
+  fields?: string;
+}
+
+export interface InstagramUserInfoByUsernameV2Response {
+  status?: boolean;
+  fbid_v2?: string;
+  username?: string;
+  full_name?: string;
+  biography?: string;
+  id?: string;
+  follower_count?: number;
+  following_count?: number;
+  profile_pic_url?: string;
+  hd_profile_pic_url_info?: { url?: string };
+  is_private?: boolean;
+  is_verified?: boolean;
+  category?: string;
+  is_business?: boolean;
+  account_type?: number;
+  bio_links?: Array<Record<string, unknown>>;
+  linked_fb_info?: Record<string, unknown>;
+  external_url?: string;
+  [key: string]: unknown;
+}
+
 export interface MintApiInstagramClient {
   usernameFromId<T = InstagramUsernameFromIdResponse>(params?: InstagramUsernameFromIdParams): Promise<T>;
   userIdFromUsername<T = InstagramUserIdFromUsernameResponse>(params?: InstagramUserIdFromUsernameParams): Promise<T>;
   mediaShortcodeFromId<T = InstagramMediaShortcodeFromIdResponse>(params?: InstagramMediaShortcodeFromIdParams): Promise<T>;
   mediaIdFromUrl<T = InstagramMediaIdFromUrlResponse>(params?: InstagramMediaIdFromUrlParams): Promise<T>;
   userInfoByUsername<T = InstagramUserInfoByUsernameResponse>(params?: InstagramUserInfoByUsernameParams): Promise<T>;
+  userInfoByUsernameV2<T = InstagramUserInfoByUsernameV2Response>(params?: InstagramUserInfoByUsernameV2Params): Promise<T>;
 }
 
 export interface MintApiAgentClient {
