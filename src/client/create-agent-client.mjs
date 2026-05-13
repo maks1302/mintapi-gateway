@@ -613,6 +613,11 @@ export function createAgentClient({
           query: { query, select: "hashtags", fields },
         });
       },
+      searchLocations({ query, fields } = {}) {
+        return request("/api/instagram/search-locations", {
+          query: { query, select: "locations", fields },
+        });
+      },
     },
   };
 }

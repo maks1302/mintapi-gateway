@@ -1683,6 +1683,7 @@ export interface MintApiInstagramClient {
   musicInfoByMusicId<T = InstagramMusicInfoByMusicIdResponse>(params?: InstagramMusicInfoByMusicIdParams): Promise<T>;
   mediaByHashtag<T = InstagramMediaByHashtagResponse>(params?: InstagramMediaByHashtagParams): Promise<T>;
   searchHashtags<T = InstagramSearchHashtagsResponse>(params?: InstagramSearchHashtagsParams): Promise<T>;
+  searchLocations<T = InstagramSearchLocationsResponse>(params?: InstagramSearchLocationsParams): Promise<T>;
 }
 
 export interface InstagramReelsByUserIdParams {
@@ -1787,6 +1788,28 @@ export interface InstagramSearchHashtagsResponse {
       name?: string;
       media_count?: number;
       id?: string | number;
+    };
+  }>;
+  [key: string]: unknown;
+}
+
+export interface InstagramSearchLocationsParams {
+  query?: string;
+  fields?: string;
+}
+
+export interface InstagramSearchLocationsResponse {
+  status?: string;
+  places?: Array<{
+    position?: number;
+    place?: {
+      location?: {
+        pk?: number;
+        name?: string;
+        facebook_places_id?: number;
+      };
+      subtitle?: string;
+      title?: string;
     };
   }>;
   [key: string]: unknown;
