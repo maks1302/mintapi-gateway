@@ -588,6 +588,11 @@ export function createAgentClient({
           query: { url, fields },
         });
       },
+      mediaInfoById({ id, fields } = {}) {
+        return request("/api/instagram/media-info-by-id", {
+          query: { id, fields },
+        });
+      },
     },
   };
 }
