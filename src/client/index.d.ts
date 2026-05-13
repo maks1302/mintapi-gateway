@@ -218,6 +218,14 @@ export interface YoutubeSubtitleParams {
   parseAs?: "json" | "text" | "response";
 }
 
+export interface YoutubeRelatedParams {
+  id?: string;
+  token?: string;
+  geo?: string;
+  lang?: string;
+  fields?: string;
+}
+
 export interface YoutubeSearchParams {
   query?: string;
   token?: string;
@@ -695,6 +703,7 @@ export interface MintApiYoutubeClient {
   subtitle(params: YoutubeSubtitleParams & { parseAs: "text" }): Promise<string>;
   subtitle(params: YoutubeSubtitleParams & { parseAs: "response" }): Promise<Response>;
   subtitle<T = string | YoutubeSubtitleJsonResponse>(params?: YoutubeSubtitleParams): Promise<T>;
+  related<T = YoutubeFeedResponse>(params?: YoutubeRelatedParams): Promise<T>;
   search<T = YoutubeSearchResponse>(params?: YoutubeSearchParams): Promise<T>;
   playlist<T = YoutubeFeedResponse>(params?: YoutubePlaylistParams): Promise<T>;
   hashtag<T = YoutubeFeedResponse>(params?: YoutubeHashtagParams): Promise<T>;

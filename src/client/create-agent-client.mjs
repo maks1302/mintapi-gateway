@@ -254,6 +254,11 @@ export function createAgentClient({
           parseAs: resolvedParseAs,
         });
       },
+      related({ id, token, geo, lang, fields } = {}) {
+        return request("/api/youtube/related", {
+          query: { id, token, geo, lang, fields },
+        });
+      },
       search({ query, token, geo, lang, type, duration, features, upload_date, sort_by, local, fields } = {}) {
         return request("/api/youtube/search", {
           query: { query, token, geo, lang, type, duration, features, upload_date, sort_by, local, fields },
