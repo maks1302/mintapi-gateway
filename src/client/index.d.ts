@@ -1683,6 +1683,7 @@ export interface MintApiInstagramClient {
   musicInfoByMusicId<T = InstagramMusicInfoByMusicIdResponse>(params?: InstagramMusicInfoByMusicIdParams): Promise<T>;
   mediaByHashtag<T = InstagramMediaByHashtagResponse>(params?: InstagramMediaByHashtagParams): Promise<T>;
   citiesByCountryCode<T = InstagramCitiesByCountryCodeResponse>(params?: InstagramCitiesByCountryCodeParams): Promise<T>;
+  locationsByCityId<T = InstagramLocationsByCityIdResponse>(params?: InstagramLocationsByCityIdParams): Promise<T>;
   mediaByLocationId<T = InstagramMediaByLocationIdResponse>(params?: InstagramMediaByLocationIdParams): Promise<T>;
   locationInfoByLocationId<T = InstagramLocationInfoByLocationIdResponse>(
     params?: InstagramLocationInfoByLocationIdParams,
@@ -1964,6 +1965,37 @@ export interface InstagramCitiesByCountryCodeResponse {
     [key: string]: unknown;
   };
   city_list?: Array<{
+    id?: string;
+    name?: string;
+    slug?: string;
+    [key: string]: unknown;
+  }>;
+  next_page?: number;
+  status?: string;
+  attempts?: string;
+  [key: string]: unknown;
+}
+
+export interface InstagramLocationsByCityIdParams {
+  cityId?: string;
+  page?: string | number;
+  fields?: string;
+}
+
+export interface InstagramLocationsByCityIdResponse {
+  country_info?: {
+    id?: string;
+    name?: string;
+    slug?: string;
+    [key: string]: unknown;
+  };
+  city_info?: {
+    id?: string;
+    name?: string;
+    slug?: string;
+    [key: string]: unknown;
+  };
+  location_list?: Array<{
     id?: string;
     name?: string;
     slug?: string;

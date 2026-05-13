@@ -613,6 +613,11 @@ export function createAgentClient({
           query: { country_code: countryCode, page, fields },
         });
       },
+      locationsByCityId({ cityId, page, fields } = {}) {
+        return request("/api/instagram/locations-by-city-id", {
+          query: { city_id: cityId, page, fields },
+        });
+      },
       mediaByLocationId({ id, tab, endCursor, fields } = {}) {
         return request("/api/instagram/media-by-location-id", {
           query: { id, tab, end_cursor: endCursor, fields },
