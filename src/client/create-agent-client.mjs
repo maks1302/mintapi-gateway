@@ -508,6 +508,11 @@ export function createAgentClient({
           query: { id, fields },
         });
       },
+      userIdFromUsername({ username, fields } = {}) {
+        return request("/api/instagram/user-id-from-username", {
+          query: { username, fields },
+        });
+      },
     },
   };
 }

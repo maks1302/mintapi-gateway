@@ -1512,8 +1512,22 @@ export interface InstagramUsernameFromIdResponse {
   [key: string]: unknown;
 }
 
+export interface InstagramUserIdFromUsernameParams {
+  username?: string;
+  fields?: string;
+}
+
+export interface InstagramUserIdFromUsernameResponse {
+  status?: boolean;
+  username?: string;
+  user_id?: string;
+  attempts?: string;
+  [key: string]: unknown;
+}
+
 export interface MintApiInstagramClient {
   usernameFromId<T = InstagramUsernameFromIdResponse>(params?: InstagramUsernameFromIdParams): Promise<T>;
+  userIdFromUsername<T = InstagramUserIdFromUsernameResponse>(params?: InstagramUserIdFromUsernameParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {
