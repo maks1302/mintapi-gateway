@@ -1682,6 +1682,7 @@ export interface MintApiInstagramClient {
   downloadLinkByUrl<T = InstagramDownloadLinkByUrlResponse>(params?: InstagramDownloadLinkByUrlParams): Promise<T>;
   musicInfoByMusicId<T = InstagramMusicInfoByMusicIdResponse>(params?: InstagramMusicInfoByMusicIdParams): Promise<T>;
   mediaByHashtag<T = InstagramMediaByHashtagResponse>(params?: InstagramMediaByHashtagParams): Promise<T>;
+  citiesByCountryCode<T = InstagramCitiesByCountryCodeResponse>(params?: InstagramCitiesByCountryCodeParams): Promise<T>;
   mediaByLocationId<T = InstagramMediaByLocationIdResponse>(params?: InstagramMediaByLocationIdParams): Promise<T>;
   locationInfoByLocationId<T = InstagramLocationInfoByLocationIdResponse>(
     params?: InstagramLocationInfoByLocationIdParams,
@@ -1947,6 +1948,31 @@ export interface InstagramMediaByHashtagParams {
   query?: string;
   endCursor?: string;
   fields?: string;
+}
+
+export interface InstagramCitiesByCountryCodeParams {
+  countryCode?: string;
+  page?: string | number;
+  fields?: string;
+}
+
+export interface InstagramCitiesByCountryCodeResponse {
+  country_info?: {
+    id?: string;
+    name?: string;
+    slug?: string;
+    [key: string]: unknown;
+  };
+  city_list?: Array<{
+    id?: string;
+    name?: string;
+    slug?: string;
+    [key: string]: unknown;
+  }>;
+  next_page?: number;
+  status?: string;
+  attempts?: string;
+  [key: string]: unknown;
 }
 
 export interface InstagramMediaByLocationIdParams {

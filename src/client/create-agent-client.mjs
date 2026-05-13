@@ -608,6 +608,11 @@ export function createAgentClient({
           query: { query, end_cursor: endCursor, fields },
         });
       },
+      citiesByCountryCode({ countryCode, page, fields } = {}) {
+        return request("/api/instagram/cities-by-country-code", {
+          query: { country_code: countryCode, page, fields },
+        });
+      },
       mediaByLocationId({ id, tab, endCursor, fields } = {}) {
         return request("/api/instagram/media-by-location-id", {
           query: { id, tab, end_cursor: endCursor, fields },
