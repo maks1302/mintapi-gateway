@@ -1671,6 +1671,31 @@ export interface MintApiInstagramClient {
   userInfoByUserIdV2<T = InstagramUserInfoByUserIdV2Response>(params?: InstagramUserInfoByUserIdV2Params): Promise<T>;
   webProfileInfoByUsername<T = InstagramWebProfileInfoByUsernameResponse>(params?: InstagramWebProfileInfoByUsernameParams): Promise<T>;
   mediaListByUserId<T = InstagramMediaListByUserIdResponse>(params?: InstagramMediaListByUserIdParams): Promise<T>;
+  mediaListByUserIdV2<T = InstagramMediaListByUserIdV2Response>(params?: InstagramMediaListByUserIdV2Params): Promise<T>;
+}
+
+export interface InstagramMediaListByUserIdV2Params {
+  id?: string;
+  count?: string;
+  endCursor?: string;
+  fields?: string;
+}
+
+export interface InstagramMediaListByUserIdV2Response {
+  data?: {
+    user?: {
+      edge_owner_to_timeline_media?: {
+        count?: number;
+        page_info?: {
+          has_next_page?: boolean;
+          end_cursor?: string;
+        };
+        edges?: Array<Record<string, unknown>>;
+      };
+    };
+  };
+  status?: string;
+  [key: string]: unknown;
 }
 
 export interface InstagramMediaListByUserIdParams {
