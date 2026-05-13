@@ -1672,6 +1672,24 @@ export interface MintApiInstagramClient {
   webProfileInfoByUsername<T = InstagramWebProfileInfoByUsernameResponse>(params?: InstagramWebProfileInfoByUsernameParams): Promise<T>;
   mediaListByUserId<T = InstagramMediaListByUserIdResponse>(params?: InstagramMediaListByUserIdParams): Promise<T>;
   mediaListByUserIdV2<T = InstagramMediaListByUserIdV2Response>(params?: InstagramMediaListByUserIdV2Params): Promise<T>;
+  reelsByUserId<T = InstagramReelsByUserIdResponse>(params?: InstagramReelsByUserIdParams): Promise<T>;
+}
+
+export interface InstagramReelsByUserIdParams {
+  id?: string;
+  count?: string;
+  maxId?: string;
+  fields?: string;
+}
+
+export interface InstagramReelsByUserIdResponse {
+  items?: Array<Record<string, unknown>>;
+  paging_info?: {
+    max_id?: string;
+    more_available?: boolean;
+  };
+  status?: string;
+  [key: string]: unknown;
 }
 
 export interface InstagramMediaListByUserIdV2Params {

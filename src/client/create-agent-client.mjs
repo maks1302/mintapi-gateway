@@ -558,6 +558,11 @@ export function createAgentClient({
           query: { id, count, end_cursor: endCursor, fields },
         });
       },
+      reelsByUserId({ id, count, maxId, fields } = {}) {
+        return request("/api/instagram/reels-by-user-id", {
+          query: { id, count, max_id: maxId, fields },
+        });
+      },
     },
   };
 }
