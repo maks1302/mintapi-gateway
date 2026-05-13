@@ -259,6 +259,11 @@ export function createAgentClient({
           query: { id, token, geo, lang, fields },
         });
       },
+      updatedMetadata({ id } = {}) {
+        return request("/api/youtube/updated-metadata", {
+          query: { id },
+        });
+      },
       search({ query, token, geo, lang, type, duration, features, upload_date, sort_by, local, fields } = {}) {
         return request("/api/youtube/search", {
           query: { query, token, geo, lang, type, duration, features, upload_date, sort_by, local, fields },

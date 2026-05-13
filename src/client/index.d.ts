@@ -226,6 +226,10 @@ export interface YoutubeRelatedParams {
   fields?: string;
 }
 
+export interface YoutubeUpdatedMetadataParams {
+  id?: string;
+}
+
 export interface YoutubeSearchParams {
   query?: string;
   token?: string;
@@ -662,6 +666,16 @@ export interface YoutubeSuggestQueriesResponse {
   [key: string]: unknown;
 }
 
+export interface YoutubeUpdatedMetadataResponse {
+  viewCountText?: string;
+  viewCount?: string | number;
+  isLive?: boolean;
+  likeCountText?: string;
+  likeCount?: string | number;
+  continuation?: string;
+  [key: string]: unknown;
+}
+
 export interface MintApiTwitterClient {
   userInfo<T = TwitterUserProfile>(params?: TwitterUserInfoParams): Promise<T>;
   userTimeline<T = TwitterTimelineResponse>(params?: TwitterUserInfoParams & CursorParams): Promise<T>;
@@ -704,6 +718,7 @@ export interface MintApiYoutubeClient {
   subtitle(params: YoutubeSubtitleParams & { parseAs: "response" }): Promise<Response>;
   subtitle<T = string | YoutubeSubtitleJsonResponse>(params?: YoutubeSubtitleParams): Promise<T>;
   related<T = YoutubeFeedResponse>(params?: YoutubeRelatedParams): Promise<T>;
+  updatedMetadata<T = YoutubeUpdatedMetadataResponse>(params?: YoutubeUpdatedMetadataParams): Promise<T>;
   search<T = YoutubeSearchResponse>(params?: YoutubeSearchParams): Promise<T>;
   playlist<T = YoutubeFeedResponse>(params?: YoutubePlaylistParams): Promise<T>;
   hashtag<T = YoutubeFeedResponse>(params?: YoutubeHashtagParams): Promise<T>;
