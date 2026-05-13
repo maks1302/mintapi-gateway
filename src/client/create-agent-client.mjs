@@ -426,6 +426,11 @@ export function createAgentClient({
           query: { user_id, count, time },
         });
       },
+      userInfo({ unique_id, user_id } = {}) {
+        return request("/api/tiktok/user-info", {
+          query: { unique_id, user_id },
+        });
+      },
     },
   };
 }
