@@ -1549,11 +1549,32 @@ export interface InstagramMediaIdFromUrlResponse {
   [key: string]: unknown;
 }
 
+export interface InstagramUserInfoByUsernameParams {
+  username?: string;
+  fields?: string;
+}
+
+export interface InstagramUserInfoByUsernameResponse {
+  status?: boolean;
+  username?: string;
+  full_name?: string;
+  biography?: string;
+  id?: string;
+  edge_followed_by?: { count?: number };
+  edge_follow?: { count?: number };
+  profile_pic_url?: string;
+  is_private?: boolean;
+  is_verified?: boolean;
+  category_name?: string;
+  [key: string]: unknown;
+}
+
 export interface MintApiInstagramClient {
   usernameFromId<T = InstagramUsernameFromIdResponse>(params?: InstagramUsernameFromIdParams): Promise<T>;
   userIdFromUsername<T = InstagramUserIdFromUsernameResponse>(params?: InstagramUserIdFromUsernameParams): Promise<T>;
   mediaShortcodeFromId<T = InstagramMediaShortcodeFromIdResponse>(params?: InstagramMediaShortcodeFromIdParams): Promise<T>;
   mediaIdFromUrl<T = InstagramMediaIdFromUrlResponse>(params?: InstagramMediaIdFromUrlParams): Promise<T>;
+  userInfoByUsername<T = InstagramUserInfoByUsernameResponse>(params?: InstagramUserInfoByUsernameParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {
