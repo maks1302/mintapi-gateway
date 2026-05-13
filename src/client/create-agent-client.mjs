@@ -396,6 +396,11 @@ export function createAgentClient({
           query: { url, hd },
         });
       },
+      newVideoInfo({ url, hd } = {}) {
+        return request("/api/tiktok/new-video-info", {
+          query: { url, hd },
+        });
+      },
     },
   };
 }

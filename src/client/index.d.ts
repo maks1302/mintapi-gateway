@@ -1021,6 +1021,7 @@ export interface TiktokVideoInfoResponse {
 
 export interface MintApiTiktokClient {
   videoInfo<T = TiktokVideoInfoResponse>(params?: TiktokVideoInfoParams): Promise<T>;
+  newVideoInfo<T = TiktokVideoInfoResponse>(params?: TiktokVideoInfoParams): Promise<T>;
 }
 
 export interface MintApiTwitterClient {
