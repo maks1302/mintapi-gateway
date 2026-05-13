@@ -583,6 +583,11 @@ export function createAgentClient({
           query: { query, select: "users", fields },
         });
       },
+      mediaInfoByUrl({ url, fields } = {}) {
+        return request("/api/instagram/media-info-by-url", {
+          query: { url, fields },
+        });
+      },
     },
   };
 }

@@ -1768,6 +1768,41 @@ export interface InstagramSearchUsersResponse {
   [key: string]: unknown;
 }
 
+export interface InstagramMediaInfoByUrlParams {
+  url?: string;
+  fields?: string;
+}
+
+export interface InstagramMediaInfoByUrlResponse {
+  status?: boolean;
+  id?: string;
+  shortcode?: string;
+  __typename?: string;
+  thumbnail_src?: string;
+  display_url?: string;
+  dimensions?: {
+    height?: number;
+    width?: number;
+  };
+  is_video?: boolean;
+  owner?: Record<string, unknown>;
+  edge_media_to_caption?: {
+    edges?: Array<Record<string, unknown>>;
+  };
+  edge_media_to_parent_comment?: {
+    count?: number;
+    page_info?: {
+      has_next_page?: boolean;
+      end_cursor?: string;
+    };
+    edges?: Array<Record<string, unknown>>;
+  };
+  edge_sidecar_to_children?: {
+    edges?: Array<Record<string, unknown>>;
+  };
+  [key: string]: unknown;
+}
+
 export interface InstagramMediaListByUserIdV2Params {
   id?: string;
   count?: string;
