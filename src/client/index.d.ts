@@ -288,6 +288,17 @@ export interface YoutubeChannelVideosParams {
   fields?: string;
 }
 
+export interface YoutubeChannelShortsParams {
+  id?: string;
+  forUsername?: string;
+  sort_by?: string;
+  token?: string;
+  geo?: string;
+  lang?: string;
+  local?: string | number;
+  fields?: string;
+}
+
 export interface YoutubeSearchParams {
   query?: string;
   token?: string;
@@ -799,6 +810,13 @@ export interface YoutubeChannelVideosResponse {
   [key: string]: unknown;
 }
 
+export interface YoutubeChannelShortsResponse {
+  meta?: Record<string, unknown>;
+  continuation?: string;
+  data?: YoutubeShortsResult[];
+  [key: string]: unknown;
+}
+
 export interface MintApiTwitterClient {
   userInfo<T = TwitterUserProfile>(params?: TwitterUserInfoParams): Promise<T>;
   userTimeline<T = TwitterTimelineResponse>(params?: TwitterUserInfoParams & CursorParams): Promise<T>;
@@ -849,6 +867,7 @@ export interface MintApiYoutubeClient {
   shortsSoundAttribution<T = YoutubeShortsSoundAttributionResponse>(params?: YoutubeShortsSoundAttributionParams): Promise<T>;
   channelHome<T = YoutubeChannelHomeResponse>(params?: YoutubeChannelHomeParams): Promise<T>;
   channelVideos<T = YoutubeChannelVideosResponse>(params?: YoutubeChannelVideosParams): Promise<T>;
+  channelShorts<T = YoutubeChannelShortsResponse>(params?: YoutubeChannelShortsParams): Promise<T>;
   search<T = YoutubeSearchResponse>(params?: YoutubeSearchParams): Promise<T>;
   playlist<T = YoutubeFeedResponse>(params?: YoutubePlaylistParams): Promise<T>;
   hashtag<T = YoutubeFeedResponse>(params?: YoutubeHashtagParams): Promise<T>;
