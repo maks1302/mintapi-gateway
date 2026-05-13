@@ -573,6 +573,11 @@ export function createAgentClient({
           query: { id, count, end_cursor: endCursor, fields },
         });
       },
+      relatedProfilesByUserId({ id, fields } = {}) {
+        return request("/api/instagram/related-profiles-by-user-id", {
+          query: { id, fields },
+        });
+      },
     },
   };
 }
