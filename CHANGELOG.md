@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.7
+
+- expand the Instagram client surface with:
+  - `mediaByHashtag`
+  - `mediaByExploreSectionId`
+  - `exploreSectionsList`
+  - `citiesByCountryCode`
+  - `locationsByCityId`
+  - `mediaByLocationId`
+  - `locationInfoByLocationId`
+  - `globalSearchByKeyword`
+  - `searchHashtags`
+  - `searchLocations`
+- add TypeScript request/response interfaces for the new Instagram endpoints
+- keep SDK path and naming aligned with the gateway routes (`/api/instagram/*`)
+
 ## 0.1.3
 
 - switch the public SDK license to `Apache-2.0`
