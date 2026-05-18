@@ -737,6 +737,11 @@ export function createAgentClient({
           query: { url },
         });
       },
+      profilePosts({ profile_id, cursor, start_date, end_date } = {}) {
+        return request("/api/facebook/profile/posts", {
+          query: { profile_id, cursor, start_date, end_date },
+        });
+      },
       pagePosts({ page_id, cursor, start_date, end_date } = {}) {
         return request("/api/facebook/page-posts", {
           query: { page_id, cursor, start_date, end_date },
