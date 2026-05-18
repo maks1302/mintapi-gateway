@@ -2218,6 +2218,15 @@ export interface YelpBusinessUrlToIdParams {
   business_url?: string;
 }
 
+export interface FacebookSearchGlobalParams {
+  query?: string;
+  cursor?: string;
+  recent_posts?: string | boolean;
+  location_uid?: string;
+  start_date?: string;
+  end_date?: string;
+}
+
 export interface YelpBusiness {
   id?: string;
   name?: string;
@@ -2391,6 +2400,12 @@ export interface YelpBusinessUrlToIdResponse {
   [key: string]: unknown;
 }
 
+export interface FacebookSearchGlobalResponse {
+  results?: Array<Record<string, unknown>>;
+  cursor?: string;
+  [key: string]: unknown;
+}
+
 export interface MintApiYelpClient {
   search<T = YelpSearchResponse>(params?: YelpSearchParams): Promise<T>;
   searchCategory<T = YelpSearchCategoryResponse>(params?: YelpSearchCategoryParams): Promise<T>;
@@ -2399,6 +2414,10 @@ export interface MintApiYelpClient {
   getMenus<T = YelpGetMenusResponse>(params?: YelpGetMenusParams): Promise<T>;
   popularDishes<T = YelpPopularDishesResponse>(params?: YelpPopularDishesParams): Promise<T>;
   businessUrlToId<T = YelpBusinessUrlToIdResponse>(params?: YelpBusinessUrlToIdParams): Promise<T>;
+}
+
+export interface MintApiFacebookClient {
+  searchGlobal<T = FacebookSearchGlobalResponse>(params?: FacebookSearchGlobalParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {
@@ -2410,6 +2429,7 @@ export interface MintApiAgentClient {
   tiktok: MintApiTiktokClient;
   instagram: MintApiInstagramClient;
   yelp: MintApiYelpClient;
+  facebook: MintApiFacebookClient;
 }
 
 export function paidFetch(

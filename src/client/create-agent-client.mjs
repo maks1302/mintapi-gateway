@@ -691,5 +691,12 @@ export function createAgentClient({
         });
       },
     },
+    facebook: {
+      searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {
+        return request("/api/facebook/search-global", {
+          query: { query, cursor, recent_posts, location_uid, start_date, end_date },
+        });
+      },
+    },
   };
 }
