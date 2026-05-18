@@ -2314,6 +2314,11 @@ export interface FacebookPagePastEventsParams {
   collection_id?: string;
 }
 
+export interface FacebookPageVideosParams {
+  delegate_page_id?: string;
+  cursor?: string;
+}
+
 export interface YelpBusiness {
   id?: string;
   name?: string;
@@ -2661,6 +2666,12 @@ export interface FacebookPagePastEventsResponse {
   [key: string]: unknown;
 }
 
+export interface FacebookPageVideosResponse {
+  results?: Array<Record<string, unknown>>;
+  cursor?: string;
+  [key: string]: unknown;
+}
+
 export interface MintApiYelpClient {
   search<T = YelpSearchResponse>(params?: YelpSearchParams): Promise<T>;
   searchCategory<T = YelpSearchCategoryResponse>(params?: YelpSearchCategoryParams): Promise<T>;
@@ -2687,6 +2698,7 @@ export interface MintApiFacebookClient {
   pageReels<T = FacebookPageReelsResponse>(params?: FacebookPageReelsParams): Promise<T>;
   pageFutureEvents<T = FacebookPageFutureEventsResponse>(params?: FacebookPageFutureEventsParams): Promise<T>;
   pagePastEvents<T = FacebookPagePastEventsResponse>(params?: FacebookPagePastEventsParams): Promise<T>;
+  pageVideos<T = FacebookPageVideosResponse>(params?: FacebookPageVideosParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {
