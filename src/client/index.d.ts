@@ -2214,6 +2214,10 @@ export interface YelpPopularDishesParams {
   business_id?: string;
 }
 
+export interface YelpBusinessUrlToIdParams {
+  business_url?: string;
+}
+
 export interface YelpBusiness {
   id?: string;
   name?: string;
@@ -2376,6 +2380,17 @@ export interface YelpPopularDishesResponse {
   [key: string]: unknown;
 }
 
+export interface YelpBusinessUrlToIdResponse {
+  business_id?: string;
+  alias?: string;
+  locality?: string;
+  latitude?: number;
+  longitude?: number;
+  avg_rating?: number;
+  searched_url?: string;
+  [key: string]: unknown;
+}
+
 export interface MintApiYelpClient {
   search<T = YelpSearchResponse>(params?: YelpSearchParams): Promise<T>;
   searchCategory<T = YelpSearchCategoryResponse>(params?: YelpSearchCategoryParams): Promise<T>;
@@ -2383,6 +2398,7 @@ export interface MintApiYelpClient {
   reviews<T = YelpReviewsResponse>(params?: YelpReviewsParams): Promise<T>;
   getMenus<T = YelpGetMenusResponse>(params?: YelpGetMenusParams): Promise<T>;
   popularDishes<T = YelpPopularDishesResponse>(params?: YelpPopularDishesParams): Promise<T>;
+  businessUrlToId<T = YelpBusinessUrlToIdResponse>(params?: YelpBusinessUrlToIdParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {

@@ -685,6 +685,11 @@ export function createAgentClient({
           query: { business_id },
         });
       },
+      businessUrlToId({ business_url } = {}) {
+        return request("/api/yelp/business-url-to-id", {
+          query: { business_url },
+        });
+      },
     },
   };
 }
