@@ -732,6 +732,11 @@ export function createAgentClient({
           query: { query, cursor },
         });
       },
+      pageDetails({ url } = {}) {
+        return request("/api/facebook/page-details", {
+          query: { url },
+        });
+      },
     },
   };
 }
