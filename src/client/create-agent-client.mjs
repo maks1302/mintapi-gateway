@@ -707,6 +707,11 @@ export function createAgentClient({
           query: { query, cursor, recent_videos, location_uid, start_date, end_date },
         });
       },
+      searchPosts({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {
+        return request("/api/facebook/search-posts", {
+          query: { query, cursor, recent_posts, location_uid, start_date, end_date },
+        });
+      },
     },
   };
 }
