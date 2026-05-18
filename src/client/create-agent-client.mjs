@@ -777,6 +777,11 @@ export function createAgentClient({
           query: { post_id, cursor },
         });
       },
+      commentById({ comment_id } = {}) {
+        return request("/api/facebook/comment", {
+          query: { comment_id },
+        });
+      },
     },
   };
 }
