@@ -2324,6 +2324,11 @@ export interface FacebookPostDetailsParams {
   post_url?: string;
 }
 
+export interface FacebookPostResharesParams {
+  post_id?: string;
+  cursor?: string;
+}
+
 export interface FacebookPostCommentsParams {
   post_id?: string;
   cursor?: string;
@@ -2697,6 +2702,12 @@ export interface FacebookPostDetailsResponse {
   [key: string]: unknown;
 }
 
+export interface FacebookPostResharesResponse {
+  results?: Array<Record<string, unknown>>;
+  cursor?: string;
+  [key: string]: unknown;
+}
+
 export interface FacebookPostCommentsResponse {
   results?: Array<Record<string, unknown>>;
   cursor?: string;
@@ -2742,6 +2753,7 @@ export interface MintApiFacebookClient {
   pagePastEvents<T = FacebookPagePastEventsResponse>(params?: FacebookPagePastEventsParams): Promise<T>;
   pageVideos<T = FacebookPageVideosResponse>(params?: FacebookPageVideosParams): Promise<T>;
   postDetails<T = FacebookPostDetailsResponse>(params?: FacebookPostDetailsParams): Promise<T>;
+  postReshares<T = FacebookPostResharesResponse>(params?: FacebookPostResharesParams): Promise<T>;
   postComments<T = FacebookPostCommentsResponse>(params?: FacebookPostCommentsParams): Promise<T>;
   postCommentsNested<T = FacebookPostCommentsNestedResponse>(params?: FacebookPostCommentsNestedParams): Promise<T>;
   commentById<T = FacebookCommentByIdResponse>(params?: FacebookCommentByIdParams): Promise<T>;

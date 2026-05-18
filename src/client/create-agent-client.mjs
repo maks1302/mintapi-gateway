@@ -777,6 +777,11 @@ export function createAgentClient({
           query: { post_id, post_url },
         });
       },
+      postReshares({ post_id, cursor } = {}) {
+        return request("/api/facebook/post/reshares", {
+          query: { post_id, cursor },
+        });
+      },
       postComments({ post_id, cursor } = {}) {
         return request("/api/facebook/post-comments", {
           query: { post_id, cursor },
