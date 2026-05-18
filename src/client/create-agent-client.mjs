@@ -782,6 +782,11 @@ export function createAgentClient({
           query: { url },
         });
       },
+      groupId({ url } = {}) {
+        return request("/api/facebook/group/id", {
+          query: { url },
+        });
+      },
       pageVideos({ delegate_page_id, cursor } = {}) {
         return request("/api/facebook/page-videos", {
           query: { delegate_page_id, cursor },
