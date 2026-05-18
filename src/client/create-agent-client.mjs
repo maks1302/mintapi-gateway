@@ -722,6 +722,11 @@ export function createAgentClient({
           query: { query, cursor, location_uid },
         });
       },
+      searchEvents({ query, cursor, location_uid, start_date, end_date } = {}) {
+        return request("/api/facebook/search-events", {
+          query: { query, cursor, location_uid, start_date, end_date },
+        });
+      },
     },
   };
 }
