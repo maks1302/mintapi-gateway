@@ -697,6 +697,11 @@ export function createAgentClient({
           query: { query, cursor, recent_posts, location_uid, start_date, end_date },
         });
       },
+      searchLocations({ query } = {}) {
+        return request("/api/facebook/search-locations", {
+          query: { query },
+        });
+      },
     },
   };
 }
