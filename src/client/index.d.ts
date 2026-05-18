@@ -2319,6 +2319,10 @@ export interface FacebookPageVideosParams {
   cursor?: string;
 }
 
+export interface FacebookEventDetailsParams {
+  url?: string;
+}
+
 export interface FacebookPostDetailsParams {
   post_id?: string;
   post_url?: string;
@@ -2697,6 +2701,11 @@ export interface FacebookPageVideosResponse {
   [key: string]: unknown;
 }
 
+export interface FacebookEventDetailsResponse {
+  event?: Record<string, unknown>;
+  [key: string]: unknown;
+}
+
 export interface FacebookPostDetailsResponse {
   results?: Record<string, unknown>;
   [key: string]: unknown;
@@ -2752,6 +2761,7 @@ export interface MintApiFacebookClient {
   pageFutureEvents<T = FacebookPageFutureEventsResponse>(params?: FacebookPageFutureEventsParams): Promise<T>;
   pagePastEvents<T = FacebookPagePastEventsResponse>(params?: FacebookPagePastEventsParams): Promise<T>;
   pageVideos<T = FacebookPageVideosResponse>(params?: FacebookPageVideosParams): Promise<T>;
+  eventDetails<T = FacebookEventDetailsResponse>(params?: FacebookEventDetailsParams): Promise<T>;
   postDetails<T = FacebookPostDetailsResponse>(params?: FacebookPostDetailsParams): Promise<T>;
   postReshares<T = FacebookPostResharesResponse>(params?: FacebookPostResharesParams): Promise<T>;
   postComments<T = FacebookPostCommentsResponse>(params?: FacebookPostCommentsParams): Promise<T>;

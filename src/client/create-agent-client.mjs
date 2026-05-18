@@ -772,6 +772,11 @@ export function createAgentClient({
           query: { delegate_page_id, cursor },
         });
       },
+      eventDetails({ url } = {}) {
+        return request("/api/facebook/event/details", {
+          query: { url },
+        });
+      },
       postDetails({ post_id, post_url } = {}) {
         return request("/api/facebook/post", {
           query: { post_id, post_url },
