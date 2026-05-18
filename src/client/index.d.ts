@@ -2176,6 +2176,70 @@ export interface InstagramMediaListByUserIdResponse {
   [key: string]: unknown;
 }
 
+export interface YelpSearchParams {
+  location?: string;
+  search_term?: string;
+  limit?: string | number;
+  offset?: string | number;
+  business_details_type?: string;
+}
+
+export interface YelpBusiness {
+  id?: string;
+  name?: string;
+  alias?: string;
+  address1?: string;
+  address2?: string;
+  address3?: string;
+  city?: string;
+  zip?: string;
+  country?: string;
+  state?: string;
+  phone?: string;
+  localized_phone?: string;
+  review_count?: number;
+  avg_rating?: number;
+  unrounded_avg_rating?: number;
+  price?: number;
+  localized_price?: string;
+  is_closed?: boolean;
+  latitude?: number;
+  longitude?: number;
+  photo_url?: string;
+  photo_count?: number;
+  categories?: Array<{
+    name?: string;
+    category_filter?: string;
+    is_restaurant?: boolean;
+  }>;
+  [key: string]: unknown;
+}
+
+export interface YelpSearchResponse {
+  total?: number;
+  searched_Location?: string;
+  searched_Term?: string;
+  limit?: string | number;
+  offset?: string | number;
+  business_search_result?: YelpBusiness[];
+  ad_business_search_result?: YelpBusiness[];
+  region?: {
+    center?: {
+      longitude?: number;
+      latitude?: number;
+    };
+    span?: {
+      longitude_delta?: number;
+      latitude_delta?: number;
+    };
+  };
+  [key: string]: unknown;
+}
+
+export interface MintApiYelpClient {
+  search<T = YelpSearchResponse>(params?: YelpSearchParams): Promise<T>;
+}
+
 export interface MintApiAgentClient {
   request<T = unknown>(path: string, options?: Omit<MintApiRequestOptions, "parseAs"> & { parseAs?: "json" }): Promise<T>;
   request(path: string, options: Omit<MintApiRequestOptions, "parseAs"> & { parseAs: "text" }): Promise<string>;
@@ -2184,6 +2248,7 @@ export interface MintApiAgentClient {
   youtube: MintApiYoutubeClient;
   tiktok: MintApiTiktokClient;
   instagram: MintApiInstagramClient;
+  yelp: MintApiYelpClient;
 }
 
 export function paidFetch(

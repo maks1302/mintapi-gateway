@@ -654,5 +654,12 @@ export function createAgentClient({
         });
       },
     },
+    yelp: {
+      search({ location, search_term, limit, offset, business_details_type } = {}) {
+        return request("/api/yelp/search", {
+          query: { location, search_term, limit, offset, business_details_type },
+        });
+      },
+    },
   };
 }
