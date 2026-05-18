@@ -2298,6 +2298,12 @@ export interface FacebookPagePhotosParams {
   collection_id?: string;
 }
 
+export interface FacebookProfilePhotosParams {
+  profile_id?: string;
+  cursor?: string;
+  collection_id?: string;
+}
+
 export interface FacebookPageReviewsParams {
   page_id?: string;
   cursor?: string;
@@ -2705,6 +2711,18 @@ export interface FacebookPagePhotosResponse {
   [key: string]: unknown;
 }
 
+export interface FacebookProfilePhotosResponse {
+  results?: Array<{
+    type?: string;
+    id?: string;
+    uri?: string;
+    [key: string]: unknown;
+  }>;
+  cursor?: string;
+  collection_id?: string;
+  [key: string]: unknown;
+}
+
 export interface FacebookPageReviewsResponse {
   results?: Array<Record<string, unknown>>;
   cursor?: string;
@@ -2820,6 +2838,7 @@ export interface MintApiFacebookClient {
   profilePosts<T = FacebookProfilePostsResponse>(params?: FacebookProfilePostsParams): Promise<T>;
   pagePosts<T = FacebookPagePostsResponse>(params?: FacebookPagePostsParams): Promise<T>;
   pagePhotos<T = FacebookPagePhotosResponse>(params?: FacebookPagePhotosParams): Promise<T>;
+  profilePhotos<T = FacebookProfilePhotosResponse>(params?: FacebookProfilePhotosParams): Promise<T>;
   pageReviews<T = FacebookPageReviewsResponse>(params?: FacebookPageReviewsParams): Promise<T>;
   pageReels<T = FacebookPageReelsResponse>(params?: FacebookPageReelsParams): Promise<T>;
   pageFutureEvents<T = FacebookPageFutureEventsResponse>(params?: FacebookPageFutureEventsParams): Promise<T>;

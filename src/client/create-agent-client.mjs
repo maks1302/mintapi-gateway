@@ -752,6 +752,11 @@ export function createAgentClient({
           query: { page_id, cursor, collection_id },
         });
       },
+      profilePhotos({ profile_id, cursor, collection_id } = {}) {
+        return request("/api/facebook/profile/photos", {
+          query: { profile_id, cursor, collection_id },
+        });
+      },
       pageReviews({ page_id, cursor } = {}) {
         return request("/api/facebook/page-reviews", {
           query: { page_id, cursor },
