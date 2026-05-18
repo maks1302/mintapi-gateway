@@ -777,6 +777,11 @@ export function createAgentClient({
           query: { url },
         });
       },
+      eventDetailsById({ event_id } = {}) {
+        return request("/api/facebook/event/details-by-id", {
+          query: { event_id },
+        });
+      },
       postDetails({ post_id, post_url } = {}) {
         return request("/api/facebook/post", {
           query: { post_id, post_url },
