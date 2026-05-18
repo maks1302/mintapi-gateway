@@ -752,6 +752,11 @@ export function createAgentClient({
           query: { page_id, cursor },
         });
       },
+      pageReels({ page_id, reels_page_id, cursor } = {}) {
+        return request("/api/facebook/page-reels", {
+          query: { page_id, reels_page_id, cursor },
+        });
+      },
     },
   };
 }
