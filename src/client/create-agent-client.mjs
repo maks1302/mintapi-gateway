@@ -702,6 +702,11 @@ export function createAgentClient({
           query: { query },
         });
       },
+      searchVideos({ query, cursor, recent_videos, location_uid, start_date, end_date } = {}) {
+        return request("/api/facebook/search-videos", {
+          query: { query, cursor, recent_videos, location_uid, start_date, end_date },
+        });
+      },
     },
   };
 }
