@@ -727,6 +727,11 @@ export function createAgentClient({
           query: { query, cursor, location_uid, start_date, end_date },
         });
       },
+      searchPeople({ query, cursor } = {}) {
+        return request("/api/facebook/search-people", {
+          query: { query, cursor },
+        });
+      },
     },
   };
 }
