@@ -2184,6 +2184,14 @@ export interface YelpSearchParams {
   business_details_type?: string;
 }
 
+export interface YelpSearchCategoryParams {
+  location?: string;
+  search_category?: string;
+  limit?: string | number;
+  offset?: string | number;
+  business_details_type?: string;
+}
+
 export interface YelpBusiness {
   id?: string;
   name?: string;
@@ -2236,8 +2244,30 @@ export interface YelpSearchResponse {
   [key: string]: unknown;
 }
 
+export interface YelpSearchCategoryResponse {
+  total?: number;
+  searched_Location?: string;
+  searched_category?: string;
+  limit?: string | number;
+  offset?: string | number;
+  business_search_result?: YelpBusiness[];
+  ad_business_search_result?: YelpBusiness[];
+  region?: {
+    center?: {
+      longitude?: number;
+      latitude?: number;
+    };
+    span?: {
+      longitude_delta?: number;
+      latitude_delta?: number;
+    };
+  };
+  [key: string]: unknown;
+}
+
 export interface MintApiYelpClient {
   search<T = YelpSearchResponse>(params?: YelpSearchParams): Promise<T>;
+  searchCategory<T = YelpSearchCategoryResponse>(params?: YelpSearchCategoryParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {

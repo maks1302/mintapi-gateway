@@ -660,6 +660,11 @@ export function createAgentClient({
           query: { location, search_term, limit, offset, business_details_type },
         });
       },
+      searchCategory({ location, search_category, limit, offset, business_details_type } = {}) {
+        return request("/api/yelp/search-category", {
+          query: { location, search_category, limit, offset, business_details_type },
+        });
+      },
     },
   };
 }
