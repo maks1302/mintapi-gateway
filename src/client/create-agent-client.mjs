@@ -680,6 +680,11 @@ export function createAgentClient({
           query: { business_id },
         });
       },
+      popularDishes({ business_id } = {}) {
+        return request("/api/yelp/popular-dishes", {
+          query: { business_id },
+        });
+      },
     },
   };
 }

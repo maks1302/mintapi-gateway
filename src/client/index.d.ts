@@ -2210,6 +2210,10 @@ export interface YelpGetMenusParams {
   business_id?: string;
 }
 
+export interface YelpPopularDishesParams {
+  business_id?: string;
+}
+
 export interface YelpBusiness {
   id?: string;
   name?: string;
@@ -2350,12 +2354,35 @@ export interface YelpGetMenusResponse {
   [key: string]: unknown;
 }
 
+export interface YelpPopularDishesResponse {
+  business_id?: string;
+  status?: string;
+  status_code?: number;
+  data?: {
+    popular_dishes?: Array<{
+      identifier?: string;
+      review_count?: number;
+      photo_count?: number;
+      display_name?: string;
+      photo_url?: string;
+      description?: string | null;
+      price?: string | null;
+      grubhub_menu_item_id?: string | null;
+      [key: string]: unknown;
+    }>;
+    type?: string;
+    [key: string]: unknown;
+  };
+  [key: string]: unknown;
+}
+
 export interface MintApiYelpClient {
   search<T = YelpSearchResponse>(params?: YelpSearchParams): Promise<T>;
   searchCategory<T = YelpSearchCategoryResponse>(params?: YelpSearchCategoryParams): Promise<T>;
   businessDetails<T = YelpBusinessDetailsResponse>(params?: YelpBusinessDetailsParams): Promise<T>;
   reviews<T = YelpReviewsResponse>(params?: YelpReviewsParams): Promise<T>;
   getMenus<T = YelpGetMenusResponse>(params?: YelpGetMenusParams): Promise<T>;
+  popularDishes<T = YelpPopularDishesResponse>(params?: YelpPopularDishesParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {
