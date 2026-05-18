@@ -742,6 +742,11 @@ export function createAgentClient({
           query: { page_id, cursor, start_date, end_date },
         });
       },
+      pagePhotos({ page_id, cursor, collection_id } = {}) {
+        return request("/api/facebook/page-photos", {
+          query: { page_id, cursor, collection_id },
+        });
+      },
     },
   };
 }

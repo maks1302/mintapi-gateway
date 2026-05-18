@@ -2285,6 +2285,12 @@ export interface FacebookPagePostsParams {
   end_date?: string;
 }
 
+export interface FacebookPagePhotosParams {
+  page_id?: string;
+  cursor?: string;
+  collection_id?: string;
+}
+
 export interface YelpBusiness {
   id?: string;
   name?: string;
@@ -2594,6 +2600,18 @@ export interface FacebookPagePostsResponse {
   [key: string]: unknown;
 }
 
+export interface FacebookPagePhotosResponse {
+  results?: Array<{
+    type?: string;
+    id?: string;
+    uri?: string;
+    [key: string]: unknown;
+  }>;
+  cursor?: string;
+  collection_id?: string;
+  [key: string]: unknown;
+}
+
 export interface MintApiYelpClient {
   search<T = YelpSearchResponse>(params?: YelpSearchParams): Promise<T>;
   searchCategory<T = YelpSearchCategoryResponse>(params?: YelpSearchCategoryParams): Promise<T>;
@@ -2615,6 +2633,7 @@ export interface MintApiFacebookClient {
   searchPeople<T = FacebookSearchPeopleResponse>(params?: FacebookSearchPeopleParams): Promise<T>;
   pageDetails<T = FacebookPageDetailsResponse>(params?: FacebookPageDetailsParams): Promise<T>;
   pagePosts<T = FacebookPagePostsResponse>(params?: FacebookPagePostsParams): Promise<T>;
+  pagePhotos<T = FacebookPagePhotosResponse>(params?: FacebookPagePhotosParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {
