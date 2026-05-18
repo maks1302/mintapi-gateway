@@ -747,6 +747,11 @@ export function createAgentClient({
           query: { page_id, cursor, collection_id },
         });
       },
+      pageReviews({ page_id, cursor } = {}) {
+        return request("/api/facebook/page-reviews", {
+          query: { page_id, cursor },
+        });
+      },
     },
   };
 }
