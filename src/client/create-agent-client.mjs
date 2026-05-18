@@ -772,6 +772,11 @@ export function createAgentClient({
           query: { delegate_page_id, cursor },
         });
       },
+      postComments({ post_id, cursor } = {}) {
+        return request("/api/facebook/post-comments", {
+          query: { post_id, cursor },
+        });
+      },
     },
   };
 }
