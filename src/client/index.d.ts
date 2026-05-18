@@ -2302,6 +2302,12 @@ export interface FacebookPageReelsParams {
   cursor?: string;
 }
 
+export interface FacebookPageFutureEventsParams {
+  page_id?: string;
+  cursor?: string;
+  collection_id?: string;
+}
+
 export interface YelpBusiness {
   id?: string;
   name?: string;
@@ -2635,6 +2641,13 @@ export interface FacebookPageReelsResponse {
   [key: string]: unknown;
 }
 
+export interface FacebookPageFutureEventsResponse {
+  results?: Array<Record<string, unknown>>;
+  cursor?: string;
+  collection_id?: string;
+  [key: string]: unknown;
+}
+
 export interface MintApiYelpClient {
   search<T = YelpSearchResponse>(params?: YelpSearchParams): Promise<T>;
   searchCategory<T = YelpSearchCategoryResponse>(params?: YelpSearchCategoryParams): Promise<T>;
@@ -2659,6 +2672,7 @@ export interface MintApiFacebookClient {
   pagePhotos<T = FacebookPagePhotosResponse>(params?: FacebookPagePhotosParams): Promise<T>;
   pageReviews<T = FacebookPageReviewsResponse>(params?: FacebookPageReviewsParams): Promise<T>;
   pageReels<T = FacebookPageReelsResponse>(params?: FacebookPageReelsParams): Promise<T>;
+  pageFutureEvents<T = FacebookPageFutureEventsResponse>(params?: FacebookPageFutureEventsParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {
