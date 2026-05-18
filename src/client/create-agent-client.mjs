@@ -675,6 +675,11 @@ export function createAgentClient({
           query: { business_url, business_id, reviews_per_page, end_cursor, sort_by, rating_filter },
         });
       },
+      getMenus({ business_id } = {}) {
+        return request("/api/yelp/get-menus", {
+          query: { business_id },
+        });
+      },
     },
   };
 }

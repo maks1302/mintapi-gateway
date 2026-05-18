@@ -2206,6 +2206,10 @@ export interface YelpReviewsParams {
   rating_filter?: "All_ratings" | "5_stars" | "4_stars" | "3_stars" | "2_stars" | "1_star";
 }
 
+export interface YelpGetMenusParams {
+  business_id?: string;
+}
+
 export interface YelpBusiness {
   id?: string;
   name?: string;
@@ -2330,11 +2334,28 @@ export interface YelpReviewsResponse {
   [key: string]: unknown;
 }
 
+export interface YelpGetMenusResponse {
+  searched_id?: string;
+  response_code?: number;
+  status?: string;
+  message?: string;
+  menus?: Array<{
+    "Food Name"?: string;
+    Category?: string;
+    Details?: string;
+    Price?: string;
+    Photo?: string;
+    [key: string]: unknown;
+  }>;
+  [key: string]: unknown;
+}
+
 export interface MintApiYelpClient {
   search<T = YelpSearchResponse>(params?: YelpSearchParams): Promise<T>;
   searchCategory<T = YelpSearchCategoryResponse>(params?: YelpSearchCategoryParams): Promise<T>;
   businessDetails<T = YelpBusinessDetailsResponse>(params?: YelpBusinessDetailsParams): Promise<T>;
   reviews<T = YelpReviewsResponse>(params?: YelpReviewsParams): Promise<T>;
+  getMenus<T = YelpGetMenusResponse>(params?: YelpGetMenusParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {
