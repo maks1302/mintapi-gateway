@@ -2197,6 +2197,15 @@ export interface YelpBusinessDetailsParams {
   business_ids?: string;
 }
 
+export interface YelpReviewsParams {
+  business_url?: string;
+  business_id?: string;
+  reviews_per_page?: string | number;
+  end_cursor?: string;
+  sort_by?: "Yelp_sort" | "Newest_first" | "Oldest_first" | "Highest_rated" | "Lowest_rated" | "Elites";
+  rating_filter?: "All_ratings" | "5_stars" | "4_stars" | "3_stars" | "2_stars" | "1_star";
+}
+
 export interface YelpBusiness {
   id?: string;
   name?: string;
@@ -2278,10 +2287,54 @@ export interface YelpBusinessDetailsResponse {
   [key: string]: unknown;
 }
 
+export interface YelpReviewsResponse {
+  input_url?: string;
+  tt?: number;
+  status?: string;
+  end_cursor?: string | null;
+  has_next_page?: boolean;
+  rating?: number;
+  review_count?: number;
+  rating_filter_selected?: string;
+  review_counts_by_rating?: Record<string, number>;
+  review_counts_by_language?: Array<{ language?: string; count?: number }>;
+  reviews?: Array<{
+    encid?: string;
+    reviewCreatedAt?: string;
+    rating?: number;
+    text?: {
+      full?: string;
+      language?: string;
+      [key: string]: unknown;
+    };
+    author?: {
+      encid?: string;
+      displayName?: string;
+      displayLocation?: string;
+      reviewCount?: number;
+      friendCount?: number;
+      businessPhotoCount?: number;
+      [key: string]: unknown;
+    };
+    review_photos?: string[];
+    bizUserPublicReply?: {
+      text?: string;
+      displayName?: string;
+      role?: string;
+      profilePhoto?: string;
+      replyCreatedAt?: string;
+      [key: string]: unknown;
+    };
+    [key: string]: unknown;
+  }>;
+  [key: string]: unknown;
+}
+
 export interface MintApiYelpClient {
   search<T = YelpSearchResponse>(params?: YelpSearchParams): Promise<T>;
   searchCategory<T = YelpSearchCategoryResponse>(params?: YelpSearchCategoryParams): Promise<T>;
   businessDetails<T = YelpBusinessDetailsResponse>(params?: YelpBusinessDetailsParams): Promise<T>;
+  reviews<T = YelpReviewsResponse>(params?: YelpReviewsParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {

@@ -670,6 +670,11 @@ export function createAgentClient({
           query: { business_url, business_ids },
         });
       },
+      reviews({ business_url, business_id, reviews_per_page, end_cursor, sort_by, rating_filter } = {}) {
+        return request("/api/yelp/reviews", {
+          query: { business_url, business_id, reviews_per_page, end_cursor, sort_by, rating_filter },
+        });
+      },
     },
   };
 }
