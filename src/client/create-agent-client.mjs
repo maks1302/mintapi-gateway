@@ -717,6 +717,11 @@ export function createAgentClient({
           query: { query, cursor, location_uid },
         });
       },
+      searchPages({ query, cursor, location_uid } = {}) {
+        return request("/api/facebook/search-pages", {
+          query: { query, cursor, location_uid },
+        });
+      },
     },
   };
 }

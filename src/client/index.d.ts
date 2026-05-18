@@ -2255,6 +2255,12 @@ export interface FacebookSearchPlacesParams {
   location_uid?: string;
 }
 
+export interface FacebookSearchPagesParams {
+  query?: string;
+  cursor?: string;
+  location_uid?: string;
+}
+
 export interface YelpBusiness {
   id?: string;
   name?: string;
@@ -2478,6 +2484,27 @@ export interface FacebookSearchPlacesResponse {
   [key: string]: unknown;
 }
 
+export interface FacebookSearchPagesResponse {
+  results?: Array<{
+    type?: string;
+    profile_url?: string | null;
+    url?: string | null;
+    name?: string;
+    facebook_id?: string;
+    is_verified?: boolean;
+    image?: {
+      uri?: string;
+      width?: number;
+      height?: number;
+      scale?: number;
+      [key: string]: unknown;
+    };
+    [key: string]: unknown;
+  }>;
+  cursor?: string;
+  [key: string]: unknown;
+}
+
 export interface MintApiYelpClient {
   search<T = YelpSearchResponse>(params?: YelpSearchParams): Promise<T>;
   searchCategory<T = YelpSearchCategoryResponse>(params?: YelpSearchCategoryParams): Promise<T>;
@@ -2494,6 +2521,7 @@ export interface MintApiFacebookClient {
   searchVideos<T = FacebookSearchVideosResponse>(params?: FacebookSearchVideosParams): Promise<T>;
   searchPosts<T = FacebookSearchPostsResponse>(params?: FacebookSearchPostsParams): Promise<T>;
   searchPlaces<T = FacebookSearchPlacesResponse>(params?: FacebookSearchPlacesParams): Promise<T>;
+  searchPages<T = FacebookSearchPagesResponse>(params?: FacebookSearchPagesParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {
