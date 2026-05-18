@@ -2325,6 +2325,10 @@ export interface FacebookGroupPostsParams {
   sorting_order?: "CHRONOLOGICAL" | "TOP_POSTS";
 }
 
+export interface FacebookGroupDetailsParams {
+  url?: string;
+}
+
 export interface FacebookPageVideosParams {
   delegate_page_id?: string;
   cursor?: string;
@@ -2722,6 +2726,11 @@ export interface FacebookGroupPostsResponse {
   [key: string]: unknown;
 }
 
+export interface FacebookGroupDetailsResponse {
+  group_details?: Record<string, unknown>;
+  [key: string]: unknown;
+}
+
 export interface FacebookPageVideosResponse {
   results?: Array<Record<string, unknown>>;
   cursor?: string;
@@ -2794,6 +2803,7 @@ export interface MintApiFacebookClient {
   pagePastEvents<T = FacebookPagePastEventsResponse>(params?: FacebookPagePastEventsParams): Promise<T>;
   groupFutureEvents<T = FacebookGroupFutureEventsResponse>(params?: FacebookGroupFutureEventsParams): Promise<T>;
   groupPosts<T = FacebookGroupPostsResponse>(params?: FacebookGroupPostsParams): Promise<T>;
+  groupDetails<T = FacebookGroupDetailsResponse>(params?: FacebookGroupDetailsParams): Promise<T>;
   pageVideos<T = FacebookPageVideosResponse>(params?: FacebookPageVideosParams): Promise<T>;
   eventDetails<T = FacebookEventDetailsResponse>(params?: FacebookEventDetailsParams): Promise<T>;
   eventDetailsById<T = FacebookEventDetailsByIdResponse>(params?: FacebookEventDetailsByIdParams): Promise<T>;
