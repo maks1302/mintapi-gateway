@@ -2192,6 +2192,11 @@ export interface YelpSearchCategoryParams {
   business_details_type?: string;
 }
 
+export interface YelpBusinessDetailsParams {
+  business_url?: string;
+  business_ids?: string;
+}
+
 export interface YelpBusiness {
   id?: string;
   name?: string;
@@ -2265,9 +2270,18 @@ export interface YelpSearchCategoryResponse {
   [key: string]: unknown;
 }
 
+export interface YelpBusinessDetailsResponse {
+  message?: string;
+  searched_url?: string | null;
+  searched_ids?: string | null;
+  business_details?: YelpBusiness | Record<string, unknown> | Array<YelpBusiness | Record<string, unknown>>;
+  [key: string]: unknown;
+}
+
 export interface MintApiYelpClient {
   search<T = YelpSearchResponse>(params?: YelpSearchParams): Promise<T>;
   searchCategory<T = YelpSearchCategoryResponse>(params?: YelpSearchCategoryParams): Promise<T>;
+  businessDetails<T = YelpBusinessDetailsResponse>(params?: YelpBusinessDetailsParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {

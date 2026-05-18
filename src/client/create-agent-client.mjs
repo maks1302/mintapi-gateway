@@ -665,6 +665,11 @@ export function createAgentClient({
           query: { location, search_category, limit, offset, business_details_type },
         });
       },
+      businessDetails({ business_url, business_ids } = {}) {
+        return request("/api/yelp/business-details", {
+          query: { business_url, business_ids },
+        });
+      },
     },
   };
 }
