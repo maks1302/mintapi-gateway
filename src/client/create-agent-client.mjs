@@ -762,6 +762,11 @@ export function createAgentClient({
           query: { page_id, cursor, collection_id },
         });
       },
+      pagePastEvents({ page_id, cursor, collection_id } = {}) {
+        return request("/api/facebook/page-past-events", {
+          query: { page_id, cursor, collection_id },
+        });
+      },
     },
   };
 }
