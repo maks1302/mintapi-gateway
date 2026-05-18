@@ -777,6 +777,11 @@ export function createAgentClient({
           query: { post_id, cursor },
         });
       },
+      postCommentsNested({ post_id, comment_id, expansion_token } = {}) {
+        return request("/api/facebook/post-comments-nested", {
+          query: { post_id, comment_id, expansion_token },
+        });
+      },
       commentById({ comment_id } = {}) {
         return request("/api/facebook/comment", {
           query: { comment_id },

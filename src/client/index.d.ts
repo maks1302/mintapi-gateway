@@ -2324,6 +2324,12 @@ export interface FacebookPostCommentsParams {
   cursor?: string;
 }
 
+export interface FacebookPostCommentsNestedParams {
+  post_id?: string;
+  comment_id?: string;
+  expansion_token?: string;
+}
+
 export interface FacebookCommentByIdParams {
   comment_id?: string;
 }
@@ -2687,6 +2693,12 @@ export interface FacebookPostCommentsResponse {
   [key: string]: unknown;
 }
 
+export interface FacebookPostCommentsNestedResponse {
+  results?: Array<Record<string, unknown>>;
+  cursor?: string;
+  [key: string]: unknown;
+}
+
 export interface FacebookCommentByIdResponse {
   result?: Record<string, unknown>;
   [key: string]: unknown;
@@ -2720,6 +2732,7 @@ export interface MintApiFacebookClient {
   pagePastEvents<T = FacebookPagePastEventsResponse>(params?: FacebookPagePastEventsParams): Promise<T>;
   pageVideos<T = FacebookPageVideosResponse>(params?: FacebookPageVideosParams): Promise<T>;
   postComments<T = FacebookPostCommentsResponse>(params?: FacebookPostCommentsParams): Promise<T>;
+  postCommentsNested<T = FacebookPostCommentsNestedResponse>(params?: FacebookPostCommentsNestedParams): Promise<T>;
   commentById<T = FacebookCommentByIdResponse>(params?: FacebookCommentByIdParams): Promise<T>;
 }
 
