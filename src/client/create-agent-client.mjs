@@ -772,6 +772,11 @@ export function createAgentClient({
           query: { group_id, cursor },
         });
       },
+      groupPosts({ group_id, cursor, sorting_order } = {}) {
+        return request("/api/facebook/group/posts", {
+          query: { group_id, cursor, sorting_order },
+        });
+      },
       pageVideos({ delegate_page_id, cursor } = {}) {
         return request("/api/facebook/page-videos", {
           query: { delegate_page_id, cursor },
