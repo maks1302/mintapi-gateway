@@ -2401,6 +2401,10 @@ export interface FacebookCommentByIdParams {
   comment_id?: string;
 }
 
+export interface FacebookMarketplaceListingDetailsParams {
+  listing_id?: string;
+}
+
 export interface YelpBusiness {
   id?: string;
   name?: string;
@@ -2853,6 +2857,11 @@ export interface FacebookCommentByIdResponse {
   [key: string]: unknown;
 }
 
+export interface FacebookMarketplaceListingDetailsResponse {
+  results?: Record<string, unknown>;
+  [key: string]: unknown;
+}
+
 export interface MintApiYelpClient {
   search<T = YelpSearchResponse>(params?: YelpSearchParams): Promise<T>;
   searchCategory<T = YelpSearchCategoryResponse>(params?: YelpSearchCategoryParams): Promise<T>;
@@ -2897,6 +2906,9 @@ export interface MintApiFacebookClient {
   postComments<T = FacebookPostCommentsResponse>(params?: FacebookPostCommentsParams): Promise<T>;
   postCommentsNested<T = FacebookPostCommentsNestedResponse>(params?: FacebookPostCommentsNestedParams): Promise<T>;
   commentById<T = FacebookCommentByIdResponse>(params?: FacebookCommentByIdParams): Promise<T>;
+  marketplaceListingDetails<T = FacebookMarketplaceListingDetailsResponse>(
+    params?: FacebookMarketplaceListingDetailsParams,
+  ): Promise<T>;
 }
 
 export interface MintApiAgentClient {

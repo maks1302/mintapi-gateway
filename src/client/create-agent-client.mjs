@@ -857,6 +857,11 @@ export function createAgentClient({
           query: { comment_id },
         });
       },
+      marketplaceListingDetails({ listing_id } = {}) {
+        return request("/api/facebook/marketplace/details", {
+          query: { listing_id },
+        });
+      },
     },
   };
 }
