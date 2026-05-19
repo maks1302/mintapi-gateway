@@ -2286,6 +2286,10 @@ export interface FacebookProfileDetailsByUrlParams {
   url?: string;
 }
 
+export interface FacebookProfileIdParams {
+  url?: string;
+}
+
 export interface FacebookProfilePostsParams {
   profile_id?: string;
   cursor?: string;
@@ -2710,6 +2714,11 @@ export interface FacebookProfileDetailsByUrlResponse {
   [key: string]: unknown;
 }
 
+export interface FacebookProfileIdResponse {
+  profile_id?: string;
+  [key: string]: unknown;
+}
+
 export interface FacebookProfilePostsResponse {
   results?: Array<Record<string, unknown>>;
   cursor?: string;
@@ -2866,6 +2875,7 @@ export interface MintApiFacebookClient {
   pageDetails<T = FacebookPageDetailsResponse>(params?: FacebookPageDetailsParams): Promise<T>;
   profileDetailsById<T = FacebookProfileDetailsByIdResponse>(params?: FacebookProfileDetailsByIdParams): Promise<T>;
   profileDetailsByUrl<T = FacebookProfileDetailsByUrlResponse>(params?: FacebookProfileDetailsByUrlParams): Promise<T>;
+  profileId<T = FacebookProfileIdResponse>(params?: FacebookProfileIdParams): Promise<T>;
   profilePosts<T = FacebookProfilePostsResponse>(params?: FacebookProfilePostsParams): Promise<T>;
   pagePosts<T = FacebookPagePostsResponse>(params?: FacebookPagePostsParams): Promise<T>;
   pagePhotos<T = FacebookPagePhotosResponse>(params?: FacebookPagePhotosParams): Promise<T>;
