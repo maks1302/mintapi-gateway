@@ -872,6 +872,11 @@ export function createAgentClient({
           query: { game_id, cursor, sort_order },
         });
       },
+      browseGames({ query, cursor, sort_order } = {}) {
+        return request("/api/facebook/gaming/games", {
+          query: { query, cursor, sort_order },
+        });
+      },
     },
   };
 }

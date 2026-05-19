@@ -2423,6 +2423,12 @@ export interface FacebookGameLivesParams {
   sort_order?: "VIEWERS" | "SUGGESTED";
 }
 
+export interface FacebookBrowseGamesParams {
+  query?: string;
+  cursor?: string;
+  sort_order?: "VIEWERS" | "SUGGESTED";
+}
+
 export interface YelpBusiness {
   id?: string;
   name?: string;
@@ -2892,6 +2898,12 @@ export interface FacebookGameLivesResponse {
   [key: string]: unknown;
 }
 
+export interface FacebookBrowseGamesResponse {
+  games?: Array<Record<string, unknown>>;
+  cursor?: string | null;
+  [key: string]: unknown;
+}
+
 export interface MintApiYelpClient {
   search<T = YelpSearchResponse>(params?: YelpSearchParams): Promise<T>;
   searchCategory<T = YelpSearchCategoryResponse>(params?: YelpSearchCategoryParams): Promise<T>;
@@ -2941,6 +2953,7 @@ export interface MintApiFacebookClient {
   ): Promise<T>;
   marketplaceSearch<T = FacebookMarketplaceSearchResponse>(params?: FacebookMarketplaceSearchParams): Promise<T>;
   gameLives<T = FacebookGameLivesResponse>(params?: FacebookGameLivesParams): Promise<T>;
+  browseGames<T = FacebookBrowseGamesResponse>(params?: FacebookBrowseGamesParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {
