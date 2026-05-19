@@ -2315,6 +2315,11 @@ export interface FacebookPageReelsParams {
   cursor?: string;
 }
 
+export interface FacebookProfileReelsParams {
+  reels_profile_id?: string;
+  cursor?: string;
+}
+
 export interface FacebookPageFutureEventsParams {
   page_id?: string;
   cursor?: string;
@@ -2735,6 +2740,12 @@ export interface FacebookPageReelsResponse {
   [key: string]: unknown;
 }
 
+export interface FacebookProfileReelsResponse {
+  results?: Array<Record<string, unknown>>;
+  cursor?: string;
+  [key: string]: unknown;
+}
+
 export interface FacebookPageFutureEventsResponse {
   results?: Array<Record<string, unknown>>;
   cursor?: string;
@@ -2841,6 +2852,7 @@ export interface MintApiFacebookClient {
   profilePhotos<T = FacebookProfilePhotosResponse>(params?: FacebookProfilePhotosParams): Promise<T>;
   pageReviews<T = FacebookPageReviewsResponse>(params?: FacebookPageReviewsParams): Promise<T>;
   pageReels<T = FacebookPageReelsResponse>(params?: FacebookPageReelsParams): Promise<T>;
+  profileReels<T = FacebookProfileReelsResponse>(params?: FacebookProfileReelsParams): Promise<T>;
   pageFutureEvents<T = FacebookPageFutureEventsResponse>(params?: FacebookPageFutureEventsParams): Promise<T>;
   pagePastEvents<T = FacebookPagePastEventsResponse>(params?: FacebookPagePastEventsParams): Promise<T>;
   groupFutureEvents<T = FacebookGroupFutureEventsResponse>(params?: FacebookGroupFutureEventsParams): Promise<T>;
