@@ -867,6 +867,11 @@ export function createAgentClient({
           query: { query, lat, lng, cursor, price_min, price_max, radius_km, condition, category },
         });
       },
+      gameLives({ game_id, cursor, sort_order } = {}) {
+        return request("/api/facebook/gaming/live", {
+          query: { game_id, cursor, sort_order },
+        });
+      },
     },
   };
 }
