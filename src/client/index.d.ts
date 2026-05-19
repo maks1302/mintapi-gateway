@@ -2405,6 +2405,18 @@ export interface FacebookMarketplaceListingDetailsParams {
   listing_id?: string;
 }
 
+export interface FacebookMarketplaceSearchParams {
+  query?: string;
+  lat?: string | number;
+  lng?: string | number;
+  cursor?: string;
+  price_min?: string | number;
+  price_max?: string | number;
+  radius_km?: string | number;
+  condition?: string;
+  category?: string;
+}
+
 export interface YelpBusiness {
   id?: string;
   name?: string;
@@ -2862,6 +2874,12 @@ export interface FacebookMarketplaceListingDetailsResponse {
   [key: string]: unknown;
 }
 
+export interface FacebookMarketplaceSearchResponse {
+  results?: Array<Record<string, unknown>>;
+  cursor?: string;
+  [key: string]: unknown;
+}
+
 export interface MintApiYelpClient {
   search<T = YelpSearchResponse>(params?: YelpSearchParams): Promise<T>;
   searchCategory<T = YelpSearchCategoryResponse>(params?: YelpSearchCategoryParams): Promise<T>;
@@ -2909,6 +2927,7 @@ export interface MintApiFacebookClient {
   marketplaceListingDetails<T = FacebookMarketplaceListingDetailsResponse>(
     params?: FacebookMarketplaceListingDetailsParams,
   ): Promise<T>;
+  marketplaceSearch<T = FacebookMarketplaceSearchResponse>(params?: FacebookMarketplaceSearchParams): Promise<T>;
 }
 
 export interface MintApiAgentClient {

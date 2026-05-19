@@ -862,6 +862,11 @@ export function createAgentClient({
           query: { listing_id },
         });
       },
+      marketplaceSearch({ query, lat, lng, cursor, price_min, price_max, radius_km, condition, category } = {}) {
+        return request("/api/facebook/marketplace/search", {
+          query: { query, lat, lng, cursor, price_min, price_max, radius_km, condition, category },
+        });
+      },
     },
   };
 }
