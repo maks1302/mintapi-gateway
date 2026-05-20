@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.8
+
+- expand endpoint surface with Facebook and Yelp endpoints.
+
 ## 0.1.7
 
 - expand the Instagram client surface with:
