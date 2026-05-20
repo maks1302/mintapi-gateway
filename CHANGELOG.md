@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.8
+## 0.1.9
 
 - expand endpoint surface with Facebook and Yelp endpoints.
 
