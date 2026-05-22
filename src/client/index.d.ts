@@ -2304,6 +2304,17 @@ export interface GoogleMapsAutocompleteParams {
   coordinates?: string;
 }
 
+export interface GoogleMapsBulkSearchParams {
+  queries?: string[];
+  language?: string;
+  region?: string;
+  coordinates?: string;
+  limit?: number;
+  offset?: number;
+  zoom?: number;
+  dedup?: boolean;
+}
+
 export interface YelpSearchParams {
   location?: string;
   search_term?: string;
@@ -3343,6 +3354,25 @@ export interface GoogleMapsAutocompleteResponse {
   [key: string]: unknown;
 }
 
+export interface GoogleMapsBulkSearchResponse {
+  status?: string;
+  request_id?: string;
+  parameters?: {
+    queries?: string[];
+    language?: string;
+    region?: string;
+    coordinates?: string;
+    limit?: number;
+    offset?: number;
+    zoom?: number;
+    extract_emails_and_contacts?: boolean;
+    dedup?: boolean;
+    [key: string]: unknown;
+  };
+  data?: GoogleMapsSearchBusiness[];
+  [key: string]: unknown;
+}
+
 export interface MintApiGoogleMapsClient {
   search<T = GoogleMapsSearchResponse>(params?: GoogleMapsSearchParams): Promise<T>;
   areaSearch<T = GoogleMapsSearchResponse>(params?: GoogleMapsAreaSearchParams): Promise<T>;
@@ -3361,6 +3391,7 @@ export interface MintApiGoogleMapsClient {
   businessPosts<T = GoogleMapsBusinessPostsResponse>(params?: GoogleMapsBusinessPostsParams): Promise<T>;
   reverseGeocoding<T = GoogleMapsSearchResponse>(params?: GoogleMapsReverseGeocodingParams): Promise<T>;
   autocomplete<T = GoogleMapsAutocompleteResponse>(params?: GoogleMapsAutocompleteParams): Promise<T>;
+  bulkSearch<T = GoogleMapsBulkSearchResponse>(params?: GoogleMapsBulkSearchParams): Promise<T>;
 }
 
 export interface MintApiYelpClient {

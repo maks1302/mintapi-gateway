@@ -846,6 +846,12 @@ export function createAgentClient({
           query: { query, region, language, coordinates },
         });
       },
+      bulkSearch({ queries, language, region, coordinates, limit, offset, zoom, dedup } = {}) {
+        return request("/api/google-maps/bulk-search", {
+          method: "POST",
+          body: { queries, language, region, coordinates, limit, offset, zoom, dedup },
+        });
+      },
     },
     yelp: {
       search({ location, search_term, limit, offset, business_details_type } = {}) {
