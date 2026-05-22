@@ -2176,6 +2176,21 @@ export interface InstagramMediaListByUserIdResponse {
   [key: string]: unknown;
 }
 
+export interface GoogleMapsSearchParams {
+  query?: string;
+  limit?: string | number;
+  lat?: string | number;
+  lng?: string | number;
+  zoom?: string | number;
+  language?: string;
+  region?: string;
+  subtypes?: string;
+  verified?: string | boolean;
+  business_status?: string;
+  extract_emails_and_contacts?: string | boolean;
+  fields?: string;
+}
+
 export interface YelpSearchParams {
   location?: string;
   search_term?: string;
@@ -2904,6 +2919,114 @@ export interface FacebookBrowseGamesResponse {
   [key: string]: unknown;
 }
 
+export interface GoogleMapsSearchContactProfile {
+  url?: string;
+  username?: string;
+  [key: string]: unknown;
+}
+
+export interface GoogleMapsSearchBusiness {
+  business_id?: string;
+  google_id?: string;
+  place_id?: string;
+  google_mid?: string;
+  phone_number?: string;
+  name?: string;
+  latitude?: number;
+  longitude?: number;
+  full_address?: string;
+  review_count?: number;
+  rating?: number;
+  timezone?: string;
+  opening_status?: string | null;
+  working_hours?: Record<string, unknown>;
+  website?: string;
+  tld?: string;
+  verified?: boolean;
+  place_link?: string;
+  cid?: string;
+  reviews_link?: string;
+  owner_id?: string;
+  owner_link?: string;
+  owner_name?: string;
+  booking_link?: string | null;
+  reservations_link?: string | null;
+  business_status?: string;
+  type?: string;
+  subtypes?: string[];
+  subtype_gcids?: string[];
+  photos_sample?: Array<{
+    photo_id?: string;
+    photo_url?: string;
+    photo_url_large?: string;
+    video_thumbnail_url?: string | null;
+    latitude?: number;
+    longitude?: number;
+    type?: string;
+    photo_datetime_utc?: string;
+    photo_timestamp?: number;
+    [key: string]: unknown;
+  }>;
+  reviews_per_rating?: Record<string, number>;
+  photo_count?: number;
+  about?: {
+    summary?: string | null;
+    details?: string | null;
+    [key: string]: unknown;
+  };
+  address?: string;
+  order_link?: string | null;
+  price_level?: string | null;
+  district?: string;
+  street_address?: string;
+  city?: string;
+  zipcode?: string;
+  state?: string;
+  country?: string;
+  hotel_location_rating?: number | null;
+  hotel_amenities?: Record<string, boolean>;
+  hotel_stars?: number;
+  hotel_review_summary?: string | null;
+  hotel_price_for_dates?: string | null;
+  hotel_booking_options?: Array<Record<string, unknown>> | null;
+  hotel_results_from_web?: Array<Record<string, unknown>> | null;
+  emails_and_contacts?: {
+    emails?: string[];
+    phones?: string[];
+    facebook?: GoogleMapsSearchContactProfile[];
+    instagram?: GoogleMapsSearchContactProfile[];
+    linkedin?: GoogleMapsSearchContactProfile[];
+    x?: GoogleMapsSearchContactProfile[];
+    youtube?: GoogleMapsSearchContactProfile[];
+    tiktok?: GoogleMapsSearchContactProfile[];
+    [key: string]: unknown;
+  };
+  [key: string]: unknown;
+}
+
+export interface GoogleMapsSearchResponse {
+  status?: string;
+  request_id?: string;
+  parameters?: {
+    query?: string;
+    language?: string;
+    region?: string;
+    lat?: number;
+    lng?: number;
+    zoom?: number;
+    limit?: number;
+    offset?: number;
+    extract_emails_and_contacts?: boolean;
+    [key: string]: unknown;
+  };
+  data?: GoogleMapsSearchBusiness[];
+  [key: string]: unknown;
+}
+
+export interface MintApiGoogleMapsClient {
+  search<T = GoogleMapsSearchResponse>(params?: GoogleMapsSearchParams): Promise<T>;
+}
+
 export interface MintApiYelpClient {
   search<T = YelpSearchResponse>(params?: YelpSearchParams): Promise<T>;
   searchCategory<T = YelpSearchCategoryResponse>(params?: YelpSearchCategoryParams): Promise<T>;
@@ -2964,6 +3087,7 @@ export interface MintApiAgentClient {
   youtube: MintApiYoutubeClient;
   tiktok: MintApiTiktokClient;
   instagram: MintApiInstagramClient;
+  googleMaps: MintApiGoogleMapsClient;
   yelp: MintApiYelpClient;
   facebook: MintApiFacebookClient;
 }
