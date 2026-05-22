@@ -2277,6 +2277,11 @@ export interface GoogleMapsBusinessPhotosParams {
   fields?: string;
 }
 
+export interface GoogleMapsBusinessPhotoDetailsParams {
+  business_id?: string;
+  photo_id?: string;
+}
+
 export interface YelpSearchParams {
   location?: string;
   search_term?: string;
@@ -3222,6 +3227,33 @@ export interface GoogleMapsBusinessPhotosResponse {
   [key: string]: unknown;
 }
 
+export interface GoogleMapsBusinessPhotoDetail {
+  photo_id?: string;
+  caption?: string;
+  width?: number;
+  height?: number;
+  owner_id?: string;
+  owner_name?: string;
+  owner_photo?: string;
+  owner_profile_link?: string;
+  [key: string]: unknown;
+}
+
+export interface GoogleMapsBusinessPhotoDetailsResponse {
+  status?: string;
+  request_id?: string;
+  parameters?: {
+    business_id?: string;
+    photo_id?: string;
+    language?: string;
+    region?: string;
+    coordinates?: string;
+    [key: string]: unknown;
+  };
+  data?: GoogleMapsBusinessPhotoDetail[];
+  [key: string]: unknown;
+}
+
 export interface MintApiGoogleMapsClient {
   search<T = GoogleMapsSearchResponse>(params?: GoogleMapsSearchParams): Promise<T>;
   areaSearch<T = GoogleMapsSearchResponse>(params?: GoogleMapsAreaSearchParams): Promise<T>;
@@ -3234,6 +3266,9 @@ export interface MintApiGoogleMapsClient {
     params?: GoogleMapsBusinessReviewDetailsParams,
   ): Promise<T>;
   businessPhotos<T = GoogleMapsBusinessPhotosResponse>(params?: GoogleMapsBusinessPhotosParams): Promise<T>;
+  businessPhotoDetails<T = GoogleMapsBusinessPhotoDetailsResponse>(
+    params?: GoogleMapsBusinessPhotoDetailsParams,
+  ): Promise<T>;
 }
 
 export interface MintApiYelpClient {

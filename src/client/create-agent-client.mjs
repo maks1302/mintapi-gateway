@@ -826,6 +826,11 @@ export function createAgentClient({
           query: { business_id, limit, cursor, is_video, region, fields },
         });
       },
+      businessPhotoDetails({ business_id, photo_id } = {}) {
+        return request("/api/google-maps/business-photo-details", {
+          query: { business_id, photo_id },
+        });
+      },
     },
     yelp: {
       search({ location, search_term, limit, offset, business_details_type } = {}) {
