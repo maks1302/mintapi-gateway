@@ -831,6 +831,11 @@ export function createAgentClient({
           query: { business_id, photo_id },
         });
       },
+      businessPosts({ business_id, cursor, region, language } = {}) {
+        return request("/api/google-maps/business-posts", {
+          query: { business_id, cursor, region, language },
+        });
+      },
     },
     yelp: {
       search({ location, search_term, limit, offset, business_details_type } = {}) {
