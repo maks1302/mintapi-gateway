@@ -836,6 +836,11 @@ export function createAgentClient({
           query: { business_id, cursor, region, language },
         });
       },
+      reverseGeocoding({ lat, lng, region, language, fields } = {}) {
+        return request("/api/google-maps/reverse-geocoding", {
+          query: { lat, lng, region, language, fields },
+        });
+      },
     },
     yelp: {
       search({ location, search_term, limit, offset, business_details_type } = {}) {

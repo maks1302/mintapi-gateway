@@ -2289,6 +2289,14 @@ export interface GoogleMapsBusinessPostsParams {
   language?: string;
 }
 
+export interface GoogleMapsReverseGeocodingParams {
+  lat?: string | number;
+  lng?: string | number;
+  region?: string;
+  language?: string;
+  fields?: string;
+}
+
 export interface YelpSearchParams {
   location?: string;
   search_term?: string;
@@ -3309,6 +3317,7 @@ export interface MintApiGoogleMapsClient {
     params?: GoogleMapsBusinessPhotoDetailsParams,
   ): Promise<T>;
   businessPosts<T = GoogleMapsBusinessPostsResponse>(params?: GoogleMapsBusinessPostsParams): Promise<T>;
+  reverseGeocoding<T = GoogleMapsSearchResponse>(params?: GoogleMapsReverseGeocodingParams): Promise<T>;
 }
 
 export interface MintApiYelpClient {
