@@ -713,6 +713,31 @@ export function createAgentClient({
           },
         });
       },
+      areaSearchBoundingBox({
+        query,
+        bottom_left,
+        top_right,
+        limit,
+        language,
+        region,
+        subtypes,
+        extract_emails_and_contacts,
+        fields,
+      } = {}) {
+        return request("/api/google-maps/area-search-bounding-box", {
+          query: {
+            query,
+            bottom_left,
+            top_right,
+            limit,
+            language,
+            region,
+            subtypes,
+            extract_emails_and_contacts,
+            fields,
+          },
+        });
+      },
     },
     yelp: {
       search({ location, search_term, limit, offset, business_details_type } = {}) {
