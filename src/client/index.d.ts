@@ -2229,6 +2229,18 @@ export interface GoogleMapsAreaSearchRadiusParams {
   fields?: string;
 }
 
+export interface GoogleMapsSearchNearbyParams {
+  query?: string;
+  lat?: string | number;
+  lng?: string | number;
+  limit?: string | number;
+  language?: string;
+  region?: string;
+  subtypes?: string;
+  extract_emails_and_contacts?: string | boolean;
+  fields?: string;
+}
+
 export interface YelpSearchParams {
   location?: string;
   search_term?: string;
@@ -3066,6 +3078,7 @@ export interface MintApiGoogleMapsClient {
   areaSearch<T = GoogleMapsSearchResponse>(params?: GoogleMapsAreaSearchParams): Promise<T>;
   areaSearchBoundingBox<T = GoogleMapsSearchResponse>(params?: GoogleMapsAreaSearchBoundingBoxParams): Promise<T>;
   areaSearchRadius<T = GoogleMapsSearchResponse>(params?: GoogleMapsAreaSearchRadiusParams): Promise<T>;
+  searchNearby<T = GoogleMapsSearchResponse>(params?: GoogleMapsSearchNearbyParams): Promise<T>;
 }
 
 export interface MintApiYelpClient {

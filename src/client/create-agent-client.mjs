@@ -765,6 +765,31 @@ export function createAgentClient({
           },
         });
       },
+      searchNearby({
+        query,
+        lat,
+        lng,
+        limit,
+        language,
+        region,
+        subtypes,
+        extract_emails_and_contacts,
+        fields,
+      } = {}) {
+        return request("/api/google-maps/search-nearby", {
+          query: {
+            query,
+            lat,
+            lng,
+            limit,
+            language,
+            region,
+            subtypes,
+            extract_emails_and_contacts,
+            fields,
+          },
+        });
+      },
     },
     yelp: {
       search({ location, search_term, limit, offset, business_details_type } = {}) {
