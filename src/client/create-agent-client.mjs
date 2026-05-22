@@ -738,6 +738,33 @@ export function createAgentClient({
           },
         });
       },
+      areaSearchRadius({
+        query,
+        lat,
+        lng,
+        radius,
+        limit,
+        language,
+        region,
+        subtypes,
+        extract_emails_and_contacts,
+        fields,
+      } = {}) {
+        return request("/api/google-maps/area-search-radius", {
+          query: {
+            query,
+            lat,
+            lng,
+            radius,
+            limit,
+            language,
+            region,
+            subtypes,
+            extract_emails_and_contacts,
+            fields,
+          },
+        });
+      },
     },
     yelp: {
       search({ location, search_term, limit, offset, business_details_type } = {}) {
