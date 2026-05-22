@@ -841,6 +841,11 @@ export function createAgentClient({
           query: { lat, lng, region, language, fields },
         });
       },
+      autocomplete({ query, region, language, coordinates } = {}) {
+        return request("/api/google-maps/autocomplete", {
+          query: { query, region, language, coordinates },
+        });
+      },
     },
     yelp: {
       search({ location, search_term, limit, offset, business_details_type } = {}) {

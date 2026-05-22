@@ -2297,6 +2297,13 @@ export interface GoogleMapsReverseGeocodingParams {
   fields?: string;
 }
 
+export interface GoogleMapsAutocompleteParams {
+  query?: string;
+  region?: string;
+  language?: string;
+  coordinates?: string;
+}
+
 export interface YelpSearchParams {
   location?: string;
   search_term?: string;
@@ -3301,6 +3308,41 @@ export interface GoogleMapsBusinessPostsResponse {
   [key: string]: unknown;
 }
 
+export interface GoogleMapsAutocompleteHighlight {
+  offset?: number;
+  length?: number;
+  [key: string]: unknown;
+}
+
+export interface GoogleMapsAutocompletePrediction {
+  type?: string;
+  google_id?: string | null;
+  place_id?: string | null;
+  description?: string;
+  main_text?: string;
+  main_text_highlights?: GoogleMapsAutocompleteHighlight[] | null;
+  secondary_text?: string | null;
+  secondary_text_highlights?: GoogleMapsAutocompleteHighlight[] | null;
+  latitude?: number | null;
+  longitude?: number | null;
+  country?: string | null;
+  [key: string]: unknown;
+}
+
+export interface GoogleMapsAutocompleteResponse {
+  status?: string;
+  request_id?: string;
+  parameters?: {
+    query?: string;
+    region?: string;
+    language?: string;
+    coordinates?: string;
+    [key: string]: unknown;
+  };
+  data?: GoogleMapsAutocompletePrediction[];
+  [key: string]: unknown;
+}
+
 export interface MintApiGoogleMapsClient {
   search<T = GoogleMapsSearchResponse>(params?: GoogleMapsSearchParams): Promise<T>;
   areaSearch<T = GoogleMapsSearchResponse>(params?: GoogleMapsAreaSearchParams): Promise<T>;
@@ -3318,6 +3360,7 @@ export interface MintApiGoogleMapsClient {
   ): Promise<T>;
   businessPosts<T = GoogleMapsBusinessPostsResponse>(params?: GoogleMapsBusinessPostsParams): Promise<T>;
   reverseGeocoding<T = GoogleMapsSearchResponse>(params?: GoogleMapsReverseGeocodingParams): Promise<T>;
+  autocomplete<T = GoogleMapsAutocompleteResponse>(params?: GoogleMapsAutocompleteParams): Promise<T>;
 }
 
 export interface MintApiYelpClient {
