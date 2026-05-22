@@ -816,6 +816,11 @@ export function createAgentClient({
           query: { business_id, limit, cursor, sort_by, region, language, fields },
         });
       },
+      businessReviewDetails({ business_id, review_author_id, region, language } = {}) {
+        return request("/api/google-maps/business-review-details", {
+          query: { business_id, review_author_id, region, language },
+        });
+      },
     },
     yelp: {
       search({ location, search_term, limit, offset, business_details_type } = {}) {

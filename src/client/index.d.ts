@@ -2261,6 +2261,13 @@ export interface GoogleMapsBusinessReviewsParams {
   fields?: string;
 }
 
+export interface GoogleMapsBusinessReviewDetailsParams {
+  business_id?: string;
+  review_author_id?: string;
+  region?: string;
+  language?: string;
+}
+
 export interface YelpSearchParams {
   location?: string;
   search_term?: string;
@@ -3162,6 +3169,21 @@ export interface GoogleMapsBusinessReviewsResponse {
   [key: string]: unknown;
 }
 
+export interface GoogleMapsBusinessReviewDetailsResponse {
+  status?: string;
+  request_id?: string;
+  parameters?: {
+    business_id?: string;
+    review_author_id?: string;
+    language?: string;
+    region?: string;
+    coordinates?: string;
+    [key: string]: unknown;
+  };
+  data?: GoogleMapsBusinessReview[];
+  [key: string]: unknown;
+}
+
 export interface MintApiGoogleMapsClient {
   search<T = GoogleMapsSearchResponse>(params?: GoogleMapsSearchParams): Promise<T>;
   areaSearch<T = GoogleMapsSearchResponse>(params?: GoogleMapsAreaSearchParams): Promise<T>;
@@ -3170,6 +3192,9 @@ export interface MintApiGoogleMapsClient {
   searchNearby<T = GoogleMapsSearchResponse>(params?: GoogleMapsSearchNearbyParams): Promise<T>;
   businessDetails<T = GoogleMapsBusinessDetailsResponse>(params?: GoogleMapsBusinessDetailsParams): Promise<T>;
   businessReviews<T = GoogleMapsBusinessReviewsResponse>(params?: GoogleMapsBusinessReviewsParams): Promise<T>;
+  businessReviewDetails<T = GoogleMapsBusinessReviewDetailsResponse>(
+    params?: GoogleMapsBusinessReviewDetailsParams,
+  ): Promise<T>;
 }
 
 export interface MintApiYelpClient {
