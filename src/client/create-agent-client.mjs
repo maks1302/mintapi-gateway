@@ -790,6 +790,27 @@ export function createAgentClient({
           },
         });
       },
+      businessDetails({
+        business_id,
+        extract_emails_and_contacts,
+        extract_share_link,
+        fields,
+        region,
+        language,
+        coordinates,
+      } = {}) {
+        return request("/api/google-maps/business-details", {
+          query: {
+            business_id,
+            extract_emails_and_contacts,
+            extract_share_link,
+            fields,
+            region,
+            language,
+            coordinates,
+          },
+        });
+      },
     },
     yelp: {
       search({ location, search_term, limit, offset, business_details_type } = {}) {

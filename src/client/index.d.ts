@@ -2241,6 +2241,16 @@ export interface GoogleMapsSearchNearbyParams {
   fields?: string;
 }
 
+export interface GoogleMapsBusinessDetailsParams {
+  business_id?: string;
+  extract_emails_and_contacts?: string | boolean;
+  extract_share_link?: string | boolean;
+  fields?: string;
+  region?: string;
+  language?: string;
+  coordinates?: string;
+}
+
 export interface YelpSearchParams {
   location?: string;
   search_term?: string;
@@ -3040,6 +3050,7 @@ export interface GoogleMapsSearchBusiness {
   hotel_price_for_dates?: string | null;
   hotel_booking_options?: Array<Record<string, unknown>> | null;
   hotel_results_from_web?: Array<Record<string, unknown>> | null;
+  share_link?: string;
   emails_and_contacts?: {
     emails?: string[];
     phones?: string[];
@@ -3073,12 +3084,29 @@ export interface GoogleMapsSearchResponse {
   [key: string]: unknown;
 }
 
+export interface GoogleMapsBusinessDetailsResponse {
+  status?: string;
+  request_id?: string;
+  parameters?: {
+    business_id?: string;
+    language?: string;
+    region?: string;
+    coordinates?: string;
+    extract_emails_and_contacts?: boolean;
+    extract_share_link?: boolean;
+    [key: string]: unknown;
+  };
+  data?: GoogleMapsSearchBusiness[];
+  [key: string]: unknown;
+}
+
 export interface MintApiGoogleMapsClient {
   search<T = GoogleMapsSearchResponse>(params?: GoogleMapsSearchParams): Promise<T>;
   areaSearch<T = GoogleMapsSearchResponse>(params?: GoogleMapsAreaSearchParams): Promise<T>;
   areaSearchBoundingBox<T = GoogleMapsSearchResponse>(params?: GoogleMapsAreaSearchBoundingBoxParams): Promise<T>;
   areaSearchRadius<T = GoogleMapsSearchResponse>(params?: GoogleMapsAreaSearchRadiusParams): Promise<T>;
   searchNearby<T = GoogleMapsSearchResponse>(params?: GoogleMapsSearchNearbyParams): Promise<T>;
+  businessDetails<T = GoogleMapsBusinessDetailsResponse>(params?: GoogleMapsBusinessDetailsParams): Promise<T>;
 }
 
 export interface MintApiYelpClient {
