@@ -2438,6 +2438,14 @@ export interface ZillowSearchByUrlParams {
   page?: string | number;
 }
 
+export interface ZillowSearchByMlsParams {
+  mlsid?: string;
+  listingStatus?: "For_Sale" | "For_Rent" | "Sold" | string;
+  homeType?: string;
+  listingType?: "By_Agent" | "By_Owner_and_Other" | string;
+  listingTypeOptions?: string;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -2825,6 +2833,13 @@ export interface ZillowSearchByUrlResponse {
   currentPage?: number | string;
   listResultsTitle?: string;
   Results?: Array<Record<string, unknown>>;
+  [key: string]: unknown;
+}
+
+export interface ZillowSearchByMlsResponse {
+  message?: string;
+  source?: string;
+  searchResult?: Record<string, unknown>;
   [key: string]: unknown;
 }
 
@@ -3599,6 +3614,7 @@ export interface MintApiZillowClient {
   autocomplete<T = ZillowAutocompleteResponse>(params?: ZillowAutocompleteParams): Promise<T>;
   searchByAddress<T = ZillowSearchByAddressResponse>(params?: ZillowSearchByAddressParams): Promise<T>;
   searchByUrl<T = ZillowSearchByUrlResponse>(params?: ZillowSearchByUrlParams): Promise<T>;
+  searchByMls<T = ZillowSearchByMlsResponse>(params?: ZillowSearchByMlsParams): Promise<T>;
 }
 
 export interface MintApiFacebookClient {

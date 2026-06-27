@@ -1006,6 +1006,11 @@ export function createAgentClient({
           query: { url, page },
         });
       },
+      searchByMls({ mlsid, listingStatus, homeType, listingType, listingTypeOptions } = {}) {
+        return request("/api/zillow/search-by-mls", {
+          query: { mlsid, listingStatus, homeType, listingType, listingTypeOptions },
+        });
+      },
     },
     facebook: {
       searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {
