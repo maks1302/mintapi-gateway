@@ -2381,6 +2381,10 @@ export interface ZillowPropertyMinimalByUrlParams {
   url?: string;
 }
 
+export interface ZillowAutocompleteParams {
+  query?: string;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -2720,6 +2724,34 @@ export interface ZillowPropertyMinimalByAddressResponse {
   yearBuilt?: number | string | null;
   daysOnZillow?: number | string | null;
   PropertyZillowURL?: string;
+  [key: string]: unknown;
+}
+
+export interface ZillowAutocompleteResultMetadata {
+  addressType?: string;
+  streetNumber?: string;
+  streetName?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  zipCode?: string;
+  zpid?: number | string;
+  lat?: number | string;
+  lng?: number | string;
+  maloneId?: number | string;
+  [key: string]: unknown;
+}
+
+export interface ZillowAutocompleteResult {
+  display?: string;
+  resultType?: string;
+  metaData?: ZillowAutocompleteResultMetadata;
+  [key: string]: unknown;
+}
+
+export interface ZillowAutocompleteResponse {
+  results?: ZillowAutocompleteResult[];
+  source?: string;
   [key: string]: unknown;
 }
 
@@ -3491,6 +3523,7 @@ export interface MintApiZillowClient {
   propertyMinimalByUrl<T = ZillowPropertyMinimalByAddressResponse>(
     params?: ZillowPropertyMinimalByUrlParams,
   ): Promise<T>;
+  autocomplete<T = ZillowAutocompleteResponse>(params?: ZillowAutocompleteParams): Promise<T>;
 }
 
 export interface MintApiFacebookClient {

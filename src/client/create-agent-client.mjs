@@ -921,6 +921,11 @@ export function createAgentClient({
           query: { url },
         });
       },
+      autocomplete({ query } = {}) {
+        return request("/api/zillow/autocomplete", {
+          query: { query },
+        });
+      },
     },
     facebook: {
       searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {
