@@ -2365,6 +2365,10 @@ export interface ZillowPropertyByZpidParams {
   zpid?: string | number;
 }
 
+export interface ZillowPropertyByUrlParams {
+  url?: string;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -3438,6 +3442,7 @@ export interface MintApiYelpClient {
 export interface MintApiZillowClient {
   propertyByAddress<T = ZillowPropertyByAddressResponse>(params?: ZillowPropertyByAddressParams): Promise<T>;
   propertyByZpid<T = ZillowPropertyByAddressResponse>(params?: ZillowPropertyByZpidParams): Promise<T>;
+  propertyByUrl<T = ZillowPropertyByAddressResponse>(params?: ZillowPropertyByUrlParams): Promise<T>;
 }
 
 export interface MintApiFacebookClient {

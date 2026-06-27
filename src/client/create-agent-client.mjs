@@ -901,6 +901,11 @@ export function createAgentClient({
           query: { zpid },
         });
       },
+      propertyByUrl({ url } = {}) {
+        return request("/api/zillow/property-by-url", {
+          query: { url },
+        });
+      },
     },
     facebook: {
       searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {
