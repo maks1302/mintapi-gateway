@@ -2373,6 +2373,10 @@ export interface ZillowPropertyMinimalByAddressParams {
   propertyaddress?: string;
 }
 
+export interface ZillowPropertyMinimalByZpidParams {
+  zpid?: string | number;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -3476,6 +3480,9 @@ export interface MintApiZillowClient {
   propertyByUrl<T = ZillowPropertyByAddressResponse>(params?: ZillowPropertyByUrlParams): Promise<T>;
   propertyMinimalByAddress<T = ZillowPropertyMinimalByAddressResponse>(
     params?: ZillowPropertyMinimalByAddressParams,
+  ): Promise<T>;
+  propertyMinimalByZpid<T = ZillowPropertyMinimalByAddressResponse>(
+    params?: ZillowPropertyMinimalByZpidParams,
   ): Promise<T>;
 }
 

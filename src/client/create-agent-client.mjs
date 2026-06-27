@@ -911,6 +911,11 @@ export function createAgentClient({
           query: { propertyaddress },
         });
       },
+      propertyMinimalByZpid({ zpid } = {}) {
+        return request("/api/zillow/property-minimal-by-zpid", {
+          query: { zpid },
+        });
+      },
     },
     facebook: {
       searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {
