@@ -916,6 +916,11 @@ export function createAgentClient({
           query: { zpid },
         });
       },
+      propertyMinimalByUrl({ url } = {}) {
+        return request("/api/zillow/property-minimal-by-url", {
+          query: { url },
+        });
+      },
     },
     facebook: {
       searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {
