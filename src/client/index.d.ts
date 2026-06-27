@@ -2369,6 +2369,10 @@ export interface ZillowPropertyByUrlParams {
   url?: string;
 }
 
+export interface ZillowPropertyMinimalByAddressParams {
+  propertyaddress?: string;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -2681,6 +2685,33 @@ export interface ZillowPropertyByAddressResponse {
   source?: string;
   zillowURL?: string;
   propertyDetails?: ZillowPropertyDetails;
+  [key: string]: unknown;
+}
+
+export interface ZillowMinimalPropertyAddress {
+  streetAddress?: string;
+  city?: string;
+  state?: string;
+  zipcode?: string;
+  neighborhood?: string | null;
+  community?: string | null;
+  subdivision?: string | null;
+  [key: string]: unknown;
+}
+
+export interface ZillowPropertyMinimalByAddressResponse {
+  message?: string;
+  Source?: string;
+  PropertyAddress?: ZillowMinimalPropertyAddress;
+  zestimate?: number | string | null;
+  Bedrooms?: number | string | null;
+  Bathrooms?: number | string | null;
+  "Area(sqft)"?: number | string | null;
+  PropertyZPID?: number | string;
+  Price?: number | string | null;
+  yearBuilt?: number | string | null;
+  daysOnZillow?: number | string | null;
+  PropertyZillowURL?: string;
   [key: string]: unknown;
 }
 
@@ -3443,6 +3474,9 @@ export interface MintApiZillowClient {
   propertyByAddress<T = ZillowPropertyByAddressResponse>(params?: ZillowPropertyByAddressParams): Promise<T>;
   propertyByZpid<T = ZillowPropertyByAddressResponse>(params?: ZillowPropertyByZpidParams): Promise<T>;
   propertyByUrl<T = ZillowPropertyByAddressResponse>(params?: ZillowPropertyByUrlParams): Promise<T>;
+  propertyMinimalByAddress<T = ZillowPropertyMinimalByAddressResponse>(
+    params?: ZillowPropertyMinimalByAddressParams,
+  ): Promise<T>;
 }
 
 export interface MintApiFacebookClient {

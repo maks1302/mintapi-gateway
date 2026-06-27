@@ -906,6 +906,11 @@ export function createAgentClient({
           query: { url },
         });
       },
+      propertyMinimalByAddress({ propertyaddress } = {}) {
+        return request("/api/zillow/property-minimal-by-address", {
+          query: { propertyaddress },
+        });
+      },
     },
     facebook: {
       searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {
