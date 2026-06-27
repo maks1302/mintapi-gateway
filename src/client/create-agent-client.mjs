@@ -896,6 +896,11 @@ export function createAgentClient({
           query: { propertyaddress },
         });
       },
+      propertyByZpid({ zpid } = {}) {
+        return request("/api/zillow/property-by-zpid", {
+          query: { zpid },
+        });
+      },
     },
     facebook: {
       searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {
