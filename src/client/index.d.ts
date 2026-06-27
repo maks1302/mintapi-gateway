@@ -2357,6 +2357,10 @@ export interface YelpBusinessUrlToIdParams {
   business_url?: string;
 }
 
+export interface ZillowPropertyByAddressParams {
+  propertyaddress?: string;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -2646,6 +2650,29 @@ export interface YelpBusinessDetailsResponse {
   searched_url?: string | null;
   searched_ids?: string | null;
   business_details?: YelpBusiness | Record<string, unknown> | Array<YelpBusiness | Record<string, unknown>>;
+  [key: string]: unknown;
+}
+
+export interface ZillowPropertyDetails {
+  zpid?: number | string;
+  streetAddress?: string;
+  city?: string;
+  state?: string;
+  zipcode?: string;
+  price?: number | string | null;
+  bedrooms?: number | string | null;
+  bathrooms?: number | string | null;
+  livingArea?: string | number | null;
+  homeType?: string | null;
+  resoFacts?: Record<string, unknown>;
+  [key: string]: unknown;
+}
+
+export interface ZillowPropertyByAddressResponse {
+  message?: string;
+  source?: string;
+  zillowURL?: string;
+  propertyDetails?: ZillowPropertyDetails;
   [key: string]: unknown;
 }
 
@@ -3404,6 +3431,10 @@ export interface MintApiYelpClient {
   businessUrlToId<T = YelpBusinessUrlToIdResponse>(params?: YelpBusinessUrlToIdParams): Promise<T>;
 }
 
+export interface MintApiZillowClient {
+  propertyByAddress<T = ZillowPropertyByAddressResponse>(params?: ZillowPropertyByAddressParams): Promise<T>;
+}
+
 export interface MintApiFacebookClient {
   searchGlobal<T = FacebookSearchGlobalResponse>(params?: FacebookSearchGlobalParams): Promise<T>;
   searchLocations<T = FacebookSearchLocationsResponse>(params?: FacebookSearchLocationsParams): Promise<T>;
@@ -3456,6 +3487,7 @@ export interface MintApiAgentClient {
   instagram: MintApiInstagramClient;
   googleMaps: MintApiGoogleMapsClient;
   yelp: MintApiYelpClient;
+  zillow: MintApiZillowClient;
   facebook: MintApiFacebookClient;
 }
 

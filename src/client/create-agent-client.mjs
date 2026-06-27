@@ -890,6 +890,13 @@ export function createAgentClient({
         });
       },
     },
+    zillow: {
+      propertyByAddress({ propertyaddress } = {}) {
+        return request("/api/zillow/property-by-address", {
+          query: { propertyaddress },
+        });
+      },
+    },
     facebook: {
       searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {
         return request("/api/facebook/search-global", {
