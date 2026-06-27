@@ -2385,6 +2385,59 @@ export interface ZillowAutocompleteParams {
   query?: string;
 }
 
+export interface ZillowSearchByAddressParams {
+  location?: string;
+  page?: string | number;
+  sortOrder?:
+    | "Homes_for_you"
+    | "Rental_Priority_Score"
+    | "Price_High_to_Low"
+    | "Price_Low_to_High"
+    | "Newest"
+    | "Bedrooms"
+    | "Bathrooms"
+    | "Square_Feet"
+    | "Lot_Size"
+    | "Year_Built"
+    | string;
+  listingStatus?: "For_Sale" | "For_Rent" | "Sold" | string;
+  listPriceRange?: string;
+  monthlyPayment?: string;
+  downPayment?: string | number;
+  bed_min?: "No_Min" | "Studio" | "1" | "2" | "3" | "4" | "5" | string;
+  bed_max?: "No_Max" | "Studio" | "1" | "2" | "3" | "4" | "5" | string;
+  bathrooms?: "Any" | "OnePlus" | "OneHalfPlus" | "TwoPlus" | "ThreePlus" | "FourPlus" | string;
+  homeType?: string;
+  space?: string;
+  maxHOA?: string;
+  incIncompleteHOA?: string | boolean;
+  listingType?: "Any" | "By_Agent" | "By_Owner_and_Other" | string;
+  listingTypeOptions?: string;
+  propertyStatus?: string;
+  tours?: string;
+  parkingSpots?: "Any" | "OnePlus" | "TwoPlus" | "IwoPlus" | "ThreePlus" | "FourPlus" | string;
+  haveGarage?: string | boolean;
+  move_in_date?: string;
+  hideNoDateListings?: string | boolean;
+  squareFeetRange?: string;
+  lotSizeRange?: string;
+  yearBuiltRange?: string;
+  mustHaveBasement?: "No" | "Yes_Finished" | "Yes_Unfinished" | "Yes_Both" | string;
+  singleStoryOnly?: string | boolean;
+  hide55plusComm?: string | boolean;
+  pets?: string;
+  otherAmenities?: string;
+  view?: string;
+  daysOnZillow?: "Any" | string;
+  soldInLast?: string;
+  keywords?: string;
+}
+
+export interface ZillowSearchByUrlParams {
+  url?: string;
+  page?: string | number;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -2752,6 +2805,26 @@ export interface ZillowAutocompleteResult {
 export interface ZillowAutocompleteResponse {
   results?: ZillowAutocompleteResult[];
   source?: string;
+  [key: string]: unknown;
+}
+
+export interface ZillowSearchByAddressResponse {
+  message?: string;
+  source?: string;
+  resultsCount?: Record<string, unknown>;
+  pagesInfo?: Record<string, unknown>;
+  searchResults?: Array<Record<string, unknown>>;
+  [key: string]: unknown;
+}
+
+export interface ZillowSearchByUrlResponse {
+  message?: string;
+  total_results?: number | string;
+  resultsPerPage?: number | string;
+  totalPages?: number | string;
+  currentPage?: number | string;
+  listResultsTitle?: string;
+  Results?: Array<Record<string, unknown>>;
   [key: string]: unknown;
 }
 
@@ -3524,6 +3597,8 @@ export interface MintApiZillowClient {
     params?: ZillowPropertyMinimalByUrlParams,
   ): Promise<T>;
   autocomplete<T = ZillowAutocompleteResponse>(params?: ZillowAutocompleteParams): Promise<T>;
+  searchByAddress<T = ZillowSearchByAddressResponse>(params?: ZillowSearchByAddressParams): Promise<T>;
+  searchByUrl<T = ZillowSearchByUrlResponse>(params?: ZillowSearchByUrlParams): Promise<T>;
 }
 
 export interface MintApiFacebookClient {
