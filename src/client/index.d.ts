@@ -2503,6 +2503,12 @@ export interface ZillowHousingMarketParams {
   exclude_neighborhoods_zhvi?: string | boolean;
 }
 
+export interface ZillowRentalMarketTrendsParams {
+  search_query?: string;
+  bedrooom_type?: "All_Bedrooms" | "Studio" | "1_Bedroom" | "2_Bedroom" | "3_Bedroom" | "4_Bedroom_Plus" | string;
+  home_type?: "All_Property_Types" | "Houses" | "Apartments_and_Condos" | "Townhomes" | string;
+}
+
 export interface ZillowZestimateHistoryParams {
   recent_first?: "True" | "False" | string;
   which?: "zestimate_history" | string;
@@ -3034,6 +3040,13 @@ export interface ZillowHousingMarketResponse {
   market_overview?: Record<string, unknown>;
   market_analytics?: Record<string, unknown>;
   search_url?: string;
+  [key: string]: unknown;
+}
+
+export interface ZillowRentalMarketTrendsResponse {
+  message?: string;
+  source?: string;
+  rental_market_trends?: Record<string, unknown>;
   [key: string]: unknown;
 }
 
@@ -3915,6 +3928,7 @@ export interface MintApiZillowClient {
   searchByAiPrompt<T = ZillowSearchByAiPromptResponse>(params?: ZillowSearchByAiPromptParams): Promise<T>;
   searchOffMarket<T = ZillowSearchOffMarketResponse>(params?: ZillowSearchOffMarketParams): Promise<T>;
   housingMarket<T = ZillowHousingMarketResponse>(params?: ZillowHousingMarketParams): Promise<T>;
+  rentalMarketTrends<T = ZillowRentalMarketTrendsResponse>(params?: ZillowRentalMarketTrendsParams): Promise<T>;
   zestimateHistory<T = ZillowZestimateHistoryResponse>(params?: ZillowZestimateHistoryParams): Promise<T>;
   rentZestimateHistory<T = ZillowRentZestimateHistoryResponse>(
     params?: ZillowRentZestimateHistoryParams,

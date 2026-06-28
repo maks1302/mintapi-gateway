@@ -202,6 +202,17 @@ test("createAgentClient builds endpoint URLs and passes through query params", a
     "https://api.mintapi.dev/api/zillow/housing-market?search_query=Austin%2C+TX&home_type=All_Homes&exclude_rentalMarketTrends=true&exclude_neighborhoods_zhvi=true",
   );
 
+  await client.zillow.rentalMarketTrends({
+    search_query: "Austin, TX",
+    bedrooom_type: "All_Bedrooms",
+    home_type: "All_Property_Types",
+  });
+
+  assert.equal(
+    capturedRequest.url,
+    "https://api.mintapi.dev/api/zillow/rental-market-trends?search_query=Austin%2C+TX&bedrooom_type=All_Bedrooms&home_type=All_Property_Types",
+  );
+
   await client.zillow.zestimateHistory({
     recent_first: "True",
     which: "zestimate_history",

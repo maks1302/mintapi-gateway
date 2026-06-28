@@ -1271,6 +1271,11 @@ export function createAgentClient({
           query: { search_query, home_type, exclude_rentalMarketTrends, exclude_neighborhoods_zhvi },
         });
       },
+      rentalMarketTrends({ search_query, bedrooom_type, home_type } = {}) {
+        return request("/api/zillow/rental-market-trends", {
+          query: { search_query, bedrooom_type, home_type },
+        });
+      },
       zestimateHistory({ recent_first, which, byzpid, byurl, byaddress } = {}) {
         return request("/api/zillow/zestimate-history", {
           query: { recent_first, which, byzpid, byurl, byaddress },
