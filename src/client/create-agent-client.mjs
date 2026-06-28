@@ -1256,6 +1256,11 @@ export function createAgentClient({
           query: { zipCode, includePending, includeClosed },
         });
       },
+      zestimateHistory({ recent_first, which, byzpid, byurl, byaddress } = {}) {
+        return request("/api/zillow/zestimate-history", {
+          query: { recent_first, which, byzpid, byurl, byaddress },
+        });
+      },
     },
     facebook: {
       searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {

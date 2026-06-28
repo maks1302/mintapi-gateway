@@ -2487,6 +2487,14 @@ export interface ZillowSearchOffMarketParams {
   includeClosed?: string | boolean;
 }
 
+export interface ZillowZestimateHistoryParams {
+  recent_first?: "True" | "False" | string;
+  which?: "zestimate_history" | string;
+  byzpid?: string | number;
+  byurl?: string;
+  byaddress?: string;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -2896,6 +2904,15 @@ export interface ZillowSearchOffMarketResponse {
   message?: string;
   source?: string;
   offMarketResults?: Array<Record<string, unknown>>;
+  [key: string]: unknown;
+}
+
+export interface ZillowZestimateHistoryResponse {
+  message?: string;
+  source?: string;
+  GraphType?: string;
+  RecentFirst?: boolean;
+  DataPoints?: Array<Record<string, unknown>> | null;
   [key: string]: unknown;
 }
 
@@ -3676,6 +3693,7 @@ export interface MintApiZillowClient {
   searchByMapBounds<T = ZillowSearchByMapBoundsResponse>(params?: ZillowSearchByMapBoundsParams): Promise<T>;
   searchByAiPrompt<T = ZillowSearchByAiPromptResponse>(params?: ZillowSearchByAiPromptParams): Promise<T>;
   searchOffMarket<T = ZillowSearchOffMarketResponse>(params?: ZillowSearchOffMarketParams): Promise<T>;
+  zestimateHistory<T = ZillowZestimateHistoryResponse>(params?: ZillowZestimateHistoryParams): Promise<T>;
 }
 
 export interface MintApiFacebookClient {
