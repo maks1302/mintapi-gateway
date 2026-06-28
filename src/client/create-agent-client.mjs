@@ -1296,6 +1296,11 @@ export function createAgentClient({
           query: { byzpid, byurl, byaddress },
         });
       },
+      similarProperties({ byzpid, byurl, byaddress, bylotid } = {}) {
+        return request("/api/zillow/similar-properties", {
+          query: { byzpid, byurl, byaddress, bylotid },
+        });
+      },
     },
     facebook: {
       searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {
