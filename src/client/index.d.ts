@@ -2573,6 +2573,12 @@ export interface ZillowPropertyImagesParams {
   byaddress?: string;
 }
 
+export interface ZillowTaxInfoHistoryParams {
+  byzpid?: string | number;
+  byurl?: string;
+  byaddress?: string;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -3054,6 +3060,20 @@ export interface ZillowPropertyImagesResponse {
   hiResImageLink?: string;
   streetViewImageUrl?: string | null;
   originalPhotos?: Array<Record<string, unknown>>;
+  [key: string]: unknown;
+}
+
+export interface ZillowTaxInfoHistoryResponse {
+  message?: string;
+  source?: string;
+  taxHistory?: Array<{
+    time?: number;
+    taxPaid?: number | null;
+    taxIncreaseRate?: number;
+    value?: number;
+    valueIncreaseRate?: number;
+    [key: string]: unknown;
+  }>;
   [key: string]: unknown;
 }
 
@@ -3850,6 +3870,7 @@ export interface MintApiZillowClient {
   nearbyProperties<T = ZillowNearbyPropertiesResponse>(params?: ZillowNearbyPropertiesParams): Promise<T>;
   climate<T = ZillowClimateResponse>(params?: ZillowClimateParams): Promise<T>;
   propertyImages<T = ZillowPropertyImagesResponse>(params?: ZillowPropertyImagesParams): Promise<T>;
+  taxInfoHistory<T = ZillowTaxInfoHistoryResponse>(params?: ZillowTaxInfoHistoryParams): Promise<T>;
 }
 
 export interface MintApiFacebookClient {

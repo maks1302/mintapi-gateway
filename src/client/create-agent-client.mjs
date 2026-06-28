@@ -1316,6 +1316,11 @@ export function createAgentClient({
           query: { byzpid, byurl, byaddress },
         });
       },
+      taxInfoHistory({ byzpid, byurl, byaddress } = {}) {
+        return request("/api/zillow/tax-info-history", {
+          query: { byzpid, byurl, byaddress },
+        });
+      },
     },
     facebook: {
       searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {
