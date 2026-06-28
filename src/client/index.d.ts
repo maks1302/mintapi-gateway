@@ -2511,6 +2511,14 @@ export interface ZillowListingPriceParams {
   byaddress?: string;
 }
 
+export interface ZillowZestimatePercentChangeParams {
+  recent_first?: "True" | "False" | string;
+  which?: "zestimate_percent_change" | string;
+  byzpid?: string | number;
+  byurl?: string;
+  byaddress?: string;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -2935,6 +2943,8 @@ export interface ZillowZestimateHistoryResponse {
 export interface ZillowRentZestimateHistoryResponse extends ZillowZestimateHistoryResponse {}
 
 export interface ZillowListingPriceResponse extends ZillowZestimateHistoryResponse {}
+
+export interface ZillowZestimatePercentChangeResponse extends ZillowZestimateHistoryResponse {}
 
 export interface YelpReviewsResponse {
   input_url?: string;
@@ -3718,6 +3728,9 @@ export interface MintApiZillowClient {
     params?: ZillowRentZestimateHistoryParams,
   ): Promise<T>;
   listingPrice<T = ZillowListingPriceResponse>(params?: ZillowListingPriceParams): Promise<T>;
+  zestimatePercentChange<T = ZillowZestimatePercentChangeResponse>(
+    params?: ZillowZestimatePercentChangeParams,
+  ): Promise<T>;
 }
 
 export interface MintApiFacebookClient {
