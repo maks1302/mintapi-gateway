@@ -233,6 +233,17 @@ test("createAgentClient builds endpoint URLs and passes through query params", a
     capturedRequest.url,
     "https://api.mintapi.dev/api/zillow/zestimate-percent-change?recent_first=True&which=zestimate_percent_change&byzpid=30907787",
   );
+
+  await client.zillow.taxAssessment({
+    recent_first: "True",
+    which: "tax_assessment",
+    byzpid: "30907787",
+  });
+
+  assert.equal(
+    capturedRequest.url,
+    "https://api.mintapi.dev/api/zillow/tax-assessment?recent_first=True&which=tax_assessment&byzpid=30907787",
+  );
 });
 
 test("defineSignerModule normalizes preferred networks and signer resolver", async () => {
