@@ -2495,6 +2495,14 @@ export interface ZillowZestimateHistoryParams {
   byaddress?: string;
 }
 
+export interface ZillowRentZestimateHistoryParams {
+  recent_first?: "True" | "False" | string;
+  which?: "rent_zestimate_history" | string;
+  byzpid?: string | number;
+  byurl?: string;
+  byaddress?: string;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -2915,6 +2923,8 @@ export interface ZillowZestimateHistoryResponse {
   DataPoints?: Array<Record<string, unknown>> | null;
   [key: string]: unknown;
 }
+
+export interface ZillowRentZestimateHistoryResponse extends ZillowZestimateHistoryResponse {}
 
 export interface YelpReviewsResponse {
   input_url?: string;
@@ -3694,6 +3704,9 @@ export interface MintApiZillowClient {
   searchByAiPrompt<T = ZillowSearchByAiPromptResponse>(params?: ZillowSearchByAiPromptParams): Promise<T>;
   searchOffMarket<T = ZillowSearchOffMarketResponse>(params?: ZillowSearchOffMarketParams): Promise<T>;
   zestimateHistory<T = ZillowZestimateHistoryResponse>(params?: ZillowZestimateHistoryParams): Promise<T>;
+  rentZestimateHistory<T = ZillowRentZestimateHistoryResponse>(
+    params?: ZillowRentZestimateHistoryParams,
+  ): Promise<T>;
 }
 
 export interface MintApiFacebookClient {
