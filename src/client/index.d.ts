@@ -2554,6 +2554,13 @@ export interface ZillowSimilarPropertiesParams {
   bylotid?: string | number;
 }
 
+export interface ZillowNearbyPropertiesParams {
+  byzpid?: string | number;
+  byurl?: string;
+  byaddress?: string;
+  bylotid?: string | number;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -3007,6 +3014,13 @@ export interface ZillowSimilarPropertiesResponse {
   message?: string;
   source?: string;
   similar_properties?: Record<string, unknown>;
+  [key: string]: unknown;
+}
+
+export interface ZillowNearbyPropertiesResponse {
+  message?: string;
+  source?: string;
+  nearby_properties?: Array<Record<string, unknown>>;
   [key: string]: unknown;
 }
 
@@ -3800,6 +3814,7 @@ export interface MintApiZillowClient {
   ownerAgent<T = ZillowOwnerAgentResponse>(params?: ZillowOwnerAgentParams): Promise<T>;
   comparableHomes<T = ZillowComparableHomesResponse>(params?: ZillowComparableHomesParams): Promise<T>;
   similarProperties<T = ZillowSimilarPropertiesResponse>(params?: ZillowSimilarPropertiesParams): Promise<T>;
+  nearbyProperties<T = ZillowNearbyPropertiesResponse>(params?: ZillowNearbyPropertiesParams): Promise<T>;
 }
 
 export interface MintApiFacebookClient {
