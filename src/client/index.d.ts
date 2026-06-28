@@ -2579,6 +2579,12 @@ export interface ZillowTaxInfoHistoryParams {
   byaddress?: string;
 }
 
+export interface ZillowWalkTransitBikeParams {
+  byzpid?: string | number;
+  byurl?: string;
+  byaddress?: string;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -3074,6 +3080,18 @@ export interface ZillowTaxInfoHistoryResponse {
     valueIncreaseRate?: number;
     [key: string]: unknown;
   }>;
+  [key: string]: unknown;
+}
+
+export interface ZillowWalkTransitBikeResponse {
+  message?: string;
+  source?: string;
+  walk_transit_bike?: {
+    walkScore?: Record<string, unknown> | null;
+    transitScore?: Record<string, unknown> | null;
+    bikeScore?: Record<string, unknown> | null;
+    [key: string]: unknown;
+  };
   [key: string]: unknown;
 }
 
@@ -3871,6 +3889,7 @@ export interface MintApiZillowClient {
   climate<T = ZillowClimateResponse>(params?: ZillowClimateParams): Promise<T>;
   propertyImages<T = ZillowPropertyImagesResponse>(params?: ZillowPropertyImagesParams): Promise<T>;
   taxInfoHistory<T = ZillowTaxInfoHistoryResponse>(params?: ZillowTaxInfoHistoryParams): Promise<T>;
+  walkTransitBike<T = ZillowWalkTransitBikeResponse>(params?: ZillowWalkTransitBikeParams): Promise<T>;
 }
 
 export interface MintApiFacebookClient {

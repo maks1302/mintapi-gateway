@@ -334,6 +334,17 @@ test("createAgentClient builds endpoint URLs and passes through query params", a
     capturedRequest.url,
     "https://api.mintapi.dev/api/zillow/tax-info-history?byzpid=44466838&byurl=https%3A%2F%2Fwww.zillow.com%2Fhomedetails%2F3-W-Forest-Dr-Rochester-NY-14624%2F30907787_zpid%2F&byaddress=3+W+Forest+Dr%2C+Rochester%2C+NY+14624",
   );
+
+  await client.zillow.walkTransitBike({
+    byzpid: "44466838",
+    byurl: "https://www.zillow.com/homedetails/3-W-Forest-Dr-Rochester-NY-14624/30907787_zpid/",
+    byaddress: "3 W Forest Dr, Rochester, NY 14624",
+  });
+
+  assert.equal(
+    capturedRequest.url,
+    "https://api.mintapi.dev/api/zillow/walk-transit-bike?byzpid=44466838&byurl=https%3A%2F%2Fwww.zillow.com%2Fhomedetails%2F3-W-Forest-Dr-Rochester-NY-14624%2F30907787_zpid%2F&byaddress=3+W+Forest+Dr%2C+Rochester%2C+NY+14624",
+  );
 });
 
 test("defineSignerModule normalizes preferred networks and signer resolver", async () => {

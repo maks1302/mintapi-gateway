@@ -1321,6 +1321,11 @@ export function createAgentClient({
           query: { byzpid, byurl, byaddress },
         });
       },
+      walkTransitBike({ byzpid, byurl, byaddress } = {}) {
+        return request("/api/zillow/walk-transit-bike", {
+          query: { byzpid, byurl, byaddress },
+        });
+      },
     },
     facebook: {
       searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {
