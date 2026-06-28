@@ -255,6 +255,17 @@ test("createAgentClient builds endpoint URLs and passes through query params", a
     capturedRequest.url,
     "https://api.mintapi.dev/api/zillow/tax-paid?recent_first=True&which=tax_paid&byzpid=30907787",
   );
+
+  await client.zillow.ownerAgent({
+    byzpid: "30696332",
+    byurl: "https://www.zillow.com/homedetails/220-77th-St-Brooklyn-NY-11209/30696332_zpid/",
+    byaddress: "220 77th St, Brooklyn, NY 11209",
+  });
+
+  assert.equal(
+    capturedRequest.url,
+    "https://api.mintapi.dev/api/zillow/owner-agent?byzpid=30696332&byurl=https%3A%2F%2Fwww.zillow.com%2Fhomedetails%2F220-77th-St-Brooklyn-NY-11209%2F30696332_zpid%2F&byaddress=220+77th+St%2C+Brooklyn%2C+NY+11209",
+  );
 });
 
 test("defineSignerModule normalizes preferred networks and signer resolver", async () => {

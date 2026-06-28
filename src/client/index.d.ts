@@ -2535,6 +2535,12 @@ export interface ZillowTaxPaidParams {
   byaddress?: string;
 }
 
+export interface ZillowOwnerAgentParams {
+  byzpid?: string | number;
+  byurl?: string;
+  byaddress?: string;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -2965,6 +2971,16 @@ export interface ZillowZestimatePercentChangeResponse extends ZillowZestimateHis
 export interface ZillowTaxAssessmentResponse extends ZillowZestimateHistoryResponse {}
 
 export interface ZillowTaxPaidResponse extends ZillowZestimateHistoryResponse {}
+
+export interface ZillowOwnerAgentResponse {
+  message?: string;
+  source?: string;
+  zpid?: string;
+  isListedByOwner?: boolean;
+  forSaleOrSold_ListingContact?: Record<string, unknown> | null;
+  rentalListingContact?: Record<string, unknown> | null;
+  [key: string]: unknown;
+}
 
 export interface YelpReviewsResponse {
   input_url?: string;
@@ -3753,6 +3769,7 @@ export interface MintApiZillowClient {
   ): Promise<T>;
   taxAssessment<T = ZillowTaxAssessmentResponse>(params?: ZillowTaxAssessmentParams): Promise<T>;
   taxPaid<T = ZillowTaxPaidResponse>(params?: ZillowTaxPaidParams): Promise<T>;
+  ownerAgent<T = ZillowOwnerAgentResponse>(params?: ZillowOwnerAgentParams): Promise<T>;
 }
 
 export interface MintApiFacebookClient {

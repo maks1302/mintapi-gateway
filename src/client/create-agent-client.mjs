@@ -1286,6 +1286,11 @@ export function createAgentClient({
           query: { recent_first, which, byzpid, byurl, byaddress },
         });
       },
+      ownerAgent({ byzpid, byurl, byaddress } = {}) {
+        return request("/api/zillow/owner-agent", {
+          query: { byzpid, byurl, byaddress },
+        });
+      },
     },
     facebook: {
       searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {
