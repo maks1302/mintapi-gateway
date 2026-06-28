@@ -931,6 +931,11 @@ export function createAgentClient({
           query: { propertyaddress },
         });
       },
+      apartmentDetails({ bylotid, byapturl } = {}) {
+        return request("/api/zillow/apartment-details", {
+          query: { bylotid, byapturl },
+        });
+      },
       searchByAddress({
         location,
         page,

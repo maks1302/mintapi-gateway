@@ -354,6 +354,16 @@ test("createAgentClient builds endpoint URLs and passes through query params", a
     capturedRequest.url,
     "https://api.mintapi.dev/api/zillow/lot-id-from-address?propertyaddress=131+Great+Circle+Rd%2C+Nashville%2C+TN+37228",
   );
+
+  await client.zillow.apartmentDetails({
+    bylotid: "1001422626",
+    byapturl: "https://www.zillow.com/apartments/nashville-tn/parkwood-villa/5XhxdJ/",
+  });
+
+  assert.equal(
+    capturedRequest.url,
+    "https://api.mintapi.dev/api/zillow/apartment-details?bylotid=1001422626&byapturl=https%3A%2F%2Fwww.zillow.com%2Fapartments%2Fnashville-tn%2Fparkwood-villa%2F5XhxdJ%2F",
+  );
 });
 
 test("defineSignerModule normalizes preferred networks and signer resolver", async () => {
