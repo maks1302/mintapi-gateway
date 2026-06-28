@@ -2463,6 +2463,24 @@ export interface ZillowSearchByMapBoundsParams extends Omit<ZillowSearchByAddres
   westLongitude?: string | number;
 }
 
+export interface ZillowSearchByAiPromptParams {
+  ai_search_prompt?: string;
+  page?: string | number;
+  sortOrder?:
+    | "Homes_for_you"
+    | "Rental_Priority_Score"
+    | "Price_High_to_Low"
+    | "Price_Low_to_High"
+    | "Newest"
+    | "Bedrooms"
+    | "Bathrooms"
+    | "Square_Feet"
+    | "Lot_Size"
+    | "Year_Built"
+    | string;
+  keywords?: string;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -2865,6 +2883,8 @@ export interface ZillowSearchByPolygonResponse extends ZillowSearchByAddressResp
 export interface ZillowSearchByCoordinatesResponse extends ZillowSearchByAddressResponse {}
 
 export interface ZillowSearchByMapBoundsResponse extends ZillowSearchByAddressResponse {}
+
+export interface ZillowSearchByAiPromptResponse extends ZillowSearchByAddressResponse {}
 
 export interface YelpReviewsResponse {
   input_url?: string;
@@ -3641,6 +3661,7 @@ export interface MintApiZillowClient {
   searchByPolygon<T = ZillowSearchByPolygonResponse>(params?: ZillowSearchByPolygonParams): Promise<T>;
   searchByCoordinates<T = ZillowSearchByCoordinatesResponse>(params?: ZillowSearchByCoordinatesParams): Promise<T>;
   searchByMapBounds<T = ZillowSearchByMapBoundsResponse>(params?: ZillowSearchByMapBoundsParams): Promise<T>;
+  searchByAiPrompt<T = ZillowSearchByAiPromptResponse>(params?: ZillowSearchByAiPromptParams): Promise<T>;
 }
 
 export interface MintApiFacebookClient {

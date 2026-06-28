@@ -1246,6 +1246,11 @@ export function createAgentClient({
           },
         });
       },
+      searchByAiPrompt({ ai_search_prompt, page, sortOrder, keywords } = {}) {
+        return request("/api/zillow/search-by-ai-prompt", {
+          query: { ai_search_prompt, page, sortOrder, keywords },
+        });
+      },
     },
     facebook: {
       searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {
