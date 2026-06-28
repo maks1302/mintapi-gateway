@@ -312,6 +312,17 @@ test("createAgentClient builds endpoint URLs and passes through query params", a
     capturedRequest.url,
     "https://api.mintapi.dev/api/zillow/climate?byzpid=245422059&byurl=https%3A%2F%2Fwww.zillow.com%2Fhomedetails%2F84-55-Daniels-St-APT-6E-Jamaica-NY-11435%2F245422059_zpid%2F&byaddress=8455+Daniels+Street+%236E%2C+Briarwood%2C+NY+11435",
   );
+
+  await client.zillow.propertyImages({
+    byzpid: "44472566",
+    byurl: "https://www.zillow.com/homedetails/415-South-St-APT-202-Honolulu-HI-96813/2089316022_zpid/",
+    byaddress: "1221 Victoria St APT 301, Honolulu, HI 96814",
+  });
+
+  assert.equal(
+    capturedRequest.url,
+    "https://api.mintapi.dev/api/zillow/property-images?byzpid=44472566&byurl=https%3A%2F%2Fwww.zillow.com%2Fhomedetails%2F415-South-St-APT-202-Honolulu-HI-96813%2F2089316022_zpid%2F&byaddress=1221+Victoria+St+APT+301%2C+Honolulu%2C+HI+96814",
+  );
 });
 
 test("defineSignerModule normalizes preferred networks and signer resolver", async () => {

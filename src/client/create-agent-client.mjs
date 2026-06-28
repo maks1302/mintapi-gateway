@@ -1311,6 +1311,11 @@ export function createAgentClient({
           query: { byzpid, byurl, byaddress },
         });
       },
+      propertyImages({ byzpid, byurl, byaddress } = {}) {
+        return request("/api/zillow/property-images", {
+          query: { byzpid, byurl, byaddress },
+        });
+      },
     },
     facebook: {
       searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {

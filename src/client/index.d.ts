@@ -2567,6 +2567,12 @@ export interface ZillowClimateParams {
   byaddress?: string;
 }
 
+export interface ZillowPropertyImagesParams {
+  byzpid?: string | number;
+  byurl?: string;
+  byaddress?: string;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -3038,6 +3044,16 @@ export interface ZillowClimateResponse {
   heatSources?: Record<string, unknown>;
   windSources?: Record<string, unknown>;
   airSources?: Record<string, unknown>;
+  [key: string]: unknown;
+}
+
+export interface ZillowPropertyImagesResponse {
+  message?: string;
+  source?: string;
+  propertyURL?: string;
+  hiResImageLink?: string;
+  streetViewImageUrl?: string | null;
+  originalPhotos?: Array<Record<string, unknown>>;
   [key: string]: unknown;
 }
 
@@ -3833,6 +3849,7 @@ export interface MintApiZillowClient {
   similarProperties<T = ZillowSimilarPropertiesResponse>(params?: ZillowSimilarPropertiesParams): Promise<T>;
   nearbyProperties<T = ZillowNearbyPropertiesResponse>(params?: ZillowNearbyPropertiesParams): Promise<T>;
   climate<T = ZillowClimateResponse>(params?: ZillowClimateParams): Promise<T>;
+  propertyImages<T = ZillowPropertyImagesResponse>(params?: ZillowPropertyImagesParams): Promise<T>;
 }
 
 export interface MintApiFacebookClient {
