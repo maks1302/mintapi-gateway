@@ -2385,6 +2385,10 @@ export interface ZillowAutocompleteParams {
   query?: string;
 }
 
+export interface ZillowLotIdFromAddressParams {
+  propertyaddress?: string;
+}
+
 export interface ZillowSearchByAddressParams {
   location?: string;
   page?: string | number;
@@ -2952,6 +2956,13 @@ export interface ZillowAutocompleteResult {
 export interface ZillowAutocompleteResponse {
   results?: ZillowAutocompleteResult[];
   source?: string;
+  [key: string]: unknown;
+}
+
+export interface ZillowLotIdFromAddressResponse {
+  message?: string;
+  source?: string;
+  results?: Array<Record<string, unknown>>;
   [key: string]: unknown;
 }
 
@@ -3864,6 +3875,7 @@ export interface MintApiZillowClient {
     params?: ZillowPropertyMinimalByUrlParams,
   ): Promise<T>;
   autocomplete<T = ZillowAutocompleteResponse>(params?: ZillowAutocompleteParams): Promise<T>;
+  lotIdFromAddress<T = ZillowLotIdFromAddressResponse>(params?: ZillowLotIdFromAddressParams): Promise<T>;
   searchByAddress<T = ZillowSearchByAddressResponse>(params?: ZillowSearchByAddressParams): Promise<T>;
   searchByUrl<T = ZillowSearchByUrlResponse>(params?: ZillowSearchByUrlParams): Promise<T>;
   searchByMls<T = ZillowSearchByMlsResponse>(params?: ZillowSearchByMlsParams): Promise<T>;

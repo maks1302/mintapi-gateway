@@ -926,6 +926,11 @@ export function createAgentClient({
           query: { query },
         });
       },
+      lotIdFromAddress({ propertyaddress } = {}) {
+        return request("/api/zillow/lot-id-from-address", {
+          query: { propertyaddress },
+        });
+      },
       searchByAddress({
         location,
         page,
