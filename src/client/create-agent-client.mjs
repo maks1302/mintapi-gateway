@@ -1266,6 +1266,11 @@ export function createAgentClient({
           query: { zipCode, includePending, includeClosed },
         });
       },
+      housingMarket({ search_query, home_type, exclude_rentalMarketTrends, exclude_neighborhoods_zhvi } = {}) {
+        return request("/api/zillow/housing-market", {
+          query: { search_query, home_type, exclude_rentalMarketTrends, exclude_neighborhoods_zhvi },
+        });
+      },
       zestimateHistory({ recent_first, which, byzpid, byurl, byaddress } = {}) {
         return request("/api/zillow/zestimate-history", {
           query: { recent_first, which, byzpid, byurl, byaddress },

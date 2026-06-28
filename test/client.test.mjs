@@ -190,6 +190,18 @@ test("createAgentClient builds endpoint URLs and passes through query params", a
   assert.equal(capturedRequest.method, "GET");
   assert.equal(capturedRequest.headers.get("Accept"), "application/json");
 
+  await client.zillow.housingMarket({
+    search_query: "Austin, TX",
+    home_type: "All_Homes",
+    exclude_rentalMarketTrends: "true",
+    exclude_neighborhoods_zhvi: "true",
+  });
+
+  assert.equal(
+    capturedRequest.url,
+    "https://api.mintapi.dev/api/zillow/housing-market?search_query=Austin%2C+TX&home_type=All_Homes&exclude_rentalMarketTrends=true&exclude_neighborhoods_zhvi=true",
+  );
+
   await client.zillow.zestimateHistory({
     recent_first: "True",
     which: "zestimate_history",
