@@ -2481,6 +2481,12 @@ export interface ZillowSearchByAiPromptParams {
   keywords?: string;
 }
 
+export interface ZillowSearchOffMarketParams {
+  zipCode?: string;
+  includePending?: string | boolean;
+  includeClosed?: string | boolean;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -2885,6 +2891,13 @@ export interface ZillowSearchByCoordinatesResponse extends ZillowSearchByAddress
 export interface ZillowSearchByMapBoundsResponse extends ZillowSearchByAddressResponse {}
 
 export interface ZillowSearchByAiPromptResponse extends ZillowSearchByAddressResponse {}
+
+export interface ZillowSearchOffMarketResponse {
+  message?: string;
+  source?: string;
+  offMarketResults?: Array<Record<string, unknown>>;
+  [key: string]: unknown;
+}
 
 export interface YelpReviewsResponse {
   input_url?: string;
@@ -3662,6 +3675,7 @@ export interface MintApiZillowClient {
   searchByCoordinates<T = ZillowSearchByCoordinatesResponse>(params?: ZillowSearchByCoordinatesParams): Promise<T>;
   searchByMapBounds<T = ZillowSearchByMapBoundsResponse>(params?: ZillowSearchByMapBoundsParams): Promise<T>;
   searchByAiPrompt<T = ZillowSearchByAiPromptResponse>(params?: ZillowSearchByAiPromptParams): Promise<T>;
+  searchOffMarket<T = ZillowSearchOffMarketResponse>(params?: ZillowSearchOffMarketParams): Promise<T>;
 }
 
 export interface MintApiFacebookClient {

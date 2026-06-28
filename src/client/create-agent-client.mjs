@@ -1251,6 +1251,11 @@ export function createAgentClient({
           query: { ai_search_prompt, page, sortOrder, keywords },
         });
       },
+      searchOffMarket({ zipCode, includePending, includeClosed } = {}) {
+        return request("/api/zillow/search-off-market", {
+          query: { zipCode, includePending, includeClosed },
+        });
+      },
     },
     facebook: {
       searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {
