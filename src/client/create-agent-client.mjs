@@ -1281,6 +1281,11 @@ export function createAgentClient({
           query: { recent_first, which, byzpid, byurl, byaddress },
         });
       },
+      taxPaid({ recent_first, which, byzpid, byurl, byaddress } = {}) {
+        return request("/api/zillow/tax-paid", {
+          query: { recent_first, which, byzpid, byurl, byaddress },
+        });
+      },
     },
     facebook: {
       searchGlobal({ query, cursor, recent_posts, location_uid, start_date, end_date } = {}) {

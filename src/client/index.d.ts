@@ -2527,6 +2527,14 @@ export interface ZillowTaxAssessmentParams {
   byaddress?: string;
 }
 
+export interface ZillowTaxPaidParams {
+  recent_first?: "True" | "False" | string;
+  which?: "tax_paid" | string;
+  byzpid?: string | number;
+  byurl?: string;
+  byaddress?: string;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -2955,6 +2963,8 @@ export interface ZillowListingPriceResponse extends ZillowZestimateHistoryRespon
 export interface ZillowZestimatePercentChangeResponse extends ZillowZestimateHistoryResponse {}
 
 export interface ZillowTaxAssessmentResponse extends ZillowZestimateHistoryResponse {}
+
+export interface ZillowTaxPaidResponse extends ZillowZestimateHistoryResponse {}
 
 export interface YelpReviewsResponse {
   input_url?: string;
@@ -3742,6 +3752,7 @@ export interface MintApiZillowClient {
     params?: ZillowZestimatePercentChangeParams,
   ): Promise<T>;
   taxAssessment<T = ZillowTaxAssessmentResponse>(params?: ZillowTaxAssessmentParams): Promise<T>;
+  taxPaid<T = ZillowTaxPaidResponse>(params?: ZillowTaxPaidParams): Promise<T>;
 }
 
 export interface MintApiFacebookClient {
