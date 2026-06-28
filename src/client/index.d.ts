@@ -2450,6 +2450,12 @@ export interface ZillowSearchByPolygonParams extends Omit<ZillowSearchByAddressP
   polygon?: string;
 }
 
+export interface ZillowSearchByCoordinatesParams extends Omit<ZillowSearchByAddressParams, "location"> {
+  latitude?: string | number;
+  longitude?: string | number;
+  radius?: string | number;
+}
+
 export interface FacebookSearchGlobalParams {
   query?: string;
   cursor?: string;
@@ -2848,6 +2854,8 @@ export interface ZillowSearchByMlsResponse {
 }
 
 export interface ZillowSearchByPolygonResponse extends ZillowSearchByAddressResponse {}
+
+export interface ZillowSearchByCoordinatesResponse extends ZillowSearchByAddressResponse {}
 
 export interface YelpReviewsResponse {
   input_url?: string;
@@ -3622,6 +3630,7 @@ export interface MintApiZillowClient {
   searchByUrl<T = ZillowSearchByUrlResponse>(params?: ZillowSearchByUrlParams): Promise<T>;
   searchByMls<T = ZillowSearchByMlsResponse>(params?: ZillowSearchByMlsParams): Promise<T>;
   searchByPolygon<T = ZillowSearchByPolygonResponse>(params?: ZillowSearchByPolygonParams): Promise<T>;
+  searchByCoordinates<T = ZillowSearchByCoordinatesResponse>(params?: ZillowSearchByCoordinatesParams): Promise<T>;
 }
 
 export interface MintApiFacebookClient {
