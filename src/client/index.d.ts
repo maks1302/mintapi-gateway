@@ -2536,6 +2536,12 @@ export interface ZillowAgentSoldPropertiesParams {
   page?: string | number;
 }
 
+export interface ZillowAgentReviewsParams {
+  encodedZuid: string;
+  page?: string | number;
+  sortby?: "newest_first" | "rating_high_to_low" | "rating_low_to_high" | string;
+}
+
 export interface ZillowZestimateHistoryParams {
   recent_first?: "True" | "False" | string;
   which?: "zestimate_history" | string;
@@ -3113,6 +3119,13 @@ export interface ZillowAgentSoldPropertiesResponse {
   source?: string;
   pastSales?: Array<Record<string, unknown>>;
   pastSalesCount?: number;
+  [key: string]: unknown;
+}
+
+export interface ZillowAgentReviewsResponse {
+  message?: string;
+  source?: string;
+  reviews?: Array<Record<string, unknown>>;
   [key: string]: unknown;
 }
 
@@ -4001,6 +4014,7 @@ export interface MintApiZillowClient {
     params: ZillowAgentForRentPropertiesParams,
   ): Promise<T>;
   agentSoldProperties<T = ZillowAgentSoldPropertiesResponse>(params: ZillowAgentSoldPropertiesParams): Promise<T>;
+  agentReviews<T = ZillowAgentReviewsResponse>(params: ZillowAgentReviewsParams): Promise<T>;
   zestimateHistory<T = ZillowZestimateHistoryResponse>(params?: ZillowZestimateHistoryParams): Promise<T>;
   rentZestimateHistory<T = ZillowRentZestimateHistoryResponse>(
     params?: ZillowRentZestimateHistoryParams,

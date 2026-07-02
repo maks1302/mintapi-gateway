@@ -1306,6 +1306,11 @@ export function createAgentClient({
           query: { encodedZuid, page },
         });
       },
+      agentReviews({ encodedZuid, page, sortby } = {}) {
+        return request("/api/zillow/agent-reviews", {
+          query: { encodedZuid, page, sortby },
+        });
+      },
       zestimateHistory({ recent_first, which, byzpid, byurl, byaddress } = {}) {
         return request("/api/zillow/zestimate-history", {
           query: { recent_first, which, byzpid, byurl, byaddress },
