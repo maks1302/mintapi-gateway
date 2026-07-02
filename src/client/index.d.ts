@@ -2542,6 +2542,8 @@ export interface ZillowAgentReviewsParams {
   sortby?: "newest_first" | "rating_high_to_low" | "rating_low_to_high" | string;
 }
 
+export interface ZillowCurrentMortgageRatesParams {}
+
 export interface ZillowZestimateHistoryParams {
   recent_first?: "True" | "False" | string;
   which?: "zestimate_history" | string;
@@ -3127,6 +3129,23 @@ export interface ZillowAgentReviewsResponse {
   source?: string;
   reviews?: Array<Record<string, unknown>>;
   [key: string]: unknown;
+}
+
+export interface ZillowCurrentMortgageRatesResponse {
+  [loanProduct: string]: {
+    rate?: string;
+    productType?: string;
+    datePriced?: string;
+    apr?: string;
+    pointsPaid?: string;
+    monthlyPayment?: string;
+    pointsPaidDollar?: string;
+    miUpfrontPercent?: string;
+    miUpfrontDollar?: string;
+    miMonthlyPremiumPercent?: string;
+    miMonthlyPremiumDollar?: string;
+    [key: string]: unknown;
+  };
 }
 
 export interface ZillowZestimateHistoryResponse {
@@ -4015,6 +4034,7 @@ export interface MintApiZillowClient {
   ): Promise<T>;
   agentSoldProperties<T = ZillowAgentSoldPropertiesResponse>(params: ZillowAgentSoldPropertiesParams): Promise<T>;
   agentReviews<T = ZillowAgentReviewsResponse>(params: ZillowAgentReviewsParams): Promise<T>;
+  currentMortgageRates<T = ZillowCurrentMortgageRatesResponse>(): Promise<T>;
   zestimateHistory<T = ZillowZestimateHistoryResponse>(params?: ZillowZestimateHistoryParams): Promise<T>;
   rentZestimateHistory<T = ZillowRentZestimateHistoryResponse>(
     params?: ZillowRentZestimateHistoryParams,

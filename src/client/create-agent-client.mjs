@@ -1311,6 +1311,9 @@ export function createAgentClient({
           query: { encodedZuid, page, sortby },
         });
       },
+      currentMortgageRates() {
+        return request("/api/zillow/current-mortgage-rates");
+      },
       zestimateHistory({ recent_first, which, byzpid, byurl, byaddress } = {}) {
         return request("/api/zillow/zestimate-history", {
           query: { recent_first, which, byzpid, byurl, byaddress },
