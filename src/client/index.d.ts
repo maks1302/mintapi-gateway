@@ -2509,6 +2509,18 @@ export interface ZillowRentalMarketTrendsParams {
   home_type?: "All_Property_Types" | "Houses" | "Apartments_and_Condos" | "Townhomes" | string;
 }
 
+export interface ZillowAgentSearchParams {
+  location?: string;
+  agentName?: string;
+  page?: string | number;
+  isBuying?: string | boolean;
+  isSelling?: string | boolean;
+  isTopAgent?: string | boolean;
+  priceRange?: string;
+  specialties?: string;
+  languages?: string;
+}
+
 export interface ZillowZestimateHistoryParams {
   recent_first?: "True" | "False" | string;
   which?: "zestimate_history" | string;
@@ -3047,6 +3059,22 @@ export interface ZillowRentalMarketTrendsResponse {
   message?: string;
   source?: string;
   rental_market_trends?: Record<string, unknown>;
+  [key: string]: unknown;
+}
+
+export interface ZillowAgentSearchResponse {
+  source?: string;
+  agents?: Array<{
+    name?: string;
+    link?: string;
+    username?: string;
+    encodedZuid?: string;
+    imageUrl?: string;
+    isTopAgent?: boolean;
+    profileData?: Array<Record<string, unknown>>;
+    reviewInformation?: Record<string, unknown>;
+    [key: string]: unknown;
+  }>;
   [key: string]: unknown;
 }
 
@@ -3929,6 +3957,7 @@ export interface MintApiZillowClient {
   searchOffMarket<T = ZillowSearchOffMarketResponse>(params?: ZillowSearchOffMarketParams): Promise<T>;
   housingMarket<T = ZillowHousingMarketResponse>(params?: ZillowHousingMarketParams): Promise<T>;
   rentalMarketTrends<T = ZillowRentalMarketTrendsResponse>(params?: ZillowRentalMarketTrendsParams): Promise<T>;
+  agentSearch<T = ZillowAgentSearchResponse>(params?: ZillowAgentSearchParams): Promise<T>;
   zestimateHistory<T = ZillowZestimateHistoryResponse>(params?: ZillowZestimateHistoryParams): Promise<T>;
   rentZestimateHistory<T = ZillowRentZestimateHistoryResponse>(
     params?: ZillowRentZestimateHistoryParams,

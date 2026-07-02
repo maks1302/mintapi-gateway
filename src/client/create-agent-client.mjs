@@ -1276,6 +1276,21 @@ export function createAgentClient({
           query: { search_query, bedrooom_type, home_type },
         });
       },
+      agentSearch({
+        location,
+        agentName,
+        page,
+        isBuying,
+        isSelling,
+        isTopAgent,
+        priceRange,
+        specialties,
+        languages,
+      } = {}) {
+        return request("/api/zillow/agent-search", {
+          query: { location, agentName, page, isBuying, isSelling, isTopAgent, priceRange, specialties, languages },
+        });
+      },
       zestimateHistory({ recent_first, which, byzpid, byurl, byaddress } = {}) {
         return request("/api/zillow/zestimate-history", {
           query: { recent_first, which, byzpid, byurl, byaddress },

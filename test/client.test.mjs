@@ -213,6 +213,21 @@ test("createAgentClient builds endpoint URLs and passes through query params", a
     "https://api.mintapi.dev/api/zillow/rental-market-trends?search_query=Austin%2C+TX&bedrooom_type=All_Bedrooms&home_type=All_Property_Types",
   );
 
+  await client.zillow.agentSearch({
+    location: "10001",
+    agentName: "Alex",
+    page: 1,
+    isBuying: true,
+    priceRange: "300000,10000000",
+    specialties: "first-time-home-buyers,luxury-homes",
+    languages: "spanish",
+  });
+
+  assert.equal(
+    capturedRequest.url,
+    "https://api.mintapi.dev/api/zillow/agent-search?location=10001&agentName=Alex&page=1&isBuying=true&priceRange=300000%2C10000000&specialties=first-time-home-buyers%2Cluxury-homes&languages=spanish",
+  );
+
   await client.zillow.zestimateHistory({
     recent_first: "True",
     which: "zestimate_history",
