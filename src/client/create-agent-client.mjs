@@ -1301,6 +1301,11 @@ export function createAgentClient({
           query: { encodedZuid, page },
         });
       },
+      agentSoldProperties({ encodedZuid, page } = {}) {
+        return request("/api/zillow/agent-sold-properties", {
+          query: { encodedZuid, page },
+        });
+      },
       zestimateHistory({ recent_first, which, byzpid, byurl, byaddress } = {}) {
         return request("/api/zillow/zestimate-history", {
           query: { recent_first, which, byzpid, byurl, byaddress },
