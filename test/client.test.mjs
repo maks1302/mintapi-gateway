@@ -228,6 +228,16 @@ test("createAgentClient builds endpoint URLs and passes through query params", a
     "https://api.mintapi.dev/api/zillow/agent-search?location=10001&agentName=Alex&page=1&isBuying=true&priceRange=300000%2C10000000&specialties=first-time-home-buyers%2Cluxury-homes&languages=spanish",
   );
 
+  await client.zillow.agentDetails({
+    agent_link: "https://www.zillow.com/profile/Alex-Antigua",
+    username: "Alex-Antigua",
+  });
+
+  assert.equal(
+    capturedRequest.url,
+    "https://api.mintapi.dev/api/zillow/agent-details?agent_link=https%3A%2F%2Fwww.zillow.com%2Fprofile%2FAlex-Antigua&username=Alex-Antigua",
+  );
+
   await client.zillow.zestimateHistory({
     recent_first: "True",
     which: "zestimate_history",

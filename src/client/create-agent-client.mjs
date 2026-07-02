@@ -1291,6 +1291,11 @@ export function createAgentClient({
           query: { location, agentName, page, isBuying, isSelling, isTopAgent, priceRange, specialties, languages },
         });
       },
+      agentDetails({ agent_link, username } = {}) {
+        return request("/api/zillow/agent-details", {
+          query: { agent_link, username },
+        });
+      },
       zestimateHistory({ recent_first, which, byzpid, byurl, byaddress } = {}) {
         return request("/api/zillow/zestimate-history", {
           query: { recent_first, which, byzpid, byurl, byaddress },
