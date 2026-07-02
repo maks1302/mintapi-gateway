@@ -1296,6 +1296,11 @@ export function createAgentClient({
           query: { agent_link, username },
         });
       },
+      agentForRentProperties({ encodedZuid, page } = {}) {
+        return request("/api/zillow/agent-for-rent-properties", {
+          query: { encodedZuid, page },
+        });
+      },
       zestimateHistory({ recent_first, which, byzpid, byurl, byaddress } = {}) {
         return request("/api/zillow/zestimate-history", {
           query: { recent_first, which, byzpid, byurl, byaddress },

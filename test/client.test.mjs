@@ -238,6 +238,16 @@ test("createAgentClient builds endpoint URLs and passes through query params", a
     "https://api.mintapi.dev/api/zillow/agent-details?agent_link=https%3A%2F%2Fwww.zillow.com%2Fprofile%2FAlex-Antigua&username=Alex-Antigua",
   );
 
+  await client.zillow.agentForRentProperties({
+    encodedZuid: "X1-ZU10bs62tnoyy2x_5dugv",
+    page: 1,
+  });
+
+  assert.equal(
+    capturedRequest.url,
+    "https://api.mintapi.dev/api/zillow/agent-for-rent-properties?encodedZuid=X1-ZU10bs62tnoyy2x_5dugv&page=1",
+  );
+
   await client.zillow.zestimateHistory({
     recent_first: "True",
     which: "zestimate_history",
